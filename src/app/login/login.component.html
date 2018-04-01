@@ -1,7 +1,15 @@
-<form>
-  <div class="form-group">
-    <label for="usernameInput">Username</label>
-    <input type="email" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Enter your username">
-    <small id="emailHelp" class="form-text text-muted">Contact administrator if you don't have an account</small>
+<div class="row center-block">
+  <div class="col-md-4 col-md-offset-4">
+    <form>
+      <app-form-input inputPlaceholder="Enter your username">
+      </app-form-input>
+      <app-form-input inputPlaceholder="Enter your password"
+                      type="password"
+                      description="Contact administrator if you don't have an account">
+      </app-form-input>
+      <div class="span9 btn-block">
+        <button class="btn btn-large btn-block btn-primary" type="button">Login</button>
+      </div>
+    </form>
   </div>
-</form>
+</div>

@@ -1,5 +1,11 @@
 {
-  "HOME": {
-    "test": "test in english"
+  "welcomeMessage":"Welcome to the 'Park And Rest' application",
+  "forms": {
+    "login": "Login",
+    "loginWelcome":"Provide your credentials",
+    "password": "Password",
+    "usernamePholder": "Enter your username",
+    "passwordPholder": "Enter your password",
+    "loginHelper": "Contact administrator if you don't have an account"
   }
 }

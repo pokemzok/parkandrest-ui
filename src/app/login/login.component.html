@@ -1,13 +1,16 @@
+<h1 class="text-center ">{{'welcomeMessage' | translate}}</h1>
+<hr class="btn-primary"/>
 <div class="row center-block">
   <div class="col-md-4 col-md-offset-4">
     <form>
-      <app-form-input inputPlaceholder="Enter your username">
+      <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
+                      [label]="'forms.loginWelcome' | translate">
       </app-form-input>
-      <app-form-input inputPlaceholder="Enter your password"
+      <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
                       type="password"
-                      description="Contact administrator if you don't have an account">
+                      [description]="'forms.loginHelper' | translate">
       </app-form-input>
-      <app-form-submit description="Login"></app-form-submit>
+      <app-form-submit [description]="'forms.login' | translate"></app-form-submit>
     </form>
   </div>
 </div>

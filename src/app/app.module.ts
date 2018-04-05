@@ -10,6 +10,7 @@ import {FormSubmitComponent} from './form/form-submit/form-submit.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { FooterComponent } from './footer/footer.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -22,7 +23,8 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     LoginComponent,
     FormInputComponent,
-    FormSubmitComponent
+    FormSubmitComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,13 @@
 .blue-background{
-  background-color: #204d74;
+  background-color: #2e6da4;
+  border-color: #2e6da4;
 }
-/* FIXME! I DOES NOT WORK */
+
+.login-form{
+  background-color: white;
+  vertical-align: middle;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  border: thick black;
+}

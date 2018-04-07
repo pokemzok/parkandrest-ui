@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ControlContainer, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-form-input',
@@ -11,18 +12,18 @@ export class FormInputComponent implements OnInit {
   @Input() inputPlaceholder: string;
   @Input() description: string;
   @Input() type: string;
-  @Input() inputName: string;
+  @Input() formCtrlName: string;
 
-  id: string = Math.random().toString(36).substring(2);
+  inputFormGroup: FormGroup;
+  id: string = Math.random().toString(36).substring(2); /*FIXME uuid */
 
-  /*FIXME uuid */
-
-  constructor() {
+  constructor(private controlContainer: ControlContainer) {
     this.type = 'text';
+    this.inputFormGroup = new FormGroup({})
   }
 
   ngOnInit() {
-
+    this.inputFormGroup = <FormGroup>this.controlContainer.control;
   }
 
 }

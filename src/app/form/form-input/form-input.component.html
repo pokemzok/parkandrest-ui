@@ -1,11 +1,10 @@
-<div class="form-group">
+<div class="form-group" [formGroup]="inputFormGroup">
   <label for={{id}}>{{label}}</label>
   <input type={{type}}
          class="form-control"
          id={{id}}
          aria-describedby="inputHelp"
-         placeholder={{inputPlaceholder}}
-         ngModel
-         name="{{inputName}}">
+         formControlName={{formCtrlName}}
+         placeholder={{inputPlaceholder}}>
   <small id="inputHelp" class="form-text text-muted">{{description}}</small>
 </div>

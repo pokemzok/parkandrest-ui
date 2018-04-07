@@ -3,14 +3,14 @@
   <hr class="blue-background"/>
   <div class="row center-block">
     <div class="col-md-4 col-md-offset-4">
-      <form (ngSubmit)="onSubmit()">
+      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
         <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
-                        [label]="'forms.loginWelcome' | translate"
-                        inputName="username"> <!-- FIXME, moze wyciagac nazwy z modelu jakos -->
+                        formCtrlName="username"
+                        [label]="'forms.loginWelcome' | translate">
         </app-form-input>
         <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
                         type="password"
-                        inputName="password"
+                        formCtrlName="password"
                         [description]="'forms.loginHelper' | translate">
         </app-form-input>
         <app-form-submit [description]="'forms.login' | translate"></app-form-submit>

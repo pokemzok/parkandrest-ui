@@ -8,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class FormSubmitComponent implements OnInit {
 
   @Input() description: string;
-
+  @Input() buttonCols: number;
   constructor() { }
 
   ngOnInit() {

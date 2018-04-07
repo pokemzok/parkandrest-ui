@@ -1,5 +1,11 @@
 <div class="form-group">
   <label for={{id}}>{{label}}</label>
-  <input type={{type}} class="form-control" id={{id}} aria-describedby="inputHelp" placeholder={{inputPlaceholder}}>
+  <input type={{type}}
+         class="form-control"
+         id={{id}}
+         aria-describedby="inputHelp"
+         placeholder={{inputPlaceholder}}
+         ngModel
+         name="{{inputName}}">
   <small id="inputHelp" class="form-text text-muted">{{description}}</small>
 </div>

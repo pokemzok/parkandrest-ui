@@ -11,7 +11,11 @@ export class FormInputComponent implements OnInit {
   @Input() inputPlaceholder: string;
   @Input() description: string;
   @Input() type: string;
-  id: string = Math.random().toString(36).substring(2); /*FIXME uuid */
+  @Input() inputName: string;
+
+  id: string = Math.random().toString(36).substring(2);
+
+  /*FIXME uuid */
 
   constructor() {
     this.type = 'text';

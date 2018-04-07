@@ -1,5 +1,5 @@
 import {LoginRequest} from '../login/login.request';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Injectable} from '@angular/core';
 
 @Injectable()
@@ -9,7 +9,9 @@ export class AuthService {
   }
 
   authenticate(login: LoginRequest) {
-    this.http.post('http://localhost:8080/login', JSON.stringify(login))
+    const url = 'http://localhost:8080/login';
+    const headers = new HttpHeaders({'Content-Type': 'application/json'}); /*TODO: CORS ( Access-Control-Allow-Origin in response header */
+    this.http.post(url, JSON.stringify(login))
       .subscribe(value => {
         console.log(value);
 

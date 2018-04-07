@@ -26,4 +26,12 @@ export class FormInputComponent implements OnInit {
     this.inputFormGroup = <FormGroup>this.controlContainer.control;
   }
 
+  isFormInvalid() {
+    return this.inputFormGroup.get(this.formCtrlName).invalid && this.inputFormGroup.get(this.formCtrlName).touched;
+  }
+
+  isFormValid() {
+    return this.inputFormGroup.get(this.formCtrlName).valid;
+  }
+
 }

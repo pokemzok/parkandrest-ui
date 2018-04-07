@@ -1,12 +1,22 @@
 <div class="form-group" [formGroup]="inputFormGroup"
-     [ngClass]="{'has-error': inputFormGroup.get(formCtrlName).invalid && inputFormGroup.get(formCtrlName).touched,
-                'has-success': inputFormGroup.get(formCtrlName).valid}">
+     [ngClass]="{'has-error': isFormInvalid(),
+                'has-success': isFormValid()}">
   <label for={{id}}>{{label}}</label>
-  <input type={{type}}
-         class="form-control"
-         id={{id}}
-         aria-describedby="inputHelp"
-         formControlName={{formCtrlName}}
-         placeholder={{inputPlaceholder}}>
+
+  <div class="row">
+    <div class="col-md-5">
+      <input type={{type}}
+             class="form-control"
+             id={{id}}
+             aria-describedby="inputHelp"
+             formControlName={{formCtrlName}}
+             placeholder={{inputPlaceholder}}>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div>This field is required</div>
+      </div>
+    </div>
+  </div>
   <small id="inputHelp" class="form-text text-muted">{{description}}</small>
 </div>

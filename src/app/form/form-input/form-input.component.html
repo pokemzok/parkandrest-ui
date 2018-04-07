@@ -1,4 +1,6 @@
-<div class="form-group" [formGroup]="inputFormGroup">
+<div class="form-group" [formGroup]="inputFormGroup"
+     [ngClass]="{'has-error': inputFormGroup.get(formCtrlName).invalid && inputFormGroup.get(formCtrlName).touched,
+                'has-success': inputFormGroup.get(formCtrlName).valid}">
   <label for={{id}}>{{label}}</label>
   <input type={{type}}
          class="form-control"

@@ -9,13 +9,15 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  readonly minUsernameLength: number = 4; /*provide with backoffice values */
+  readonly minPasswordLength: number = 7;
 
   constructor() { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required, Validators.minLength(4)]),
-      'password': new FormControl(null, [Validators.required, Validators.minLength(7)])
+      'username': new FormControl(null, [Validators.required, Validators.minLength(this.minUsernameLength)]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(this.minPasswordLength)])
     })
   }
 

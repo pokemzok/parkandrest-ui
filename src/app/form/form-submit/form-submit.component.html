@@ -1,7 +1,11 @@
 <div class="row">
   <div class="col-md-{{buttonCols}}">
     <div class="span9 btn-block">
-      <button class="btn btn-large btn-block btn-primary" type="submit">{{description}}</button>
+      <button class="btn btn-large btn-block btn-primary"
+              type="submit"
+              [disabled]="inputFormGroup.invalid">
+        {{description}}
+      </button>
     </div>
   </div>
 </div>

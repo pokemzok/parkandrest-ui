@@ -13,8 +13,8 @@
              placeholder={{inputPlaceholder}}>
     </div>
     <div class="row" *ngIf="isFormInvalid()">
-      <div class="col-md-{{errorMsgCols}} has-error">
-        <span>{{errorMsg}}</span>
+      <div class="col-md-{{errorMsgCols}}">
+        <span class="text-danger">{{errorMsg}}</span>
       </div>
     </div>
   </div>

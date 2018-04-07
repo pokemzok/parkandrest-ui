@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ControlContainer, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-form-submit',
@@ -9,9 +10,13 @@ export class FormSubmitComponent implements OnInit {
 
   @Input() description: string;
   @Input() buttonCols: number;
-  constructor() { }
+
+  inputFormGroup: FormGroup;
+
+  constructor(private controlContainer: ControlContainer) { }
 
   ngOnInit() {
+    this.inputFormGroup = <FormGroup>this.controlContainer.control;
   }
-  /*TODO: host event*/
+
 }

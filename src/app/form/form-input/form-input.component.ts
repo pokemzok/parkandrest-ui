@@ -15,6 +15,7 @@ export class FormInputComponent implements OnInit {
   @Input() inputCols: number;
   @Input() errorMsgCols: number;
   @Input() formCtrlName: string;
+  @Input() errorMsg: string;
 
   inputFormGroup: FormGroup;
   id: string = Math.random().toString(36).substring(2); /*FIXME uuid */

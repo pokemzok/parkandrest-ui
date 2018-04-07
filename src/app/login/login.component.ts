@@ -9,7 +9,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  readonly minUsernameLength: number = 4; /*provide with backoffice values */
+  readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values */
   readonly minPasswordLength: number = 7;
 
   constructor() { }

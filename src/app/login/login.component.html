@@ -8,6 +8,7 @@
                         formCtrlName="username"
                         [inputCols]="5"
                         [errorMsgCols]="3"
+                        [errorMsg]="'forms.usernameErrorMsg' | translate:{param: minUsernameLength}"
                         [label]="'forms.loginWelcome' | translate">
         </app-form-input>
         <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
@@ -15,6 +16,7 @@
                         formCtrlName="password"
                         [inputCols]="5"
                         [errorMsgCols]="3"
+                        [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}"
                         [description]="'forms.loginHelper' | translate">
         </app-form-input>
         <app-form-submit [description]="'forms.login' | translate"

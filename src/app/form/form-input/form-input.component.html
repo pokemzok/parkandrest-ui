@@ -4,7 +4,7 @@
   <label for={{id}}>{{label}}</label>
 
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-{{inputCols}}">
       <input type={{type}}
              class="form-control"
              id={{id}}
@@ -12,9 +12,9 @@
              formControlName={{formCtrlName}}
              placeholder={{inputPlaceholder}}>
     </div>
-    <div class="row">
-      <div class="col-md-3">
-        <div>This field is required</div>
+    <div class="row" *ngIf="isFormInvalid()">
+      <div class="col-md-{{errorMsgCols}}">
+        <span>This field is required</span>
       </div>
     </div>
   </div>

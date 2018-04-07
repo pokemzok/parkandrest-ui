@@ -6,11 +6,15 @@
       <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
         <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
                         formCtrlName="username"
+                        [inputCols]="5"
+                        [errorMsgCols]="3"
                         [label]="'forms.loginWelcome' | translate">
         </app-form-input>
         <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
                         type="password"
                         formCtrlName="password"
+                        [inputCols]="5"
+                        [errorMsgCols]="3"
                         [description]="'forms.loginHelper' | translate">
         </app-form-input>
         <app-form-submit [description]="'forms.login' | translate"></app-form-submit>

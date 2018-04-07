@@ -11,6 +11,7 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { FooterComponent } from './footer/footer.component';
+import {AuthService} from './auth/auth.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -38,7 +39,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ ], /*FIXME internatinalization */
+  providers: [ AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

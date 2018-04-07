@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth/auth.service';
+import {LoginRequest} from './login.request';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ export class LoginComponent implements OnInit {
   readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values */
   readonly minPasswordLength: number = 7;
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
@@ -22,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.loginForm);
-    /*TODO: populate*/
+    this.authService.authenticate(<LoginRequest>this.loginForm.getRawValue())
   }
 }

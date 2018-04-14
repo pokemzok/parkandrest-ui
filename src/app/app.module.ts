@@ -9,13 +9,11 @@ import {FormInputComponent} from './form/form-input/form-input.component';
 import {FormSubmitComponent} from './form/form-submit/form-submit.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { FooterComponent } from './footer/footer.component';
-import {AuthenticationService} from './auth/authentication.service';
+import {FooterComponent} from './footer/footer.component';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthCookiesService} from './auth/authcookies.service';
 import {ProxyAuthService} from './auth/proxyauth.service';
-import {MockAuthService} from './auth/mockauth.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -43,7 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ CookieService, AuthCookiesService, ProxyAuthService, MockAuthService, AuthenticationService],
+  providers: [ CookieService, AuthCookiesService, ProxyAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

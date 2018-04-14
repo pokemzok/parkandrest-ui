@@ -1,13 +1,10 @@
 import {LoginRequest} from '../login/login.request';
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {AuthCookiesService} from './authcookies.service';
 import {AuthorizationModel} from './authorization.model';
 
-@Injectable()
 export class AuthenticationService implements  AuthService {
-
 
   constructor(private http: HttpClient, private authCookiesService: AuthCookiesService) {
   }

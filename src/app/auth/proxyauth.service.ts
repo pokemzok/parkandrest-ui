@@ -5,6 +5,7 @@ import {LoginRequest} from '../login/login.request';
 import {AuthenticationService} from './authentication.service';
 import {AuthCookiesService} from './authcookies.service';
 import {HttpClient} from '@angular/common/http';
+import {HealthCheckService} from '../healthcheck/healthcheck.service';
 
 @Injectable()
 export class ProxyAuthService implements AuthService {
@@ -13,12 +14,18 @@ export class ProxyAuthService implements AuthService {
   private authService: AuthenticationService;
   private selectedService: AuthService;
 
-  // TODO: after online check, choose service, also think about production mode
-  constructor(private authCookiesService: AuthCookiesService, private http: HttpClient) {
+  constructor(private authCookiesService: AuthCookiesService, private http: HttpClient, private healthCheckService: HealthCheckService) {
     this.mockAuthService = new MockAuthService(this.authCookiesService);
     this.authService = new AuthenticationService(http, this.authCookiesService);
-    // TODO: is server online check, after that use another Service (selectedService)
-    this.selectedService = this.mockAuthService;
+    this.selectAuthService(healthCheckService);
+  }
+
+  private selectAuthService(healthCheckService: HealthCheckService) { // TODO: handle production case
+    if (healthCheckService.isServerOnline()) {
+      this.selectedService = this.authService;
+    } else {
+      this.selectedService = this.mockAuthService;
+    }
   }
 
   authenticate(loginRequest: LoginRequest) {

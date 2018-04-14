@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AuthService} from './auth.service';
 import {AuthCookiesService} from './authcookies.service';
 import {AuthorizationModel} from './authorization.model';
+import {LOGIN} from '../../environments/environment';
 
 export class AuthenticationService implements  AuthService {
 
@@ -10,9 +11,8 @@ export class AuthenticationService implements  AuthService {
   }
 
   authenticate(login: LoginRequest) {
-    const url = 'http://localhost:8080/login';
     this.http.post(
-      url,
+      LOGIN,
       JSON.stringify(login),
       {responseType: 'text', observe: 'response'}
     ).subscribe(result => {

@@ -13,4 +13,5 @@ npm config set registry http://registry.npmjs.org/ - https keeps reseting networ
 
 TODO:
 mocki
+naprawić testy karma, bo przestały dzialać
 prezentacja na temat karmy i testowania js'ow bo wydaje sie to byc bardzo fajne

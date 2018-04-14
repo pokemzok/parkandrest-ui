@@ -6,6 +6,7 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class AuthenticationService implements  AuthService {
 
+
   constructor(private http: HttpClient) {
   }
 
@@ -28,4 +29,9 @@ export class AuthenticationService implements  AuthService {
       console.log(error.status);
     });
   }
+
+  deauthenticate() {
+    // FIXME implement
+  }
+
 }

@@ -6,4 +6,6 @@ export interface AuthService {
 
   authenticate (loginRequest: LoginRequest );
 
+  deauthenticate();
+
 }

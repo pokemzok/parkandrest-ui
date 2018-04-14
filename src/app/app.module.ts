@@ -8,10 +8,11 @@ import {LoginComponent} from './login/login.component';
 import {FormInputComponent} from './form/form-input/form-input.component';
 import {FormSubmitComponent} from './form/form-submit/form-submit.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { FooterComponent } from './footer/footer.component';
 import {AuthenticationService} from './auth/authentication.service';
+import {CookieService} from 'ngx-cookie-service';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -39,7 +40,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ AuthenticationService],
+  providers: [ AuthenticationService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,6 +14,8 @@ import {AuthenticationService} from './auth/authentication.service';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthCookiesService} from './auth/authcookies.service';
+import {ProxyAuthService} from './auth/proxyauth.service';
+import {MockAuthService} from './auth/mockauth.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -41,7 +43,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ AuthenticationService, CookieService, AuthCookiesService],
+  providers: [ CookieService, AuthCookiesService, ProxyAuthService, MockAuthService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

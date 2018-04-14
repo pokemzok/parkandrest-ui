@@ -3,9 +3,10 @@ import {LoginRequest} from '../login/login.request';
 import {Optional} from '../utils/optional';
 import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';
-import {CookieService} from 'ngx-cookie-service';
 import {AuthCookiesService} from './authcookies.service';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class MockAuthService implements AuthService {
 
   private static readonly authorityHeader = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjoiT1BFUkFUT1Is' +

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from '../auth/auth.service';
+import {AuthenticationService} from '../auth/authentication.service';
 import {LoginRequest} from './login.request';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values */
   readonly minPasswordLength: number = 7;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({

@@ -7,3 +7,7 @@ To install project you have to:
 2. Type npm install in "parkandrest-ui" catalogue
 
 To start server type ng serve in "parkandrest-ui" catalogue
+
+TODO:
+mocki
+prezentacja na temat karmy i testowania js'ow bo wydaje sie to byc bardzo fajne

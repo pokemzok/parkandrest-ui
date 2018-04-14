@@ -7,7 +7,7 @@ import {isNullOrUndefined} from 'util';
 export class AuthCookiesService {
 
   private static readonly  authTokenName = 'authToken';
-  private static readonly authoritiesName = '_authorities';
+  private static readonly authoritiesName = 'authorities';
 
   private _authToken: string;
   private _authorities: string;
@@ -18,7 +18,7 @@ export class AuthCookiesService {
     this._authToken = authModel.authenticationHeader;
     this._authorities = authModel.authorities.toString(); // TODO check result
     this.cookieService.set(AuthCookiesService.authTokenName, this._authToken);
-    this.cookieService.set('_authorities', this._authorities);
+    this.cookieService.set(AuthCookiesService.authoritiesName, this._authorities);
   }
 
   clearAuthCookies() {

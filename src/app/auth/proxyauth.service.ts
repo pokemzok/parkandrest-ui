@@ -11,19 +11,22 @@ export class ProxyAuthService implements AuthService {
 
   private mockAuthService: MockAuthService;
   private authService: AuthenticationService;
+  private selectedService: AuthService;
 
   // TODO: after online check, choose service, also think about production mode
   constructor(private authCookiesService: AuthCookiesService, private http: HttpClient) {
     this.mockAuthService = new MockAuthService(this.authCookiesService);
     this.authService = new AuthenticationService(http, this.authCookiesService);
+    // TODO: is server online check, after that use another Service (selectedService)
+    this.selectedService = this.mockAuthService;
   }
- // FIXME: route to the next page
+
   authenticate(loginRequest: LoginRequest) {
-    this.mockAuthService.authenticate(loginRequest);
+    this.selectedService.authenticate(loginRequest);
   }
 
   deauthenticate() {
-    this.mockAuthService.deauthenticate()
+    this.selectedService.deauthenticate()
   }
 
 }

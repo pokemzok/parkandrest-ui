@@ -1,4 +1,4 @@
-import {isNull, isNullOrUndefined, isUndefined} from 'util';
+import {isNullOrUndefined} from 'util';
 
 export class Optional<T> {
 
@@ -6,9 +6,10 @@ export class Optional<T> {
     return new Optional<T>(value)
   }
 
-  private constructor (private value: T) {}
+  private constructor(private value: T) {
+  }
 
-  ifPresent(predicate: (value: T) => void): Optional<T>  {
+  ifPresent(predicate: (value: T) => void): Optional<T> {
     if (this.isPresent()) {
       predicate(this.value);
     }
@@ -20,7 +21,9 @@ export class Optional<T> {
   }
 
   orElse(predicate: () => void) {
-    predicate();
+    if (!this.isPresent()) {
+      predicate();
+    }
   }
 
   getOrProvide(predicate: () => T): T {

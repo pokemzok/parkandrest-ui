@@ -31,7 +31,10 @@ export class MockAuthService implements AuthService {
     Optional.of(
       MockAuthService.validCredentials.find(value => value.request.equals(loginRequest))
     ).ifPresent(credential => {
+      console.log('Successfully Authenticated!');
        this.authCookiesService.setAuthCookies(credential.authorization);
+    }).orElse(() => {
+      console.log('Authentication Failed!'); // TODO show some error
     });
   }
 

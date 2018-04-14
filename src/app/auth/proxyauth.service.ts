@@ -17,7 +17,7 @@ export class ProxyAuthService implements AuthService {
     this.mockAuthService = new MockAuthService(this.authCookiesService);
     this.authService = new AuthenticationService(http, this.authCookiesService);
   }
-
+ // FIXME: route to the next page
   authenticate(loginRequest: LoginRequest) {
     this.mockAuthService.authenticate(loginRequest);
   }

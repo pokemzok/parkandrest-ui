@@ -1,4 +1,4 @@
-import {isNull, isUndefined} from 'util';
+import {isNull, isNullOrUndefined, isUndefined} from 'util';
 
 export class Optional<T> {
 
@@ -16,7 +16,7 @@ export class Optional<T> {
   }
 
   isPresent(): boolean {
-    return !(isUndefined(this.value) || isNull(this.value));
+    return !(isNullOrUndefined(this.value));
   }
 
   orElse(predicate: () => void) {

@@ -2,12 +2,14 @@ import {LoginRequest} from '../login/login.request';
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
+import {AuthCookiesService} from './authcookies.service';
+import {AuthorizationModel} from './authorization.model';
 
 @Injectable()
 export class AuthenticationService implements  AuthService {
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private authCookiesService: AuthCookiesService) {
   }
 
   authenticate(login: LoginRequest) {
@@ -17,13 +19,10 @@ export class AuthenticationService implements  AuthService {
       JSON.stringify(login),
       {responseType: 'text', observe: 'response'}
     ).subscribe(result => {
-      console.log('I am here');
+      console.log('Error with status:');
       console.log(result);
-
-      /**
-       * FIXME url constanses holder, add token to cookies
-       * TODO: mocki! na koniec dopiero baw sie w integracje!
-       */
+      // FIXME extract from response AuthorizationModel and pass it to authCookiesService
+      this.authCookiesService.setAuthCookies(new AuthorizationModel( [], ''));
     }, error => {
       console.log('I am here');
       console.log(error.status);
@@ -31,7 +30,8 @@ export class AuthenticationService implements  AuthService {
   }
 
   deauthenticate() {
-    // FIXME implement
+    this.authCookiesService.clearAuthCookies();
+    // TODO: another things
   }
 
 }

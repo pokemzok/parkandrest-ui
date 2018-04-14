@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import {AuthenticationService} from './auth/authentication.service';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AuthCookiesService} from './auth/authcookies.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -40,7 +41,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ AuthenticationService, CookieService],
+  providers: [ AuthenticationService, CookieService, AuthCookiesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

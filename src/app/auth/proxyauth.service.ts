@@ -21,11 +21,14 @@ export class ProxyAuthService implements AuthService {
   }
 
   private selectAuthService(healthCheckService: HealthCheckService) { // TODO: handle production case
-    if (healthCheckService.isServerOnline()) {
-      this.selectedService = this.authService;
-    } else {
-      this.selectedService = this.mockAuthService;
-    }
+    healthCheckService.isServerOnline().then(isOnline => {
+      if (isOnline) {
+        this.selectedService = this.authService;
+      } else {
+        console.log('Server is Offline Choosing Mock Authentication Service');
+        this.selectedService = this.mockAuthService;
+      }
+    });
   }
 
   authenticate(loginRequest: LoginRequest) {

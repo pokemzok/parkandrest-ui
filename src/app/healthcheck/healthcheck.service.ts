@@ -6,29 +6,31 @@ import {ServerStatus} from './serverstatus';
 @Injectable()
 export class HealthCheckService {
 
-  private serverStatus: ServerStatus;
+  private serverStatus: ServerStatus = ServerStatus.UNDEFINED;
 
-  constructor (private http: HttpClient) {}
-
-  // TODO: think how to return a value
-  healthCheckServer() {
-    this.http.get<Response>(HEALTH_CHECK).subscribe(
-      value => {
-        console.log(value);
-        this.serverStatus = ServerStatus.ONLINE; // TODO: get from value.status
-      },
-      error => {
-        console.log(error);
-        this.serverStatus = ServerStatus.OFFLINE; // TODO: get from value.status
-      },
-      () => {
-        console.log('Request complete');
-      }
-    )
+  constructor(private http: HttpClient) {
   }
 
-  isServerOnline(): boolean {
-    return this.serverStatus === ServerStatus.ONLINE;
+  async healthCheckServer(): Promise<ServerStatus> {
+    await this.http.get(HEALTH_CHECK).toPromise()
+      .then(value => {
+        this.serverStatus = ServerStatus.ONLINE; // TODO: get from value.status
+      })
+      .catch(reason => {
+        this.serverStatus = ServerStatus.OFFLINE;
+      });
+    return this.serverStatus;
+  }
+
+  async isServerOnline(): Promise<boolean> {
+    switch (this.serverStatus) {
+      case ServerStatus.UNDEFINED:
+        await this.healthCheckServer();
+        return this.isServerOnline();
+      default:
+        return this.serverStatus === ServerStatus.ONLINE;
+    }
   }
 
 }
+

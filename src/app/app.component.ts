@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import {HealthCheckService} from './healthcheck/healthcheck.service';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +8,9 @@ import {HealthCheckService} from './healthcheck/healthcheck.service';
 })
 export class AppComponent {
 
-    constructor (private translate: TranslateService, private healthCheckService: HealthCheckService) {
+    constructor (private translate: TranslateService) {
       translate.setDefaultLang('en');
       translate.use('en');
-      healthCheckService.healthCheckServer() // TODO WAIT FOR RESPONSE
     }
 
 }

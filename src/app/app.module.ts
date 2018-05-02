@@ -15,7 +15,17 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthCookiesService} from './auth/authcookies.service';
 import {ProxyAuthService} from './auth/proxyauth.service';
 import {HealthCheckService} from './healthcheck/healthcheck.service';
+import {RouterModule, Routes} from '@angular/router';
+import { ParkingMeterComponent } from './parkingmeter/parkingmeter.component';
+import { UsersComponent } from './users/users.component';
+import { AccountMonitoringComponent } from './accountmonitoring/accountmonitoring.component';
 
+const routes: Routes = [
+  {path: '', component: LoginComponent}, // FIXME, should be main page
+  {path: 'login', component: LoginComponent},
+  {path: 'account/monitoring', component: AccountMonitoringComponent},
+  {path: 'parkingmeter', component: ParkingMeterComponent} // TODO: protect routes with securities
+];
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,7 +38,10 @@ export function createTranslateLoader(http: HttpClient) {
     LoginComponent,
     FormInputComponent,
     FormSubmitComponent,
-    FooterComponent
+    FooterComponent,
+    ParkingMeterComponent,
+    UsersComponent,
+    AccountMonitoringComponent
   ],
   imports: [
     BrowserModule,
@@ -40,9 +53,11 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    RouterModule.forRoot(routes)
   ],
-  providers: [ CookieService, AuthCookiesService, ProxyAuthService, HealthCheckService],
+  providers: [CookieService, AuthCookiesService, ProxyAuthService, HealthCheckService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+}

@@ -19,12 +19,13 @@ import {RouterModule, Routes} from '@angular/router';
 import { ParkingMeterComponent } from './parkingmeter/parkingmeter.component';
 import { UsersComponent } from './users/users.component';
 import { AccountMonitoringComponent } from './accountmonitoring/accountmonitoring.component';
+import {AuthGuard} from './auth/authguard.service';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent}, // FIXME, should be main page
+  {path: '', component: LoginComponent}, // FIXME, should be main page after login
   {path: 'login', component: LoginComponent},
-  {path: 'account/monitoring', component: AccountMonitoringComponent},
-  {path: 'parkingmeter', component: ParkingMeterComponent} // TODO: protect routes with securities
+  {path: 'account/monitoring', canActivate: [AuthGuard], component: AccountMonitoringComponent},
+  {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent} // TODO: protect routes with securities
 ];
 
 export function createTranslateLoader(http: HttpClient) {
@@ -56,7 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     RouterModule.forRoot(routes)
   ],
-  providers: [CookieService, AuthCookiesService, ProxyAuthService, HealthCheckService],
+  providers: [CookieService, AuthCookiesService, ProxyAuthService, HealthCheckService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

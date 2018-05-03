@@ -36,7 +36,11 @@ export class ProxyAuthService implements AuthService {
   }
 
   deauthenticate() {
-    this.selectedService.deauthenticate()
+    this.selectedService.deauthenticate();
   }
 
+  isAuthenticated() {
+    console.log('Am I authenticated?');
+    this.selectedService.isAuthenticated();
+  }
 }

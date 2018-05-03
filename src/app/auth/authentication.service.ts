@@ -4,6 +4,7 @@ import {AuthService} from './auth.service';
 import {AuthCookiesService} from './authcookies.service';
 import {AuthorizationModel} from './authorization.model';
 import {LOGIN} from '../../environments/environment';
+import {isNullOrUndefined} from 'util';
 
 export class AuthenticationService implements  AuthService {
 
@@ -29,6 +30,10 @@ export class AuthenticationService implements  AuthService {
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
     // TODO: another things
+  }
+
+  isAuthenticated() {
+    return !isNullOrUndefined(this.authCookiesService.authToken);
   }
 
 }

@@ -5,9 +5,11 @@ import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';
 import {AuthCookiesService} from './authcookies.service';
 import {Injectable} from '@angular/core';
+import {isNullOrUndefined} from 'util';
 
 @Injectable()
 export class MockAuthService implements AuthService {
+
 
   private static readonly authorityHeader = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjoiT1BFUkFUT1Is' +
     'QURNSU4sRFJJVkVSLE9XTkVSIiwiZXhwIjoxNTIzMzY4ODUxfQ.ina2f-DN7DTJw1bAGYCWYFF46HPRzEIlSkdZd9vNs-ivyjWhJg8wMCsh5XnuLjuvdep' +
@@ -41,6 +43,10 @@ export class MockAuthService implements AuthService {
 
   deauthenticate() {
     // TODO: probably more to this
-    this.authCookiesService.clearAuthCookies()
+    this.authCookiesService.clearAuthCookies();
+  }
+
+  isAuthenticated() {
+    return !isNullOrUndefined(this.authCookiesService.authToken);
   }
 }

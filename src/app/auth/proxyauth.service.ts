@@ -5,7 +5,7 @@ import {LoginRequest} from '../login/login.request';
 import {AuthenticationService} from './authentication.service';
 import {AuthCookiesService} from './authcookies.service';
 import {HttpClient} from '@angular/common/http';
-import {HealthCheckService} from '../healthcheck/healthcheck.service';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class ProxyAuthService implements AuthService {
@@ -14,21 +14,19 @@ export class ProxyAuthService implements AuthService {
   private authService: AuthenticationService;
   private selectedService: AuthService;
 
-  constructor(private authCookiesService: AuthCookiesService, private http: HttpClient, private healthCheckService: HealthCheckService) {
+  constructor(private authCookiesService: AuthCookiesService, private http: HttpClient) {
     this.mockAuthService = new MockAuthService(this.authCookiesService);
     this.authService = new AuthenticationService(http, this.authCookiesService);
-    this.selectAuthService(healthCheckService);
+    this.selectAuthService();
   }
 
-  private selectAuthService(healthCheckService: HealthCheckService) { // TODO: handle production case
-    healthCheckService.isServerOnline().then(isOnline => {
-      if (isOnline) {
-        this.selectedService = this.authService;
-      } else {
-        console.log('Server is Offline Choosing Mock Authentication Service');
-        this.selectedService = this.mockAuthService;
-      }
-    });
+  private selectAuthService() {
+    if (environment.serverOffline) {
+      console.log('Server is Offline Choosing Mock Authentication Service');
+      this.selectedService = this.mockAuthService;
+    } else {
+      this.selectedService = this.authService;
+    }
   }
 
   authenticate(loginRequest: LoginRequest) {
@@ -40,7 +38,6 @@ export class ProxyAuthService implements AuthService {
   }
 
   isAuthenticated() {
-    console.log('Am I authenticated?');
-    this.selectedService.isAuthenticated();
+    return this.selectedService.isAuthenticated();
   }
 }

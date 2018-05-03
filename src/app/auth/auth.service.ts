@@ -7,5 +7,5 @@ export interface AuthService {
 
   deauthenticate();
 
-  isAuthenticated();
+  isAuthenticated(): boolean;
 }

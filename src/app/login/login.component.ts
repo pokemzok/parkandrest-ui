@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {AuthenticationService} from '../auth/authentication.service';
 import {LoginRequest} from './login.request';
 import {ProxyAuthService} from '../auth/proxyauth.service';
 

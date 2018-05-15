@@ -9,5 +9,8 @@
     "loginHelper": "Contact administrator if you don't have an account",
     "usernameErrorMsg": "Username has to have at least {{param}} characters",
     "passwordErrorMsg": "Password has to have at least {{param}} characters"
+  },
+  "notifications":{
+    "forbidden": "No credentials provided. Access Forbidden."
   }
 }

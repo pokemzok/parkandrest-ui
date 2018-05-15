@@ -32,6 +32,9 @@
               },
               {
                 "input": "src/styles.css"
+              },
+              {
+                "input": "node_modules/ngx-toastr/toastr.css"
               }
             ],
             "scripts": []

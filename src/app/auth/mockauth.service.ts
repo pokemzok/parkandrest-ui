@@ -6,6 +6,7 @@ import {AuthorizationModel} from './authorization.model';
 import {AuthCookiesService} from './authcookies.service';
 import {Injectable} from '@angular/core';
 import {isNullOrUndefined} from 'util';
+import * as _ from 'underscore';
 
 @Injectable()
 export class MockAuthService implements AuthService {
@@ -46,6 +47,6 @@ export class MockAuthService implements AuthService {
   }
 
   isAuthenticated() {
-    return !isNullOrUndefined(this.authCookiesService.authToken);
+    return !isNullOrUndefined(this.authCookiesService.authToken) && !_.isEmpty(this.authCookiesService.authToken);
   }
 }

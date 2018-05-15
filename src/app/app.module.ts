@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
-
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
 import {LoginComponent} from './login/login.component';
@@ -20,6 +19,8 @@ import { ParkingMeterComponent } from './parkingmeter/parkingmeter.component';
 import { UsersComponent } from './users/users.component';
 import { AccountMonitoringComponent } from './accountmonitoring/accountmonitoring.component';
 import {AuthGuard} from './auth/authguard.service';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -55,6 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [CookieService, AuthCookiesService, ProxyAuthService, HealthCheckService, AuthGuard],

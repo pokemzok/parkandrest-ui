@@ -15,12 +15,13 @@ import {AuthCookiesService} from './auth/authcookies.service';
 import {ProxyAuthService} from './auth/proxyauth.service';
 import {HealthCheckService} from './healthcheck/healthcheck.service';
 import {RouterModule, Routes} from '@angular/router';
-import { ParkingMeterComponent } from './parkingmeter/parkingmeter.component';
-import { UsersComponent } from './users/users.component';
-import { AccountMonitoringComponent } from './accountmonitoring/accountmonitoring.component';
+import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
+import {UsersComponent} from './users/users.component';
+import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
 import {AuthGuard} from './auth/authguard.service';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -60,7 +61,14 @@ export function createTranslateLoader(http: HttpClient) {
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
-  providers: [CookieService, AuthCookiesService, ProxyAuthService, HealthCheckService, AuthGuard],
+  providers: [
+    CookieService,
+    AuthCookiesService,
+    ProxyAuthService,
+    HealthCheckService,
+    AuthGuard,
+    TranslatedToastrFacade
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

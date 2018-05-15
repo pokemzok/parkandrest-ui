@@ -7,6 +7,7 @@ import {AuthCookiesService} from './authcookies.service';
 import {Injectable} from '@angular/core';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
+import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
 
 @Injectable()
 export class MockAuthService implements AuthService {
@@ -28,16 +29,16 @@ export class MockAuthService implements AuthService {
     {request: new LoginRequest('owner', 'password'), authorization:  new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader)}
   ];
 
-  constructor (private authCookiesService: AuthCookiesService) {}
+  constructor (private authCookiesService: AuthCookiesService, private toasterService: TranslatedToastrFacade) {}
 
   authenticate(loginRequest: LoginRequest) {
     Optional.of(
       MockAuthService.validCredentials.find(value => value.request.equals(loginRequest))
     ).ifPresent(credential => {
-      console.log('Successfully Authenticated!');
+      this.toasterService.success('notifications.authenticated');
        this.authCookiesService.setAuthCookies(credential.authorization);
     }).orElse(() => {
-      console.log('Authentication Failed!'); // TODO show some error
+      this.toasterService.error('notifications.authfailure');
     });
   }
 

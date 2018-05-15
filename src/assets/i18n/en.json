@@ -11,6 +11,9 @@
     "passwordErrorMsg": "Password has to have at least {{param}} characters"
   },
   "notifications":{
-    "forbidden": "No credentials provided. Access Forbidden."
+    "forbidden": "No credentials provided. Access Forbidden.",
+    "serverOffline": "Server is Offline Choosing Mock Authentication Service",
+    "authenticated": "Successfully Authenticated!",
+    "authfailure": "Authentication Failed! Provided credentials are incorrect"
   }
 }

@@ -6,6 +6,7 @@ import {AuthenticationService} from './authentication.service';
 import {AuthCookiesService} from './authcookies.service';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
 
 @Injectable()
 export class ProxyAuthService implements AuthService {
@@ -14,14 +15,19 @@ export class ProxyAuthService implements AuthService {
   private authService: AuthenticationService;
   private selectedService: AuthService;
 
-  constructor(private authCookiesService: AuthCookiesService, private http: HttpClient) {
-    this.mockAuthService = new MockAuthService(this.authCookiesService);
+  constructor(
+    private authCookiesService: AuthCookiesService,
+    private http: HttpClient,
+    private toastrService: TranslatedToastrFacade
+  ) {
+    this.mockAuthService = new MockAuthService(this.authCookiesService, this.toastrService);
     this.authService = new AuthenticationService(http, this.authCookiesService);
     this.selectAuthService();
   }
 
   private selectAuthService() {
     if (environment.serverOffline) {
+      this.toastrService.warning('notifications.serverOffline');
       console.log('Server is Offline Choosing Mock Authentication Service');
       this.selectedService = this.mockAuthService;
     } else {

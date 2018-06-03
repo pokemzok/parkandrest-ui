@@ -32,7 +32,7 @@ export class AuthenticationService implements  AuthService {
     // TODO: another things
   }
 
-  isAuthenticated() {
+  isAuthenticated(): boolean {
     return !isNullOrUndefined(this.authCookiesService.authToken);
   }
 

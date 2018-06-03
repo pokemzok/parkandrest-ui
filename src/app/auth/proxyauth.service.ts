@@ -43,7 +43,7 @@ export class ProxyAuthService implements AuthService {
     this.selectedService.deauthenticate();
   }
 
-  isAuthenticated() {
+  isAuthenticated(): boolean {
     return this.selectedService.isAuthenticated();
   }
 }

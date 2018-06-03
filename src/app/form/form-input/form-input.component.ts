@@ -29,11 +29,11 @@ export class FormInputComponent implements OnInit {
     this.inputFormGroup = <FormGroup>this.controlContainer.control;
   }
 
-  isFormInvalid() {
+  isFormInvalid(): boolean {
     return this.inputFormGroup.get(this.formCtrlName).invalid && this.inputFormGroup.get(this.formCtrlName).touched;
   }
 
-  isFormValid() {
+  isFormValid(): boolean {
     return this.inputFormGroup.get(this.formCtrlName).valid;
   }
 

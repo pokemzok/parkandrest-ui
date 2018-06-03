@@ -47,7 +47,7 @@ export class MockAuthService implements AuthService {
     this.authCookiesService.clearAuthCookies();
   }
 
-  isAuthenticated() {
+  isAuthenticated(): boolean {
     return !isNullOrUndefined(this.authCookiesService.authToken) && !_.isEmpty(this.authCookiesService.authToken);
   }
 }

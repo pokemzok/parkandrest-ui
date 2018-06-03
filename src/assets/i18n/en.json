@@ -1,8 +1,8 @@
 {
-  "navbar":{
-    "appname":"Parkandrest"
+  "footer":{
+    "adminContact": "Contact administrator",
+    "disclamer": "@ 2018 Available under Apache licence"
   },
-  "welcomeMessage":"Welcome to the 'Park And Rest' application",
   "forms": {
     "login": "Login",
     "loginWelcome":"Provide your credentials",
@@ -13,10 +13,20 @@
     "usernameErrorMsg": "Username has to have at least {{param}} characters",
     "passwordErrorMsg": "Password has to have at least {{param}} characters"
   },
+  "navbar":{
+    "appname":"Parkandrest",
+    "monitor":"Account monitor",
+    "parkingmeter":"Parking meter",
+    "users": "Users",
+    "mock": "Driver Mock",
+    "logout": "Log out"
+  },
   "notifications":{
     "forbidden": "No credentials provided. Access Forbidden.",
     "serverOffline": "Server is Offline Choosing Mock Authentication Service",
     "authenticated": "Successfully Authenticated!",
     "authfailure": "Authentication Failed! Provided credentials are incorrect"
-  }
+  },
+  "welcomeMessage":"Welcome to the 'Park And Rest' application"
+
 }

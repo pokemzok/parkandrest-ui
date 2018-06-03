@@ -1,8 +1,10 @@
-<div class="row">
-  <app-header></app-header>
-</div>
-<div class="container">
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
+<div class="row"> <!-- TODO -->
+  <div class="col-md-2">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="col-md-10">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
 </div>
 

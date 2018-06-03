@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
-import {HeaderComponent} from './header/header.component';
+import {NavbarComponent} from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
 import {FormInputComponent} from './form/form-input/form-input.component';
 import {FormSubmitComponent} from './form/form-submit/form-submit.component';
@@ -36,7 +36,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    HeaderComponent,
+    NavbarComponent,
     AppComponent,
     LoginComponent,
     FormInputComponent,

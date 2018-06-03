@@ -1,4 +1,7 @@
 {
+  "navbar":{
+    "appname":"Parkandrest"
+  },
   "welcomeMessage":"Welcome to the 'Park And Rest' application",
   "forms": {
     "login": "Login",

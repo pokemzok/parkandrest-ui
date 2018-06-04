@@ -1,18 +1,10 @@
-<div class="sidenav">
-  <a class="navbar-brand" href="#">
-    <span class="glyphicon glyphicon-road" aria-hidden="true"></span> {{'navbar.appname' | translate}}</a>
-  <a href="#">{{'navbar.monitor' | translate}}</a>
-  <a href="#">{{'navbar.parkingmeter' | translate}}</a>
-  <a href="#">{{'navbar.users' | translate}}</a>
-  <a href="#">{{'navbar.mock' | translate}}</a>
-  <a href="#">{{'navbar.logout' | translate}}</a>
-</div>
-<!-- <app-navbar></app-navbar>-->
-
-I say heey
-<div>
-  I say heey
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
+<div class="row"> <!-- TODO -->
+  <div class="col-md-2">
+    <app-navbar></app-navbar>
+  </div>
+  <div class="col-md-10">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </div>
 </div>
 

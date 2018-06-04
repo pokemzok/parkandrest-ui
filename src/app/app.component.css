@@ -10,14 +10,3 @@
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
-
-.fixed-footer{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: #5e5e5e;
-  border-color: black;
-  color: black;
-  text-align: center;
-  padding: 30px;
-}

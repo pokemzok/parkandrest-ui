@@ -1,4 +1,7 @@
-.black-footer{
+.fixed-footer{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
   background-color: #5e5e5e;
   border-color: black;
   color: black;

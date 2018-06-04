@@ -1,39 +1,22 @@
-@media (min-width: 768px) {
-  .navbar-collapse {
-    height: auto;
-    border-top: 0;
-    box-shadow: none;
-    max-height: none;
-    padding-left:0;
-    padding-right:0;
-  }
-  .navbar-collapse.collapse {
-    display: block !important;
-    width: auto !important;
-    padding-bottom: 0;
-    overflow: visible !important;
-  }
-  .navbar-collapse.in {
-    overflow-x: visible;
-  }
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: darkcyan;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
 
-  .navbar
-  {
-    max-width:300px;
-    margin-right: 0;
-    margin-left: 0;
-    height: 100%;
-  }
+.sidenav a {
+  padding: 6px 6px 6px 32px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+}
 
-  .navbar-nav,
-  .navbar-nav > li,
-  .navbar-left,
-  .navbar-right,
-  .navbar-header
-  {float:none !important;}
-
-  .navbar-right .dropdown-menu {left:0;right:auto;}
-  .navbar-collapse .navbar-nav.navbar-right:last-child {
-    margin-right: 0;
-  }
+.sidenav a:hover {
+  color: #f1f1f1;
 }

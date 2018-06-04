@@ -1,5 +1,12 @@
 :host {
   background-color: #efefef;
-  height: 100%;
-  display: block;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }

@@ -2,12 +2,10 @@
   background-color: #efefef;
 }
 
-
 .sidenav {
   height: 100%;
   width: 200px;
   position: fixed;
-  z-index: 1;
   top: 0;
   left: 0;
   background-color: darkcyan;
@@ -34,4 +32,15 @@
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
+}
+
+.fixed-footer{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #5e5e5e;
+  border-color: black;
+  color: black;
+  text-align: center;
+  padding: 30px;
 }

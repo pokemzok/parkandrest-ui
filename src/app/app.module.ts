@@ -24,6 +24,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
 import { DrivermockComponent } from './drivermock/drivermock.component';
 import { HeaderComponent } from './header/header.component';
+import {ModalModule} from 'ngx-modal';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -65,7 +66,8 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    ModalModule
   ],
   providers: [
     CookieService,

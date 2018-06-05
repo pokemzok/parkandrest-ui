@@ -25,5 +25,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.authenticate(<LoginRequest>this.loginForm.getRawValue())
+    // TODO: route page
   }
 }

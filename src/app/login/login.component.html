@@ -1,28 +1,36 @@
-<div class="login-form">
-  <h1 class="text-center ">{{'welcomeMessage' | translate}}</h1>
-  <hr class="blue-background"/>
-  <div class="row center-block">
-    <div class="col-md-8 col-md-offset-4">
-      <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-        <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
-                        formCtrlName="username"
-                        [inputCols]="5"
-                        [errorMsgCols]="3"
-                        [errorMsg]="'forms.usernameErrorMsg' | translate:{param: minUsernameLength}"
-                        [label]="'forms.loginWelcome' | translate">
-        </app-form-input>
-        <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
-                        type="password"
-                        formCtrlName="password"
-                        [inputCols]="5"
-                        [errorMsgCols]="3"
-                        [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}"
-                        [description]="'forms.loginHelper' | translate">
-        </app-form-input>
-        <app-form-submit [description]="'forms.login' | translate"
-                         [buttonCols]="5">
-        </app-form-submit>
-      </form>
+<route-modal #myModal
+             modalClass="modal-lg"
+             [hideCloseButton]="true"
+             [closeOnEscape]="false"
+             [closeOnOutsideClick]="false">
+  <modal-header>
+    <h1 class="text-center ">{{'welcomeMessage' | translate}}</h1>
+  </modal-header>
+  <modal-content>
+    <div class="row center-block">
+      <div class="col-md-8 col-md-offset-4">
+        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+          <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
+                          formCtrlName="username"
+                          [inputCols]="5"
+                          [errorMsgCols]="3"
+                          [errorMsg]="'forms.usernameErrorMsg' | translate:{param: minUsernameLength}"
+                          [label]="'forms.loginWelcome' | translate">
+          </app-form-input>
+          <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+                          type="password"
+                          formCtrlName="password"
+                          [inputCols]="5"
+                          [errorMsgCols]="3"
+                          [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}"
+                          [description]="'forms.loginHelper' | translate">
+          </app-form-input>
+          <app-form-submit [description]="'forms.login' | translate"
+                           [buttonCols]="5">
+          </app-form-submit>
+        </form>
+      </div>
     </div>
-  </div>
-</div>
+  </modal-content>
+
+</route-modal>

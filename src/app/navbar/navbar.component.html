@@ -1,9 +1,9 @@
 <nav class="sidenav">
   <a class="navbar-brand" href="#">
     <span class="glyphicon glyphicon-road" aria-hidden="true"></span> {{'navbar.appname' | translate}}</a>
-  <a href="#">{{'navbar.monitor' | translate}}</a>
-  <a href="#">{{'navbar.parkingmeter' | translate}}</a>
-  <a href="#">{{'navbar.users' | translate}}</a>
-  <a href="#">{{'navbar.mock' | translate}}</a>
-  <a href="#">{{'navbar.logout' | translate}}</a>
+  <a routerLink="account/monitoring">{{'navbar.monitor' | translate}}</a>
+  <a routerLink="parkingmeter">{{'navbar.parkingmeter' | translate}}</a>
+  <a routerLink="users">{{'navbar.users' | translate}}</a>
+  <a routerLink="drivermock">{{'navbar.mock' | translate}}</a>
+  <a routerLink="login">{{'navbar.logout' | translate}}</a> <!--FIXME onclick event to destroy cookies-->
 </nav>

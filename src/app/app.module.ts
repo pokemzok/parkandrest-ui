@@ -22,12 +22,15 @@ import {AuthGuard} from './auth/authguard.service';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
+import { DrivermockComponent } from './drivermock/drivermock.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
   {path: 'login', component: LoginComponent},
   {path: 'account/monitoring', canActivate: [AuthGuard], component: AccountMonitoringComponent},
-  {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent} // TODO: protect routes with securities
+  {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent},
+  {path: 'users', canActivate: [AuthGuard], component: UsersComponent},
+  {path: 'drivermock', canActivate: [AuthGuard], component: DrivermockComponent},
 ];
 
 export function createTranslateLoader(http: HttpClient) {
@@ -44,7 +47,8 @@ export function createTranslateLoader(http: HttpClient) {
     FooterComponent,
     ParkingMeterComponent,
     UsersComponent,
-    AccountMonitoringComponent
+    AccountMonitoringComponent,
+    DrivermockComponent
   ],
   imports: [
     BrowserModule,

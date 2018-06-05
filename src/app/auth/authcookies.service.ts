@@ -9,6 +9,7 @@ export class AuthCookiesService {
   private static readonly  authTokenName = 'authToken';
   private static readonly authoritiesName = 'authorities';
 
+  // TODO: add username
   private _authToken: string;
   private _authorities: string;
 

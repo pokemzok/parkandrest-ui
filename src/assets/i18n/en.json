@@ -13,6 +13,10 @@
     "usernameErrorMsg": "Username has to have at least {{param}} characters",
     "passwordErrorMsg": "Password has to have at least {{param}} characters"
   },
+  "header": {
+    "welcome": "Welcome {{param}}, ",
+    "logout": "Log Out"
+  },
   "navbar":{
     "appname":"Parkandrest",
     "monitor":"Account monitor",

@@ -1,0 +1,8 @@
+.fixed-header {
+  float: right;
+  padding: 10px 15% 2px 10px;
+}
+.fixed-header hr {
+  margin-top: 2px;
+  border-color: #5e5e5e;
+}

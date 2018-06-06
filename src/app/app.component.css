@@ -6,3 +6,6 @@
   margin-left: 200px; /* Same as the width of the sidenav */
 }
 
+.blurred {
+  -webkit-filter: blur(5px) grayscale(90%);
+}

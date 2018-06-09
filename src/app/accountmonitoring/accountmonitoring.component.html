@@ -1,3 +1,22 @@
-<p>
-  accountmonitor works!
-</p>
+<div class="row">
+  <form (ngSubmit)="onSubmit()" [formGroup]="reportForm">
+
+    <div class="col-md-6">
+      <app-form-input [inputPlaceholder]="'forms.reportDatePholder' | translate"
+                      formCtrlName="reportDate"
+                      [inputCols]="6"
+                      [errorMsgCols]="3"
+                      [labelPosition]="labelPosition"
+                      [label]="'forms.reportDate' | translate">
+      </app-form-input>
+    </div>
+    <div class="col-md-6">
+      <app-form-submit [description]="'forms.submit' | translate"
+                       [buttonCols]="2">
+      </app-form-submit>
+    </div>
+  </form>
+</div>
+<div>
+  <h1>{{'info.accountMonitor' | translate}}</h1> <!--FIXME: invisible after submit-->
+</div>

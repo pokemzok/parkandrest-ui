@@ -1,9 +1,12 @@
 <div class="form-group" [formGroup]="inputFormGroup"
      [ngClass]="{'has-error': isFormInvalid(),
                 'has-success': isFormValid()}">
-  <label for={{id}}>{{label}}</label>
+  <label for={{id}} *ngIf="labelTopPosition()">{{label}}</label>
 
   <div class="row">
+    <div class="col-md-{{inputCols}}" *ngIf="labelLeftPosition()">
+      <label for={{id}} class="leftLabel">{{label}}</label>
+    </div>
     <div class="col-md-{{inputCols}}">
       <input type={{type}}
              class="form-control"

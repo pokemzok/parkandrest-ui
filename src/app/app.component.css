@@ -9,3 +9,8 @@
 .blurred {
   -webkit-filter: blur(5px) grayscale(90%);
 }
+
+.router-outlet {
+  padding-top: 100px;
+  padding-left: 20px;
+}

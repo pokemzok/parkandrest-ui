@@ -1,6 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ControlContainer, FormGroup} from '@angular/forms';
+import {LabelPosition} from './LabelPosition';
 
+/**
+ * Default params are @type = 'text', labelPosition = LabelPosition.TOP
+ */
 @Component({
   selector: 'app-form-input',
   templateUrl: './form-input.component.html',
@@ -16,13 +20,15 @@ export class FormInputComponent implements OnInit {
   @Input() errorMsgCols: number;
   @Input() formCtrlName: string;
   @Input() errorMsg: string;
+  @Input() labelPosition: LabelPosition;
 
   inputFormGroup: FormGroup;
   id: string = Math.random().toString(36).substring(2); /*FIXME uuid */
 
   constructor(private controlContainer: ControlContainer) {
     this.type = 'text';
-    this.inputFormGroup = new FormGroup({})
+    this.inputFormGroup = new FormGroup({});
+    this.labelPosition = LabelPosition.TOP;
   }
 
   ngOnInit() {
@@ -37,4 +43,11 @@ export class FormInputComponent implements OnInit {
     return this.inputFormGroup.get(this.formCtrlName).valid;
   }
 
+  labelTopPosition() {
+    return LabelPosition.TOP === this.labelPosition;
+  }
+
+  labelLeftPosition() {
+    return LabelPosition.LEFT === this.labelPosition;
+  }
 }

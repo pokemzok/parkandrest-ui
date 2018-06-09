@@ -11,11 +11,17 @@
     "passwordPholder": "Enter your password",
     "loginHelper": "Contact administrator if you don't have an account",
     "usernameErrorMsg": "Username has to have at least {{param}} characters",
-    "passwordErrorMsg": "Password has to have at least {{param}} characters"
+    "passwordErrorMsg": "Password has to have at least {{param}} characters",
+    "reportDate": "Show financial report for the date",
+    "reportDatePholder": "provide date in YYYY-MM-DD format",
+    "submit": "Submit"
   },
   "header": {
     "welcome": "Welcome {{param}}, ",
     "logout": "Log Out"
+  },
+  "info":{
+    "accountMonitor": "Your result will appear here, after submitting the date"
   },
   "navbar":{
     "appname":"Parkandrest",
@@ -32,5 +38,4 @@
     "authfailure": "Authentication Failed! Provided credentials are incorrect"
   },
   "welcomeMessage":"Welcome to the 'Park And Rest' application"
-
 }

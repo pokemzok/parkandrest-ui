@@ -4,6 +4,8 @@
   <div [ngClass]="{blurred: shouldBlurComponent}"> <!--FIXME  make it work with app-header -->
     <app-header username="There"></app-header> <!--Fixme correct username -->
   </div>
-  <router-outlet></router-outlet>
+  <div class="router-outlet">
+    <router-outlet ></router-outlet>
+  </div>
   <app-footer [ngClass]="{blurred: shouldBlurComponent}"></app-footer>
 </div>

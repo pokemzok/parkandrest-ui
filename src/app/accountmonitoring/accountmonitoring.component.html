@@ -2,13 +2,12 @@
   <form (ngSubmit)="onSubmit()" [formGroup]="reportForm">
 
     <div class="col-md-6">
-      <app-form-input [inputPlaceholder]="'forms.reportDatePholder' | translate"
-                      formCtrlName="reportDate"
-                      [inputCols]="6"
-                      [errorMsgCols]="3"
-                      [labelPosition]="labelPosition"
-                      [label]="'forms.reportDate' | translate">
-      </app-form-input>
+      <app-datepicker formCtrlName="reportDate"
+                      [label]="'forms.reportDate' | translate"
+                      [datepickerPholder]="'forms.reportDatePholder' | translate"
+                      [datepickerCols]="5">
+      </app-datepicker>
+
     </div>
     <div class="col-md-6">
       <app-form-submit [description]="'forms.submit' | translate"

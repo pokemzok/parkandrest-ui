@@ -4,8 +4,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {LoginComponent} from './login/login.component';
-import {FormInputComponent} from './form/form-input/form-input.component';
-import {FormSubmitComponent} from './form/form-submit/form-submit.component';
+import {FormInputComponent} from './form/input/form-input.component';
+import {FormSubmitComponent} from './form/submit/form-submit.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {FooterComponent} from './footer/footer.component';
@@ -25,6 +25,8 @@ import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
 import { DrivermockComponent } from './drivermock/drivermock.component';
 import { HeaderComponent } from './header/header.component';
 import {ModalModule} from 'ngx-modal';
+import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import { DatepickerComponent } from './form/datepicker/datepicker.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -51,7 +53,8 @@ export function createTranslateLoader(http: HttpClient) {
     UsersComponent,
     AccountMonitoringComponent,
     DrivermockComponent,
-    HeaderComponent
+    HeaderComponent,
+    DatepickerComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,9 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes),
-    ModalModule
+    ModalModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     CookieService,

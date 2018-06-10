@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ControlContainer, FormGroup} from '@angular/forms';
 import {LabelPosition} from './LabelPosition';
+import {UUID} from 'angular2-uuid';
 
 /**
  * Default params are @type = 'text', labelPosition = LabelPosition.TOP
@@ -23,7 +24,7 @@ export class FormInputComponent implements OnInit {
   @Input() labelPosition: LabelPosition;
 
   inputFormGroup: FormGroup;
-  id: string = Math.random().toString(36).substring(2); /*FIXME uuid */
+  id: string =  UUID.UUID();
 
   constructor(private controlContainer: ControlContainer) {
     this.type = 'text';

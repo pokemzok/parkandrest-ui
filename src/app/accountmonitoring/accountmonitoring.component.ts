@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ReportRequest} from './report.request';
 
 @Component({
   selector: 'app-accountmonitor',
@@ -14,9 +15,12 @@ export class AccountMonitoringComponent implements OnInit {
 
   ngOnInit() {
     this.reportForm = new FormGroup({
-      'reportDate': new FormControl(null, [Validators.required]) // TODO: create DateValidator
+      'reportDate': new FormControl(null, [Validators.required])
     })
   }
 
-
+  onSubmit() {
+    const request = <ReportRequest>this.reportForm.getRawValue();
+    console.log(request);
+  }
 }

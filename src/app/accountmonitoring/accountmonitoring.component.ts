@@ -21,6 +21,6 @@ export class AccountMonitoringComponent implements OnInit {
 
   onSubmit() {
     const request = <ReportRequest>this.reportForm.getRawValue();
-    console.log(request);
+    console.log(request.reportDate);
   }
 }

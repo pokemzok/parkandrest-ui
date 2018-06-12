@@ -25,8 +25,10 @@ import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
 import {DrivermockComponent} from './drivermock/drivermock.component';
 import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
-import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {DatepickerComponent} from './form/datepicker/datepicker.component';
+import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
+import {MomentModule} from 'ngx-moment';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -40,6 +42,18 @@ const routes: Routes = [
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'YYYY-MM-DD'
+  },
+  display: {
+    dateInput: 'YYYY-MM-DD',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -71,8 +85,10 @@ export function createTranslateLoader(http: HttpClient) {
     ToastrModule.forRoot(),
     RouterModule.forRoot(routes),
     ModalModule,
+    MomentModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMomentDateModule
   ],
   providers: [
     CookieService,
@@ -80,7 +96,10 @@ export function createTranslateLoader(http: HttpClient) {
     ProxyAuthService,
     HealthCheckService,
     AuthGuard,
-    TranslatedToastrFacade
+    TranslatedToastrFacade,
+    {provide: DateAdapter, useClass: MomentDateAdapter},
+    {provide: MAT_MOMENT_DATE_FORMATS, useValue: MY_FORMATS},
+
   ],
   bootstrap: [AppComponent]
 })

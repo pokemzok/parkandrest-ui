@@ -13,7 +13,7 @@
     "usernameErrorMsg": "Username has to have at least {{param}} characters",
     "passwordErrorMsg": "Password has to have at least {{param}} characters",
     "reportDate": "Show financial report for the date",
-    "reportDatePholder": "provide date in YYYY-MM-DD format",
+    "reportDatePholder": "YYYY-MM-DD",
     "submit": "Submit"
   },
   "header": {

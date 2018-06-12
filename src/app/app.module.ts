@@ -22,11 +22,11 @@ import {AuthGuard} from './auth/authguard.service';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
-import { DrivermockComponent } from './drivermock/drivermock.component';
-import { HeaderComponent } from './header/header.component';
+import {DrivermockComponent} from './drivermock/drivermock.component';
+import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
 import {MatDatepickerModule, MatNativeDateModule} from '@angular/material';
-import { DatepickerComponent } from './form/datepicker/datepicker.component';
+import {DatepickerComponent} from './form/datepicker/datepicker.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login

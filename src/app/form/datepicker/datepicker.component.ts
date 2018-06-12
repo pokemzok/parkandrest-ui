@@ -26,4 +26,12 @@ export class DatepickerComponent implements OnInit {
     this.inputFormGroup = <FormGroup>this.controlContainer.control;
   }
 
+  isFormInvalid(): boolean {
+    return this.inputFormGroup.get(this.formCtrlName).invalid && this.inputFormGroup.get(this.formCtrlName).touched;
+  }
+
+  isFormValid(): boolean {
+    return this.inputFormGroup.get(this.formCtrlName).valid;
+  }
+
 }

@@ -3,7 +3,7 @@
     <label [for]="id" class="leftLabel">{{label}}</label>
   </div>
   <div class="col-md-{{datepickerCols}}">
-    <input [id]="id" matInput [matDatepicker]="picker" [placeholder]="datepickerPholder">
+    <input [id]="id" matInput [matDatepicker]="picker" [placeholder]="datepickerPholder" readonly >
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </div>

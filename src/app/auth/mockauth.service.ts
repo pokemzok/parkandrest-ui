@@ -1,4 +1,4 @@
-import {AuthService} from './auth.service';
+import {Auth} from './auth.interface';
 import {LoginRequest} from '../login/login.request';
 import {Optional} from '../utils/optional';
 import {Authority} from './authority';
@@ -10,7 +10,7 @@ import * as _ from 'underscore';
 import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
 
 @Injectable()
-export class MockAuthService implements AuthService {
+export class MockAuthService implements Auth {
 
 
   private static readonly authorityHeader = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjoiT1BFUkFUT1Is' +

@@ -1,12 +1,12 @@
 import {LoginRequest} from '../login/login.request';
 import {HttpClient} from '@angular/common/http';
-import {AuthService} from './auth.service';
+import {Auth} from './auth.interface';
 import {AuthCookiesService} from './authcookies.service';
 import {AuthorizationModel} from './authorization.model';
 import {LOGIN} from '../../environments/environment';
 import {isNullOrUndefined} from 'util';
 
-export class AuthenticationService implements  AuthService {
+export class AuthenticationService implements  Auth {
 
   constructor(private http: HttpClient, private authCookiesService: AuthCookiesService) {
   }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MockAuthService} from './mockauth.service';
-import {AuthService} from './auth.service';
+import {Auth} from './auth.interface';
 import {LoginRequest} from '../login/login.request';
 import {AuthenticationService} from './authentication.service';
 import {AuthCookiesService} from './authcookies.service';
@@ -9,11 +9,11 @@ import {ENVIRONMENT} from '../../environments/environment';
 import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
 
 @Injectable()
-export class ProxyAuthService implements AuthService {
+export class ProxyAuthService implements Auth {
 
   private mockAuthService: MockAuthService;
   private authService: AuthenticationService;
-  private selectedService: AuthService;
+  private selectedService: Auth;
 
   constructor(
     private authCookiesService: AuthCookiesService,

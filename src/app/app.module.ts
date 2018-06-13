@@ -29,6 +29,7 @@ import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/ma
 import {DatepickerComponent} from './form/datepicker/datepicker.component';
 import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {MomentModule} from 'ngx-moment';
+import {MockFinancialReportService} from './accountmonitoring/financialreport.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -99,7 +100,7 @@ export const MY_FORMATS = {
     TranslatedToastrFacade,
     {provide: DateAdapter, useClass: MomentDateAdapter},
     {provide: MAT_MOMENT_DATE_FORMATS, useValue: MY_FORMATS},
-
+    MockFinancialReportService
   ],
   bootstrap: [AppComponent]
 })

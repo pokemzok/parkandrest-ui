@@ -1,7 +1,7 @@
 import {LoginRequest} from '../login/login.request';
 
 
-export interface AuthService {
+export interface Auth {
 
   authenticate (loginRequest: LoginRequest );
 

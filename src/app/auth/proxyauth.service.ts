@@ -5,7 +5,7 @@ import {LoginRequest} from '../login/login.request';
 import {AuthenticationService} from './authentication.service';
 import {AuthCookiesService} from './authcookies.service';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environments/environment';
+import {ENVIRONMENT} from '../../environments/environment';
 import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
 
 @Injectable()
@@ -26,8 +26,8 @@ export class ProxyAuthService implements AuthService {
   }
 
   private selectAuthService() {
-    if (environment.serverOffline) {
-      this.toastrService.warning('notifications.serverOffline');
+    if (ENVIRONMENT.SERVER_OFFLINE) {
+      this.toastrService.warning('notifications.SERVER_OFFLINE');
       console.log('Server is Offline Choosing Mock Authentication Service');
       this.selectedService = this.mockAuthService;
     } else {

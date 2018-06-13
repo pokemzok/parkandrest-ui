@@ -3,13 +3,13 @@ import {Observable} from 'rxjs/index';
 import {Injectable} from '@angular/core';
 import {ProxyAuthService} from './proxyauth.service';
 import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
-import {environment} from '../../environments/environment';
+import {ENVIRONMENT} from '../../environments/environment';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
   private static noAuthModeAvailable(): boolean {
-    return environment.production !== true && environment.noAuthMode
+    return ENVIRONMENT.PRODUCTION !== true && ENVIRONMENT.NO_AUTH_MODE
   }
 
   constructor(private authService: ProxyAuthService,

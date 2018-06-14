@@ -27,10 +27,13 @@ import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
 import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {DatepickerComponent} from './form/datepicker/datepicker.component';
-import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {MomentModule} from 'ngx-moment';
 import {MockFinancialReportService} from './accountmonitoring/financialreport.service';
 import { FormReadonlyComponent } from './form/readonly/form-readonly.component';
+import {Provider} from '@angular/core/src/di/provider';
+import {MockAuthService} from './auth/mockauth.service';
+import {ENVIRONMENT} from '../environments/environment';
+import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -45,17 +48,26 @@ export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'YYYY-MM-DD'
-  },
-  display: {
-    dateInput: 'YYYY-MM-DD',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
+export function provideServices (): any[] {
+  if (ENVIRONMENT.PRODUCTION) {
+    return provideBackendServices()
+  } else {
+    return provideMockServices();
   }
-};
+}
+
+export function provideMockServices(): any[] {
+  return [
+    MockFinancialReportService,
+    MockAuthService
+  ]
+}
+
+export function provideBackendServices(): Provider[] {
+  return [
+   // TODO: add backend Services
+  ]
+}
 
 @NgModule({
   declarations: [
@@ -74,6 +86,7 @@ export const MY_FORMATS = {
     FormReadonlyComponent
   ],
   imports: [
+
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -101,9 +114,8 @@ export const MY_FORMATS = {
     AuthGuard,
     TranslatedToastrFacade,
     {provide: DateAdapter, useClass: MomentDateAdapter},
-    {provide: MAT_MOMENT_DATE_FORMATS, useValue: MY_FORMATS},
-    MockFinancialReportService
-  ],
+  ].concat(provideServices())
+  ,
   bootstrap: [AppComponent]
 })
 export class AppModule {

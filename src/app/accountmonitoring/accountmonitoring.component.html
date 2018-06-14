@@ -25,15 +25,21 @@
 </div>
 
 <div class="row" *ngIf="isFinancialReportAvailable()">
-  <div class="col-md-12">
-    <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
-                    type="password"
-                    formCtrlName="password"
+  <div class="col-md-6">
+    <app-form-readonly
                     [inputCols]="5"
-                    [errorMsgCols]="3"
-                    [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}"
-                    [description]="'forms.loginHelper' | translate"
-                    disabled="true">
-    </app-form-input>
+                    label="{{'forms.chargedMoney' | translate}}"
+                    [value]="financialReport.chargedMoney()">
+    </app-form-readonly>
+  </div>
+</div>
+
+<div class="row" *ngIf="isFinancialReportAvailable()">
+  <div class="col-md-6">
+    <app-form-readonly
+      [inputCols]="5"
+      label="{{'forms.paidMoney' | translate}}"
+      [value]="financialReport.paidMoney()">
+    </app-form-readonly>
   </div>
 </div>

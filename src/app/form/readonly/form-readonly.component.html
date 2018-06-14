@@ -1,18 +1,11 @@
 <div class="row">
-  <div class="col-md-{{inputCols}}" *ngIf="labelLeftPosition()">
+  <div class="col-md-{{inputCols}}">
     <label for={{id}} class="leftLabel">{{label}}</label>
   </div>
   <div class="col-md-{{inputCols}}">
-    <input type={{type}}
-           class="form-control"
+    <input type="text"
+           value="{{value}}"
            id={{id}}
-           aria-describedby="inputHelp"
-           formControlName={{formCtrlName}}
-           placeholder={{inputPlaceholder}}>
-  </div>
-  <div class="row" *ngIf="isFormInvalid()">
-    <div class="col-md-{{errorMsgCols}}">
-      <span class="text-danger">{{errorMsg}}</span>
-    </div>
+           disabled="true">
   </div>
 </div>

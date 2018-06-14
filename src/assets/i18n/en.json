@@ -13,8 +13,10 @@
     "usernameErrorMsg": "Username has to have at least {{param}} characters",
     "passwordErrorMsg": "Password has to have at least {{param}} characters",
     "reportDate": "Show financial report for the date",
-    "reportDatePholder": "YYYY-MM-DD",
-    "submit": "Submit"
+    "reportDatePholder": "DD/MM/YYYY",
+    "submit": "Submit",
+    "chargedMoney": "Total charged amount:",
+    "paidMoney": "Total paid amount:"
   },
   "header": {
     "welcome": "Welcome {{param}}, ",

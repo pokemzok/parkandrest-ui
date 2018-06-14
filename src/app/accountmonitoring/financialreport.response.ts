@@ -11,4 +11,13 @@ export class FinancialReportResponse {
     this.paymentsSum = paymentsSum;
     this.paymentsCurrency = paymentsCurrency;
   }
+
+  chargedMoney(): string {
+    return this.chargesSum + ' ' + this.chargesCurrency;
+  }
+
+  paidMoney(): string {
+    return this.paymentsSum + ' ' + this.paymentsCurrency;
+  }
+
 }

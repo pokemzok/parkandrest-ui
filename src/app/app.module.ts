@@ -54,7 +54,6 @@ export function provideServices (): any[] {
     return provideMockServices();
   } else {
     return provideBackendServices()
-
   }
 }
 

@@ -27,12 +27,13 @@ import {ModalModule} from 'ngx-modal';
 import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
 import {DatepickerComponent} from './form/datepicker/datepicker.component';
 import {MomentModule} from 'ngx-moment';
-import {MockFinancialReportService} from './accountmonitoring/financialreport.service';
+import {MockFinancialReportService} from './accountmonitoring/mockfinancialreport.service';
 import {FormReadonlyComponent} from './form/readonly/form-readonly.component';
 import {Provider} from '@angular/core/src/di/provider';
 import {MockAuthService} from './auth/mockauth.service';
 import {ENVIRONMENT} from '../environments/environment';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
+import {AuthenticationService} from './auth/authentication.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -64,6 +65,7 @@ export function provideMockServices(): any[] {
 
 export function provideBackendServices(): Provider[] {
   return [
+    {provide: 'AuthService', useClass: AuthenticationService},
    // TODO: add backend Services
   ]
 }

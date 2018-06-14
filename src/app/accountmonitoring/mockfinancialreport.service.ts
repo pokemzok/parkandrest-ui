@@ -11,7 +11,6 @@ export class MockFinancialReportService implements FinancialReport {
   }
 
   get(request: FinancialReportRequest): FinancialReportResponse {
-    console.log(' I am 100% real service mejt');
     return new FinancialReportResponse(
       MockFinancialReportService.generateRandomMoneyAmount(),
       'PLN',

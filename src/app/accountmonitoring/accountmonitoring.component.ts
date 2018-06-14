@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FinancialReportRequest} from './financialreport.request';
 import {ReportformModel} from './reportform.model';
-import {MockFinancialReportService} from './financialreport.service';
 import {FinancialReportResponse} from './financialreport.response';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
+import {FinancialReport} from './financialreport.interface';
 
 @Component({
   selector: 'app-accountmonitor',
@@ -17,7 +17,7 @@ export class AccountMonitoringComponent implements OnInit {
   reportForm: FormGroup;
   financialReport: FinancialReportResponse = null;
 
-  constructor(private financialReportService: MockFinancialReportService) { } // FIXME proxy which provide with a choice (Concrete implementation vs Mock)
+  constructor(@Inject('FinancialReportService') private financialReportService: FinancialReport) { }
 
   ngOnInit() {
     this.reportForm = new FormGroup({
@@ -27,7 +27,7 @@ export class AccountMonitoringComponent implements OnInit {
 
   onSubmit() {
     const request = new FinancialReportRequest(<ReportformModel>this.reportForm.getRawValue());
-    this.financialReport = this.financialReportService.get(request); // TODO: show result on the view
+    this.financialReport = this.financialReportService.get(request);
   }
 
   isFinancialReportAvailable(): boolean {

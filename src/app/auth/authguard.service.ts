@@ -1,9 +1,9 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/index';
-import {Injectable} from '@angular/core';
-import {ProxyAuthService} from './proxyauth.service';
+import {Inject, Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
 import {ENVIRONMENT} from '../../environments/environment';
+import {Auth} from './auth.interface';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
     return ENVIRONMENT.PRODUCTION !== true && ENVIRONMENT.NO_AUTH_MODE
   }
 
-  constructor(private authService: ProxyAuthService,
+  constructor(@Inject('AuthService')private authService: Auth,
               private router: Router,
               private toaster: TranslatedToastrFacade) {
   }

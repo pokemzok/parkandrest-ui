@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginRequest} from './login.request';
-import {ProxyAuthService} from '../auth/proxyauth.service';
+import {Auth} from '../auth/auth.interface';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values */
   readonly minPasswordLength: number = 7;
 
-  constructor(private authService: ProxyAuthService) { }
+  constructor(@Inject('AuthService')private authService: Auth) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({

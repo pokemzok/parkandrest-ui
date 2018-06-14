@@ -12,7 +12,6 @@ import {FooterComponent} from './footer/footer.component';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthCookiesService} from './auth/authcookies.service';
-import {ProxyAuthService} from './auth/proxyauth.service';
 import {HealthCheckService} from './healthcheck/healthcheck.service';
 import {RouterModule, Routes} from '@angular/router';
 import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
@@ -29,7 +28,7 @@ import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/ma
 import {DatepickerComponent} from './form/datepicker/datepicker.component';
 import {MomentModule} from 'ngx-moment';
 import {MockFinancialReportService} from './accountmonitoring/financialreport.service';
-import { FormReadonlyComponent } from './form/readonly/form-readonly.component';
+import {FormReadonlyComponent} from './form/readonly/form-readonly.component';
 import {Provider} from '@angular/core/src/di/provider';
 import {MockAuthService} from './auth/mockauth.service';
 import {ENVIRONMENT} from '../environments/environment';
@@ -58,8 +57,8 @@ export function provideServices (): any[] {
 
 export function provideMockServices(): any[] {
   return [
-    MockFinancialReportService,
-    MockAuthService
+    {provide: 'AuthService', useClass: MockAuthService},
+    {provide: 'FinancialReportService', useClass: MockFinancialReportService}
   ]
 }
 
@@ -109,7 +108,6 @@ export function provideBackendServices(): Provider[] {
   providers: [
     CookieService,
     AuthCookiesService,
-    ProxyAuthService,
     HealthCheckService,
     AuthGuard,
     TranslatedToastrFacade,

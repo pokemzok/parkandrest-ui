@@ -6,10 +6,18 @@ import {FinancialReportResponse} from './financialreport.response';
 @Injectable()
 export class MockFinancialReportService implements FinancialReport {
 
+  private static generateRandomMoneyAmount() {
+    return Math.ceil(Math.random() * 10000, ) / 100;
+  }
+
   get(request: FinancialReportRequest): FinancialReportResponse {
     return new FinancialReportResponse(
-      55.5, 'PLN', 55.5, 'PLN'
+      MockFinancialReportService.generateRandomMoneyAmount(),
+      'PLN',
+      MockFinancialReportService.generateRandomMoneyAmount(),
+      'PLN'
     );
   }
+
 
 }

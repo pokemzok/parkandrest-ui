@@ -5,7 +5,9 @@ import {AuthCookiesService} from './authcookies.service';
 import {AuthorizationModel} from './authorization.model';
 import {LOGIN} from '../../environments/environment';
 import {isNullOrUndefined} from 'util';
+import {Injectable} from '@angular/core';
 
+@Injectable()
 export class AuthenticationService implements  Auth {
 
   constructor(private http: HttpClient, private authCookiesService: AuthCookiesService) {

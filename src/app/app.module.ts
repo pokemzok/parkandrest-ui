@@ -34,6 +34,7 @@ import {MockAuthService} from './auth/mockauth.service';
 import {ENVIRONMENT} from '../environments/environment';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {AuthenticationService} from './auth/authentication.service';
+import {FinancialReportService} from './accountmonitoring/financialreport.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -49,10 +50,11 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 export function provideServices (): any[] {
-  if (ENVIRONMENT.PRODUCTION) {
-    return provideBackendServices()
-  } else {
+  if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
     return provideMockServices();
+  } else {
+    return provideBackendServices()
+
   }
 }
 
@@ -66,7 +68,7 @@ export function provideMockServices(): any[] {
 export function provideBackendServices(): Provider[] {
   return [
     {provide: 'AuthService', useClass: AuthenticationService},
-   // TODO: add backend Services
+    {provide: 'FinancialReportService', useClass: FinancialReportService}
   ]
 }
 
@@ -87,7 +89,6 @@ export function provideBackendServices(): Provider[] {
     FormReadonlyComponent
   ],
   imports: [
-
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,

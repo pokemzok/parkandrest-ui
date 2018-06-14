@@ -30,6 +30,7 @@ import {DatepickerComponent} from './form/datepicker/datepicker.component';
 import {MAT_MOMENT_DATE_FORMATS, MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {MomentModule} from 'ngx-moment';
 import {MockFinancialReportService} from './accountmonitoring/financialreport.service';
+import { FormReadonlyComponent } from './form/readonly/form-readonly.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -69,7 +70,8 @@ export const MY_FORMATS = {
     AccountMonitoringComponent,
     DrivermockComponent,
     HeaderComponent,
-    DatepickerComponent
+    DatepickerComponent,
+    FormReadonlyComponent
   ],
   imports: [
     BrowserModule,

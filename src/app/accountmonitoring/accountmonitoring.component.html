@@ -15,7 +15,25 @@
       </app-form-submit>
     </div>
   </form>
+
 </div>
-<div>
-  <h1>{{'info.accountMonitor' | translate}}</h1> <!--FIXME: invisible after submit-->
+
+<hr class="separator">
+
+<div *ngIf="!isFinancialReportAvailable()">
+  <h1>{{'info.accountMonitor' | translate}}</h1>
+</div>
+
+<div class="row" *ngIf="isFinancialReportAvailable()">
+  <div class="col-md-12">
+    <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+                    type="password"
+                    formCtrlName="password"
+                    [inputCols]="5"
+                    [errorMsgCols]="3"
+                    [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}"
+                    [description]="'forms.loginHelper' | translate"
+                    disabled="true">
+    </app-form-input>
+  </div>
 </div>

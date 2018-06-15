@@ -1,11 +1,11 @@
 {
-  "footer":{
+  "footer": {
     "adminContact": "Our team email adress is parkandrest@test.com",
     "disclamer": "@ 2018 Available under Apache licence"
   },
   "forms": {
     "login": "Login",
-    "loginWelcome":"Provide your credentials",
+    "loginWelcome": "Provide your credentials",
     "password": "Password",
     "usernamePholder": "Enter your username",
     "passwordPholder": "Enter your password",
@@ -15,29 +15,33 @@
     "reportDate": "Show financial report for the date",
     "reportDatePholder": "DD/MM/YYYY",
     "submit": "Submit",
+    "search": "Search",
     "chargedMoney": "Total charged amount:",
-    "paidMoney": "Total paid amount:"
+    "paidMoney": "Total paid amount:",
+    "parkingSpaceId": "parking space id",
+    "parkingSpaceStatus": " parking space status",
+    "registration": " registration"
   },
   "header": {
     "welcome": "Welcome {{param}}, ",
     "logout": "Log Out"
   },
-  "info":{
+  "info": {
     "accountMonitor": "Your result will appear here, after submitting the date"
   },
-  "navbar":{
-    "appname":"Parkandrest",
-    "monitor":"Account monitor",
-    "parkingmeter":"Parking meter",
+  "navbar": {
+    "appname": "Parkandrest",
+    "monitor": "Account monitor",
+    "parkingmeter": "Parking meter",
     "users": "Users",
     "mock": "Driver Mock",
     "logout": "Log out"
   },
-  "notifications":{
+  "notifications": {
     "forbidden": "No credentials provided. Access Forbidden.",
     "SERVER_OFFLINE": "Server is Offline Choosing Mock Authentication Service",
     "authenticated": "Successfully Authenticated!",
     "authfailure": "Authentication Failed! Provided credentials are incorrect"
   },
-  "welcomeMessage":"Welcome to the 'Park And Rest' application"
+  "welcomeMessage": "Welcome to the 'Park And Rest' application"
 }

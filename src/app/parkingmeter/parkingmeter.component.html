@@ -4,33 +4,29 @@
       <app-form-input
         [labelPosition]="labelPosition"
         formCtrlName="parkingSpaceId"
-        inputPlaceholder="parking space id"
-        [inputCols]="12"
-      >
+        inputPlaceholder="{{'forms.parkingSpaceId' | translate}}"
+        [inputCols]="12">
       </app-form-input>
     </div>
     <div class="col-md-2">
       <app-form-input
         [labelPosition]="labelPosition"
         formCtrlName="parkingSpaceStatus"
-        inputPlaceholder="parking space status"
-        [inputCols]="12"
-      >
+        inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+        [inputCols]="12">
       </app-form-input>
     </div>
     <div class="col-md-2">
-     <!-- FIXME all placeholeders-->
       <app-form-input
         [labelPosition]="labelPosition"
         formCtrlName="vehicleRegistrationNr"
-        inputPlaceholder="registration"
-        [inputCols]="12"
-      >
+        inputPlaceholder="{{'forms.registration' | translate}}"
+        [inputCols]="12">
       </app-form-input>
     </div>
 
     <div class="col-md-2">
-      <app-form-submit [description]="'forms.submit' | translate"
+      <app-form-submit [description]="'forms.search' | translate"
                        [buttonCols]="12">
       </app-form-submit>
     </div>

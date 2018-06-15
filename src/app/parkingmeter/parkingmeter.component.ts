@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-parkingmeter',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParkingMeterComponent implements OnInit {
 
+  parkingMeterForm: FormGroup;
+
   constructor() { }
 
   ngOnInit() {
+    this.parkingMeterForm = new FormGroup({
+      'parkingSpaceId': new FormControl(null),
+      'parkingSpaceStatus': new FormControl(null),
+      'vehicleRegistrationNr': new FormControl(null),
+      'occupiedFrom': new FormControl(null)
+    })
   }
 
+  onSubmit() {
+    // TODO: implement
+  }
 }

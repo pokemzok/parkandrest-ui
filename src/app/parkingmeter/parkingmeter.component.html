@@ -1,3 +1,41 @@
-<p>
-  parkingmeter works!
-</p>
+<div class="row">
+  <form (ngSubmit)="onSubmit()" [formGroup]="parkingMeterForm">
+
+    <div class="col-md-6">
+
+
+    </div>
+    <div class="col-md-6">
+      <app-form-submit [description]="'forms.submit' | translate"
+                       [buttonCols]="2">
+      </app-form-submit>
+    </div>
+  </form>
+
+</div>
+
+<hr class="separator">
+
+<div *ngIf="!isFinancialReportAvailable()">
+  <h1>{{'info.accountMonitor' | translate}}</h1>
+</div>
+
+<div class="row" *ngIf="isFinancialReportAvailable()">
+  <div class="col-md-6">
+    <app-form-readonly
+      [inputCols]="5"
+      label="{{'forms.chargedMoney' | translate}}"
+      [value]="financialReport.chargedMoney()">
+    </app-form-readonly>
+  </div>
+</div>
+
+<div class="row" *ngIf="isFinancialReportAvailable()">
+  <div class="col-md-6">
+    <app-form-readonly
+      [inputCols]="5"
+      label="{{'forms.paidMoney' | translate}}"
+      [value]="financialReport.paidMoney()">
+    </app-form-readonly>
+  </div>
+</div>

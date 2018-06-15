@@ -3,8 +3,11 @@
     <div class="col-md-2">
       <app-form-input
         [labelPosition]="labelPosition"
+        type="number"
         formCtrlName="parkingSpaceId"
         inputPlaceholder="{{'forms.parkingSpaceId' | translate}}"
+        errorMsg="{{'forms.maxSizeErrorMsg' | translate}}"
+        [errorMsgCols]="12"
         [inputCols]="12">
       </app-form-input>
     </div>
@@ -13,6 +16,8 @@
         [labelPosition]="labelPosition"
         formCtrlName="parkingSpaceStatus"
         inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+        errorMsg="{{'forms.maxSizeErrorMsg' | translate}}"
+        [errorMsgCols]="12"
         [inputCols]="12">
       </app-form-input>
     </div>
@@ -21,6 +26,8 @@
         [labelPosition]="labelPosition"
         formCtrlName="vehicleRegistrationNr"
         inputPlaceholder="{{'forms.registration' | translate}}"
+        errorMsg="{{'forms.maxSizeErrorMsg' | translate}}"
+        [errorMsgCols]="12"
         [inputCols]="12">
       </app-form-input>
     </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LabelPosition} from '../form/LabelPosition';
 
 @Component({
@@ -16,9 +16,9 @@ export class ParkingMeterComponent implements OnInit {
 
   ngOnInit() {
     this.parkingMeterForm = new FormGroup({
-      'parkingSpaceId': new FormControl(null),
-      'parkingSpaceStatus': new FormControl(null),
-      'vehicleRegistrationNr': new FormControl(null)
+      'parkingSpaceId': new FormControl(null, Validators.maxLength(20)),
+      'parkingSpaceStatus': new FormControl(null, Validators.maxLength(10)),
+      'vehicleRegistrationNr': new FormControl(null, Validators.maxLength(20))
     })
   }
 

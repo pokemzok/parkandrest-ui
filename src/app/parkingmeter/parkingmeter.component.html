@@ -1,13 +1,37 @@
 <div class="row">
   <form (ngSubmit)="onSubmit()" [formGroup]="parkingMeterForm">
-
-    <div class="col-md-6">
-
-
+    <div class="col-md-2">
+      <app-form-input
+        [labelPosition]="labelPosition"
+        formCtrlName="parkingSpaceId"
+        inputPlaceholder="parking space id"
+        [inputCols]="12"
+      >
+      </app-form-input>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-2">
+      <app-form-input
+        [labelPosition]="labelPosition"
+        formCtrlName="parkingSpaceStatus"
+        inputPlaceholder="parking space status"
+        [inputCols]="12"
+      >
+      </app-form-input>
+    </div>
+    <div class="col-md-2">
+     <!-- FIXME all placeholeders-->
+      <app-form-input
+        [labelPosition]="labelPosition"
+        formCtrlName="vehicleRegistrationNr"
+        inputPlaceholder="registration"
+        [inputCols]="12"
+      >
+      </app-form-input>
+    </div>
+
+    <div class="col-md-2">
       <app-form-submit [description]="'forms.submit' | translate"
-                       [buttonCols]="2">
+                       [buttonCols]="12">
       </app-form-submit>
     </div>
   </form>
@@ -16,26 +40,11 @@
 
 <hr class="separator">
 
-<div *ngIf="!isFinancialReportAvailable()">
+<div *ngIf="true"> <!--FIXME-->
   <h1>{{'info.accountMonitor' | translate}}</h1>
 </div>
 
-<div class="row" *ngIf="isFinancialReportAvailable()">
-  <div class="col-md-6">
-    <app-form-readonly
-      [inputCols]="5"
-      label="{{'forms.chargedMoney' | translate}}"
-      [value]="financialReport.chargedMoney()">
-    </app-form-readonly>
-  </div>
+<div>
+  TABLE
 </div>
 
-<div class="row" *ngIf="isFinancialReportAvailable()">
-  <div class="col-md-6">
-    <app-form-readonly
-      [inputCols]="5"
-      label="{{'forms.paidMoney' | translate}}"
-      [value]="financialReport.paidMoney()">
-    </app-form-readonly>
-  </div>
-</div>

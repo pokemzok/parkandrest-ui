@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import {LabelPosition} from '../form/LabelPosition';
 
 @Component({
   selector: 'app-parkingmeter',
@@ -9,6 +10,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 export class ParkingMeterComponent implements OnInit {
 
   parkingMeterForm: FormGroup;
+  labelPosition = LabelPosition.NONE;
 
   constructor() { }
 
@@ -16,8 +18,7 @@ export class ParkingMeterComponent implements OnInit {
     this.parkingMeterForm = new FormGroup({
       'parkingSpaceId': new FormControl(null),
       'parkingSpaceStatus': new FormControl(null),
-      'vehicleRegistrationNr': new FormControl(null),
-      'occupiedFrom': new FormControl(null)
+      'vehicleRegistrationNr': new FormControl(null)
     })
   }
 

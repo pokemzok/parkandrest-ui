@@ -4,6 +4,7 @@
 
 .main {
   margin-left: 200px; /* Same as the width of the sidenav */
+  margin-bottom: 100px; /* to leave place for footer, otherwise content hides under */
 }
 
 .blurred {

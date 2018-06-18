@@ -1,5 +1,5 @@
 <div class="row">
-  <form (ngSubmit)="onSubmit()" [formGroup]="parkingMeterForm">
+  <form (ngSubmit)="onSearch()" [formGroup]="parkingMeterForm">
     <div class="col-md-2">
       <app-form-input
         [labelPosition]="labelPosition"
@@ -42,12 +42,25 @@
 </div>
 
 <hr class="separator">
-
-<div *ngIf="true"> <!--FIXME-->
-  <h1>{{'info.accountMonitor' | translate}}</h1>
-</div>
-
+<!--FIME new component for table, also sorting and paginatin -->
 <div>
-  TABLE
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">{{'table.parkingSpaceId' | translate}}</th>
+      <th scope="col">{{'table.parkingSpaceStatus' | translate}}</th>
+      <th scope="col">{{'table.registrationNr' | translate}}</th>
+      <th scope="col">{{'table.occupiedFrom' | translate}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of parkingSpaceRecords">
+      <td> {{row.parkingSpaceId}}</td>
+      <td>{{row.parkingSpaceStatus}}</td>
+      <td>{{row.registration}}</td>
+      <td>{{row.occupationStartDate}}</td>
+    </tr>
+    </tbody>
+  </table>
 </div>
 

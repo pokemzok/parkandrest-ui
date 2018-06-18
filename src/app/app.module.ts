@@ -35,6 +35,7 @@ import {ENVIRONMENT} from '../environments/environment';
 import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 import {AuthenticationService} from './auth/authentication.service';
 import {FinancialReportService} from './accountmonitoring/financialreport.service';
+import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -60,7 +61,8 @@ export function provideServices (): any[] {
 export function provideMockServices(): any[] {
   return [
     {provide: 'AuthService', useClass: MockAuthService},
-    {provide: 'FinancialReportService', useClass: MockFinancialReportService}
+    {provide: 'FinancialReportService', useClass: MockFinancialReportService},
+    {provide: 'ParkingSpaceService', useClass: MockParkingSpaceService}
   ]
 }
 
@@ -114,8 +116,7 @@ export function provideBackendServices(): Provider[] {
     AuthGuard,
     TranslatedToastrFacade,
     {provide: DateAdapter, useClass: MomentDateAdapter},
-  ].concat(provideServices())
-  ,
+  ].concat(provideServices()),
   bootstrap: [AppComponent]
 })
 export class AppModule {

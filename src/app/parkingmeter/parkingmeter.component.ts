@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LabelPosition} from '../form/LabelPosition';
+import {ParkingSpaceProvider} from './parkingspace.provider.interface';
+import {ParkingSpaceRequest} from './parkingspace.request';
+import {ParkingSpaceResponse} from './parkingspace.response';
 
 @Component({
   selector: 'app-parkingmeter',
@@ -11,8 +14,13 @@ export class ParkingMeterComponent implements OnInit {
 
   parkingMeterForm: FormGroup;
   labelPosition = LabelPosition.NONE;
+  parkingSpaceRecords: ParkingSpaceResponse[];
 
-  constructor() { }
+  // TODO: select parkingSpaceStatus, do not type it as string
+
+  constructor(@Inject('ParkingSpaceService') parkingSpaceService: ParkingSpaceProvider) {
+    this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceRequest.empty())
+  }
 
   ngOnInit() {
     this.parkingMeterForm = new FormGroup({
@@ -22,7 +30,7 @@ export class ParkingMeterComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  onSearch() {
     // TODO: implement
   }
 }

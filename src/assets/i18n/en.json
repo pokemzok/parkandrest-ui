@@ -44,5 +44,11 @@
     "authenticated": "Successfully Authenticated!",
     "authfailure": "Authentication Failed! Provided credentials are incorrect"
   },
+  "table" : {
+    "parkingSpaceId": "Parking space id",
+    "parkingSpaceStatus": "Parking space status",
+    "registrationNr": "Parked vehicle registration nr",
+    "occupiedFrom" : "Occupied from"
+  },
   "welcomeMessage": "Welcome to the 'Park And Rest' application"
 }

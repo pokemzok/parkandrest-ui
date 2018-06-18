@@ -36,6 +36,7 @@ import {MatMomentDateModule, MomentDateAdapter} from '@angular/material-moment-a
 import {AuthenticationService} from './auth/authentication.service';
 import {FinancialReportService} from './accountmonitoring/financialreport.service';
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
+import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -69,7 +70,8 @@ export function provideMockServices(): any[] {
 export function provideBackendServices(): Provider[] {
   return [
     {provide: 'AuthService', useClass: AuthenticationService},
-    {provide: 'FinancialReportService', useClass: FinancialReportService}
+    {provide: 'FinancialReportService', useClass: FinancialReportService},
+    {provide: 'ParkingSpaceService', useClass: ParkingSpaceService}
   ]
 }
 

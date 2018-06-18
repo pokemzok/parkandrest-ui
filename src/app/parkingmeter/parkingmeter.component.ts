@@ -18,7 +18,7 @@ export class ParkingMeterComponent implements OnInit {
 
   // TODO: select parkingSpaceStatus, do not type it as string
 
-  constructor(@Inject('ParkingSpaceService') parkingSpaceService: ParkingSpaceProvider) {
+  constructor(@Inject('ParkingSpaceService') private parkingSpaceService: ParkingSpaceProvider) {
     this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceRequest.empty())
   }
 
@@ -26,11 +26,12 @@ export class ParkingMeterComponent implements OnInit {
     this.parkingMeterForm = new FormGroup({
       'parkingSpaceId': new FormControl(null, Validators.maxLength(20)),
       'parkingSpaceStatus': new FormControl(null, Validators.maxLength(10)),
-      'vehicleRegistrationNr': new FormControl(null, Validators.maxLength(20))
+      'registration': new FormControl(null, Validators.maxLength(20))
     })
   }
 
   onSearch() {
-    // TODO: implement
+    // Nie castuje dobrze numberow (chyba jest string w parkingSpaceId)
+    this.parkingSpaceRecords = this.parkingSpaceService.get(<ParkingSpaceRequest>this.parkingMeterForm.getRawValue());
   }
 }

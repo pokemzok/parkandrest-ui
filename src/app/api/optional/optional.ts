@@ -13,7 +13,7 @@ export class Optional<T> {
     if (this.isPresent()) {
       predicate(this.value);
     }
-    return this;
+    return <Optional<T>> this;
   }
 
   isPresent(): boolean {

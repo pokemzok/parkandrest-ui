@@ -4,7 +4,7 @@ export class ParkingSpaceRequest {
 
   // TODO: pagination and sortability as arguments in request
   parkingSpaceId: number;
-  parkingSpaceStatus: ParkingSpaceStatus;
+  parkingSpaceStatus: ParkingSpaceStatus; // TODO: delete Enum, make this a string
   registration: string;
 
   public static empty(): ParkingSpaceRequest {

@@ -3,6 +3,9 @@ import {ParkingSpaceResponse} from './parkingspace.response';
 import {ParkingSpaceRequest} from './parkingspace.request';
 import {ParkingSpaceStatus} from './parkingspace.status';
 import {Injectable} from '@angular/core';
+import * as _ from 'underscore';
+import {List} from 'underscore';
+import {Optional} from '../api/optional/optional';
 
 @Injectable()
 export class MockParkingSpaceService implements ParkingSpaceProvider {
@@ -36,8 +39,29 @@ export class MockParkingSpaceService implements ParkingSpaceProvider {
   ];
 
   get(request: ParkingSpaceRequest): ParkingSpaceResponse[] {
-    // TODO: filter results using uderscore
-    return this.parkingSpaces;
+    return _.filter(<List>this.parkingSpaces, value => {
+      return new ParkingspaceRequestResponsePredicate(request, value).predicate()
+    });
+  }
+
+}
+
+export class ParkingspaceRequestResponsePredicate  {
+
+  constructor (private request: ParkingSpaceRequest, private response: ParkingSpaceResponse) {}
+
+  predicate(): boolean {
+    if (!_.isEqual(this.request, ParkingSpaceRequest.empty())) {
+      return this.equalPredicate(this.request.parkingSpaceId, this.response.parkingSpaceId)
+      && this.equalPredicate(this.request.parkingSpaceStatus, this.response.parkingSpaceStatus)
+      &&  this.equalPredicate(this.request.registration, this.response.registration)
+    } else {
+      return true;
+    }
+  }
+  // FIXME: puste stringi, bo dla nich nie dziala
+  private equalPredicate(requestParam: any, responseParam: any): boolean {
+    return Optional.of(requestParam).isPresent() ? requestParam === responseParam : true;
   }
 
 }

@@ -37,6 +37,7 @@ import {AuthenticationService} from './auth/authentication.service';
 import {FinancialReportService} from './accountmonitoring/financialreport.service';
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
+import { FormSingleSelectComponent } from './form/select/singleselect/form-single-select.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -89,7 +90,8 @@ export function provideBackendServices(): Provider[] {
     DrivermockComponent,
     HeaderComponent,
     DatepickerComponent,
-    FormReadonlyComponent
+    FormReadonlyComponent,
+    FormSingleSelectComponent
   ],
   imports: [
     BrowserModule,

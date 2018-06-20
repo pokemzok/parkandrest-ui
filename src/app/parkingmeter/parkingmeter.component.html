@@ -40,7 +40,13 @@
   </form>
 
 </div>
-
+<app-form-single-select
+  [labelPosition]="labelPosition"
+  formCtrlName="parkingSpaceStatus"
+  [options]=""
+  inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+  [inputCols]="12">>
+</app-form-single-select>
 <hr class="separator">
 <!--FIME new component for table, also sorting and paginatin -->
 <div>

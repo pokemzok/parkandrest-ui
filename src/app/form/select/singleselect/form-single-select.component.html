@@ -1,13 +1,14 @@
-<div class="form-group" [formGroup]="inputFormGroup"
-     [ngClass]="{'has-error': isFormInvalid(),
-                'has-success': isFormValid()}">
+<div class="form-group" [formGroup]="inputFormGroup">
   <label for={{id}} *ngIf="labelTopPosition()">{{label}}</label>
   <div class="row">
     <div class="col-md-{{inputCols}}" *ngIf="labelLeftPosition()">
       <label for={{id}} class="leftLabel">{{label}}</label>
     </div>
     <div class="col-md-{{inputCols}}">
-      <select class="form-control" id={{id}}>
+      <select
+        class="form-control" id={{id}}
+        formControlName={{formCtrlName}}
+      >
         <option *ngFor="let option of options" value="{{option.value}}">{{option.desc}}</option>
       </select>
     </div>

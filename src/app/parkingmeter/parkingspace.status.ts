@@ -1,6 +1,6 @@
 
 export enum ParkingSpaceStatus {
-  FREE,
-  OCCUPIED,
-  MAINTENANCE
+  FREE = 'FREE',
+  OCCUPIED = 'OCCUPIED',
+  MAINTENANCE = 'MAINTENANCE'
 }

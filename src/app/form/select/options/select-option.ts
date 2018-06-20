@@ -7,6 +7,7 @@ export class SelectOption {
 
   constructor(value: string) {
     this._value = value;
+    this._desc = value;
   }
 
   addDescription(desc: string) {

@@ -21,12 +21,21 @@ export class FormSingleSelectComponent implements OnInit {
   inputFormGroup: FormGroup;
   id: string =  UUID.UUID();
 
+  // TODO: empty search option
   constructor(private controlContainer: ControlContainer) {
     this.labelPosition = LabelPosition.TOP;
   }
 
   ngOnInit() {
     this.inputFormGroup = <FormGroup>this.controlContainer.control;
+  }
+
+  labelTopPosition() {
+    return LabelPosition.TOP === this.labelPosition;
+  }
+
+  labelLeftPosition() {
+    return LabelPosition.LEFT === this.labelPosition;
   }
 
 }

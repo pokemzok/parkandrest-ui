@@ -32,7 +32,7 @@ export class TranslatedOptionFactory {
     this.translateService.get(i18nPath + param).subscribe((desc: string) => {
       option.addDescription(desc);
     });
-    return SelectOption;
+    return option;
   }
 
 }

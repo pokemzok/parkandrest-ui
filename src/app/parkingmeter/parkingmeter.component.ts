@@ -19,23 +19,26 @@ export class ParkingMeterComponent implements OnInit {
   labelPosition = LabelPosition.NONE;
   parkingSpaceRecords: ParkingSpaceResponse[];
   statusesOptions: SelectOption[];
-  // TODO: select parkingSpaceStatus, do not type it as string
 
   constructor(@Inject('ParkingSpaceService') private parkingSpaceService: ParkingSpaceProvider, private translatedOptionFactory: TranslatedOptionFactory) {
     this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceRequest.empty());
-    this.statusesOptions = translatedOptionFactory.optionsOf<string>('options.parkingSpace.', Object.keys(ParkingSpaceStatus));
+
+    this.statusesOptions = translatedOptionFactory.optionsOf<string>(
+      'options.parkingSpace.',
+      Object.keys(ParkingSpaceStatus)
+    );
   }
 
   ngOnInit() {
     this.parkingMeterForm = new FormGroup({
       'parkingSpaceId': new FormControl(null, Validators.maxLength(20)),
-      'parkingSpaceStatus': new FormControl(null, Validators.maxLength(10)),
+      'parkingSpaceStatus': new FormControl(null),
       'registration': new FormControl(null, Validators.maxLength(20))
     })
   }
 
   onSearch() {
-    // Nie castuje dobrze numberow (chyba jest string w parkingSpaceId)
+    // TODO Nie castuje dobrze numberow (chyba jest string w parkingSpaceId) ani pustych wartości nie filtruje
     this.parkingSpaceRecords = this.parkingSpaceService.get(<ParkingSpaceRequest>this.parkingMeterForm.getRawValue());
   }
 }

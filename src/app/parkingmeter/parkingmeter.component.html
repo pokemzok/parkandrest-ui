@@ -12,14 +12,13 @@
       </app-form-input>
     </div>
     <div class="col-md-2">
-      <app-form-input
+      <app-form-single-select
         [labelPosition]="labelPosition"
         formCtrlName="parkingSpaceStatus"
+        [options]="statusesOptions"
         inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
-        errorMsg="{{'forms.maxSizeErrorMsg' | translate}}"
-        [errorMsgCols]="12"
         [inputCols]="12">
-      </app-form-input>
+      </app-form-single-select>
     </div>
     <div class="col-md-2">
       <app-form-input
@@ -40,13 +39,7 @@
   </form>
 
 </div>
-<app-form-single-select
-  [labelPosition]="labelPosition"
-  formCtrlName="parkingSpaceStatus"
-  [options]="statusesOptions"
-  inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
-  [inputCols]="12">>
-</app-form-single-select>
+
 <hr class="separator">
 <!--FIME new component for table, also sorting and paginatin -->
 <div>

@@ -28,7 +28,7 @@ export class TranslatedOptionFactory {
    * (for example 'options.parkingmeter.' + 'FREE')
    */
   optionOf<T>(i18nPath: string, param: T): SelectOption {
-    const option = new SelectOption(param);
+    const option = new SelectOption(param.toString());
     this.translateService.get(i18nPath + param).subscribe((desc: string) => {
       option.addDescription(desc);
     });

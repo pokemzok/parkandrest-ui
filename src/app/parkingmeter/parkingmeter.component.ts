@@ -4,6 +4,9 @@ import {LabelPosition} from '../form/LabelPosition';
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
 import {ParkingSpaceRequest} from './parkingspace.request';
 import {ParkingSpaceResponse} from './parkingspace.response';
+import {SelectOption} from '../form/select/options/select-option';
+import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
+import {ParkingSpaceStatus} from './parkingspace.status';
 
 @Component({
   selector: 'app-parkingmeter',
@@ -15,11 +18,12 @@ export class ParkingMeterComponent implements OnInit {
   parkingMeterForm: FormGroup;
   labelPosition = LabelPosition.NONE;
   parkingSpaceRecords: ParkingSpaceResponse[];
-
+  statusesOptions: SelectOption[];
   // TODO: select parkingSpaceStatus, do not type it as string
 
-  constructor(@Inject('ParkingSpaceService') private parkingSpaceService: ParkingSpaceProvider) {
-    this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceRequest.empty())
+  constructor(@Inject('ParkingSpaceService') private parkingSpaceService: ParkingSpaceProvider, private translatedOptionFactory: TranslatedOptionFactory) {
+    this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceRequest.empty());
+    this.statusesOptions = translatedOptionFactory.optionsOf<string>('options.parkingSpace.', Object.keys(ParkingSpaceStatus));
   }
 
   ngOnInit() {

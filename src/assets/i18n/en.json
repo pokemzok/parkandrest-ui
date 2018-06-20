@@ -38,6 +38,13 @@
     "mock": "Driver Mock",
     "logout": "Log out"
   },
+  "options":{
+    "parkingSpace":{
+      "FREE": "Free",
+      "OCCUPIED": "Occupied",
+      "MAINTENANCE": "Maintenance"
+    }
+  },
   "notifications": {
     "forbidden": "No credentials provided. Access Forbidden.",
     "SERVER_OFFLINE": "Server is Offline Choosing Mock Authentication Service",

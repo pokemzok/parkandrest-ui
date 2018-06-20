@@ -38,6 +38,7 @@ import {FinancialReportService} from './accountmonitoring/financialreport.servic
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
 import { FormSingleSelectComponent } from './form/select/singleselect/form-single-select.component';
+import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -119,7 +120,8 @@ export function provideBackendServices(): Provider[] {
     HealthCheckService,
     AuthGuard,
     TranslatedToastrFacade,
-    {provide: DateAdapter, useClass: MomentDateAdapter},
+    TranslatedOptionFactory,
+    {provide: DateAdapter, useClass: MomentDateAdapter}
   ].concat(provideServices()),
   bootstrap: [AppComponent]
 })

@@ -21,7 +21,7 @@ export class FormSingleSelectComponent implements OnInit {
   inputFormGroup: FormGroup;
   id: string =  UUID.UUID();
 
-  // TODO: empty search option
+  // TODO: show placeholder (select does not support placeholder for some reason)
   constructor(private controlContainer: ControlContainer) {
     this.labelPosition = LabelPosition.TOP;
   }

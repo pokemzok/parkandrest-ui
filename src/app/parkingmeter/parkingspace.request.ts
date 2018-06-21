@@ -1,6 +1,6 @@
 export class ParkingSpaceRequest {
 
-  parkingSpaceId: number;
+  parkingSpaceId: string;
   parkingSpaceStatus: string;
   registration: string;
 
@@ -8,7 +8,7 @@ export class ParkingSpaceRequest {
     return new ParkingSpaceRequest(null, null, null);
   }
 
-  constructor(parkingSpaceId: number, parkingSpaceStatus: string, registration: string) {
+  constructor(parkingSpaceId: string, parkingSpaceStatus: string, registration: string) {
     this.parkingSpaceId = parkingSpaceId;
     this.parkingSpaceStatus = parkingSpaceStatus;
     this.registration = registration;

@@ -38,7 +38,6 @@ export class ParkingMeterComponent implements OnInit {
   }
 
   onSearch() {
-    // TODO Nie castuje dobrze numberow (chyba jest string w parkingSpaceId) ani pustych wartości nie filtruje
     this.parkingSpaceRecords = this.parkingSpaceService.get(<ParkingSpaceRequest>this.parkingMeterForm.getRawValue());
   }
 }

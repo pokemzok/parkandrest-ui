@@ -55,7 +55,7 @@
     <tbody>
     <tr *ngFor="let row of parkingSpaceRecords">
       <td> {{row.parkingSpaceId}}</td>
-      <td>{{row.parkingSpaceStatus}}</td>
+      <td>{{'options.parkingSpace.'+row.parkingSpaceStatus | translate}}</td>
       <td>{{row.registration}}</td>
       <td>{{row.occupationStartDate}}</td>
     </tr>

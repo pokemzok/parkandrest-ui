@@ -1,3 +1,10 @@
-<p>
-  users works!
-</p>
+<mat-tab-group>
+  <mat-tab label="{{'tabs.users.management' | translate}}">
+    <app-users-management></app-users-management>
+  </mat-tab>
+  <mat-tab label="{{'tabs.users.new' | translate}}">
+    <app-new-user></app-new-user>
+  </mat-tab>
+</mat-tab-group>
+
+

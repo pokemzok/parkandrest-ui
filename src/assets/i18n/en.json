@@ -57,5 +57,11 @@
     "registrationNr": "Parked vehicle registration nr",
     "occupiedFrom" : "Occupied from"
   },
+  "tabs" : {
+    "users" : {
+      "management" : "Users management",
+      "new" : "Add new user"
+    }
+  },
   "welcomeMessage": "Welcome to the 'Park And Rest' application"
 }

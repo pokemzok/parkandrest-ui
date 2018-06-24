@@ -24,7 +24,7 @@ import {TranslatedToastrFacade} from './toaster/translated-toaster.service';
 import {DrivermockComponent} from './drivermock/drivermock.component';
 import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
-import {DateAdapter, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatTabsModule} from '@angular/material';
 import {DatepickerComponent} from './form/datepicker/datepicker.component';
 import {MomentModule} from 'ngx-moment';
 import {MockFinancialReportService} from './accountmonitoring/mockfinancialreport.service';
@@ -39,6 +39,8 @@ import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service'
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
 import { FormSingleSelectComponent } from './form/select/singleselect/form-single-select.component';
 import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
+import { UsersManagementComponent } from './users/management/users-management.component';
+import { NewUserComponent } from './users/user/new-user.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -92,7 +94,9 @@ export function provideBackendServices(): Provider[] {
     HeaderComponent,
     DatepickerComponent,
     FormReadonlyComponent,
-    FormSingleSelectComponent
+    FormSingleSelectComponent,
+    UsersManagementComponent,
+    NewUserComponent
   ],
   imports: [
     BrowserModule,
@@ -112,7 +116,8 @@ export function provideBackendServices(): Provider[] {
     MomentModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatTabsModule
   ],
   providers: [
     CookieService,

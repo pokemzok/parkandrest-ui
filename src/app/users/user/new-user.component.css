@@ -1,0 +1,7 @@
+:host ::ng-deep .row {
+  margin-right: 0;
+  margin-left: -15px;
+}
+.newUserForm{
+  padding-top: 20px;
+}

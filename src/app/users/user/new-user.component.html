@@ -1,4 +1,49 @@
-<div id="new" class="tab-pane fade in active">
-  <h3>new</h3>
-  <p>Some content.</p>
-</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="newUserForm">
+  <div class="row">
+    <div class="col-md-12">
+      <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
+                      formCtrlName="username"
+                      [labelPosition]="labelsPosition"
+                      [inputCols]="4"
+                      [errorMsgCols]="3"
+                      [errorMsg]="'forms.usernameErrorMsg' | translate:{param: minUsernameLength}"
+                      [label]="'forms.loginWelcome' | translate">
+      </app-form-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+                      type="password"
+                      formCtrlName="password"
+                      [inputCols]="4"
+                      [labelPosition]="labelsPosition"
+                      [errorMsgCols]="3"
+                      label="Password"
+                      [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}">
+      </app-form-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+                      type="password"
+                      formCtrlName="password"
+                      [inputCols]="4"
+                      [labelPosition]="labelsPosition"
+                      [errorMsgCols]="3"
+                      label="Password"
+                      [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}">
+      </app-form-input>
+    </div>
+  </div>
+  <!--TODO: is active and authorities select-->
+  <div class="row">
+    <div class="col-sm-offset-4 col-md-8">
+      <app-form-submit [description]="'forms.submit' | translate"
+                       [buttonCols]="6">
+      </app-form-submit>
+    </div>
+  </div>
+</form>
+

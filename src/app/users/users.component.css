@@ -1,0 +1,4 @@
+:host ::ng-deep .mat-tab-label.mat-tab-label-active {
+  background-color: rgba(197,202,233,.3);
+  border-radius: 5px;
+}

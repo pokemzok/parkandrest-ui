@@ -9,16 +9,17 @@ import {LabelPosition} from '../../form/LabelPosition';
 })
 export class NewUserComponent implements OnInit {
 
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   labelsPosition: LabelPosition;
   constructor() {
     this.labelsPosition = LabelPosition.LEFT;
   }
 
   ngOnInit() {
-    this.loginForm = new FormGroup({
+    this.registerForm = new FormGroup({
       'username': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, [Validators.required])
+      'password': new FormControl(null, [Validators.required]),
+      'repeatPassword': new FormControl(null, [Validators.required])
     })
   }
 

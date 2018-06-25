@@ -10,19 +10,19 @@
     <div class="row center-block">
       <div class="col-md-8 col-md-offset-4">
         <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
-          <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
+          <app-form-input [inputPlaceholder]="'forms.pholder.username' | translate"
                           formCtrlName="username"
                           [inputCols]="5"
                           [errorMsgCols]="3"
-                          [errorMsg]="'forms.usernameErrorMsg' | translate:{param: minUsernameLength}"
+                          [errorMsg]="'forms.validation.usernameCharsQuantity' | translate:{param: minUsernameLength}"
                           [label]="'forms.loginWelcome' | translate">
           </app-form-input>
-          <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+          <app-form-input [inputPlaceholder]="'forms.pholder.password' | translate"
                           type="password"
                           formCtrlName="password"
                           [inputCols]="5"
                           [errorMsgCols]="3"
-                          [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}"
+                          [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}"
                           [description]="'forms.loginHelper' | translate">
           </app-form-input>
           <app-form-submit [description]="'forms.login' | translate"

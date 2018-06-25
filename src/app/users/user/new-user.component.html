@@ -1,43 +1,43 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="newUserForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="newUserForm">
   <div class="row">
     <div class="col-md-12">
-      <app-form-input [inputPlaceholder]="'forms.usernamePholder' | translate"
+      <app-form-input [inputPlaceholder]="'forms.pholder.usernameRegister' | translate"
                       formCtrlName="username"
                       [labelPosition]="labelsPosition"
                       [inputCols]="4"
                       [errorMsgCols]="3"
-                      [errorMsg]="'forms.usernameErrorMsg' | translate:{param: minUsernameLength}"
-                      [label]="'forms.loginWelcome' | translate">
+                      [errorMsg]="'forms.validation.usernameCharsQuantity' | translate:{param: minUsernameLength}"
+                      [label]="'forms.username' | translate">
       </app-form-input>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+      <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
                       type="password"
                       formCtrlName="password"
                       [inputCols]="4"
                       [labelPosition]="labelsPosition"
                       [errorMsgCols]="3"
-                      label="Password"
-                      [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}">
+                      label="{{'forms.password' | translate}}"
+                      [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
       </app-form-input>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-form-input [inputPlaceholder]="'forms.passwordPholder' | translate"
+      <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
                       type="password"
-                      formCtrlName="password"
+                      formCtrlName="repeatPassword"
                       [inputCols]="4"
                       [labelPosition]="labelsPosition"
                       [errorMsgCols]="3"
-                      label="Password"
-                      [errorMsg]="'forms.passwordErrorMsg' | translate:{param: minPasswordLength}">
+                      label="{{'forms.repeatPass' | translate}}"
+                      [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
       </app-form-input>
     </div>
   </div>
-  <!--TODO: is active and authorities select-->
+
   <div class="row">
     <div class="col-sm-offset-4 col-md-8">
       <app-form-submit [description]="'forms.submit' | translate"

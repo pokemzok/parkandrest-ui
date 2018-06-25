@@ -7,21 +7,31 @@
     "login": "Login",
     "loginWelcome": "Provide your credentials",
     "password": "Password",
-    "usernamePholder": "Enter your username",
-    "passwordPholder": "Enter your password",
+    "repeatPass": "Repeat password",
+    "username": "Username",
+    "active": "Active",
+    "authorities": "Authorities",
     "loginHelper": "Contact administrator if you don't have an account",
-    "usernameErrorMsg": "Username has to have at least {{param}} characters",
-    "passwordErrorMsg": "Password has to have at least {{param}} characters",
-    "maxSizeErrorMsg": "Too many characters",
     "reportDate": "Show financial report for the date",
-    "reportDatePholder": "DD/MM/YYYY",
     "submit": "Submit",
     "search": "Search",
     "chargedMoney": "Total charged amount:",
     "paidMoney": "Total paid amount:",
     "parkingSpaceId": "parking space id",
     "parkingSpaceStatus": " parking space status",
-    "registration": " registration"
+    "registration": " registration",
+    "pholder":{
+      "password": "Enter your password",
+      "passwordRegister": "Password",
+      "reportDate":"DD/MM/YYYY",
+      "username":"Username",
+      "usernameRegister":"only letters and numbers"
+    },
+    "validation":{
+      "usernameCharsQuantity": "Username has to have at least {{param}} characters",
+      "passwordCharsQuantity": "Password has to have at least {{param}} characters",
+      "maxChars": "Too many characters"
+    }
   },
   "header": {
     "welcome": "Welcome {{param}}, ",

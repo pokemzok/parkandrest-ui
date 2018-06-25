@@ -5,7 +5,7 @@
       <label for={{id}} class="leftLabel">{{label}}</label>
     </div>
     <div class="col-md-{{inputCols}}">
-      <select class="form-control" id={{id}} formControlName={{formCtrlName}} [ngModel]="null">
+      <select class="form-control" id={{id}} formControlName={{formCtrlName}} [attr.multiple]="multiselect">
         <option selected="selected" value=""></option>
         <option *ngFor="let option of options" value="{{option.value}}">{{option.desc}}</option>
       </select>

@@ -5,11 +5,11 @@ import {SelectOption} from '../options/select-option';
 import {ControlContainer, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-form-single-select',
-  templateUrl: './form-single-select.component.html',
-  styleUrls: ['./form-single-select.component.css']
+  selector: 'app-form-select',
+  templateUrl: './form-select.component.html',
+  styleUrls: ['./form-select.component.css']
 })
-export class FormSingleSelectComponent implements OnInit {
+export class FormSelectComponent implements OnInit {
 
   @Input() label: string;
   @Input() inputPlaceholder: string;
@@ -17,6 +17,7 @@ export class FormSingleSelectComponent implements OnInit {
   @Input() formCtrlName: string;
   @Input() labelPosition: LabelPosition;
   @Input() options: SelectOption[];
+  @Input() multiselect: boolean;
 
   inputFormGroup: FormGroup;
   id: string =  UUID.UUID();
@@ -24,6 +25,7 @@ export class FormSingleSelectComponent implements OnInit {
   // TODO: show placeholder (select does not support placeholder for some reason)
   constructor(private controlContainer: ControlContainer) {
     this.labelPosition = LabelPosition.TOP;
+    this.multiselect = null;
   }
 
   ngOnInit() {

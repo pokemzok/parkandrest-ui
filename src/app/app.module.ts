@@ -37,7 +37,7 @@ import {AuthenticationService} from './auth/authentication.service';
 import {FinancialReportService} from './accountmonitoring/financialreport.service';
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
-import { FormSingleSelectComponent } from './form/select/singleselect/form-single-select.component';
+import { FormSelectComponent } from './form/select/select/form-select.component';
 import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
 import { UsersManagementComponent } from './users/management/users-management.component';
 import { NewUserComponent } from './users/user/new-user.component';
@@ -94,7 +94,7 @@ export function provideBackendServices(): Provider[] {
     HeaderComponent,
     DatepickerComponent,
     FormReadonlyComponent,
-    FormSingleSelectComponent,
+    FormSelectComponent,
     UsersManagementComponent,
     NewUserComponent
   ],

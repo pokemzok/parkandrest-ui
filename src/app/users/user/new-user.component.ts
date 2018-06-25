@@ -8,6 +8,8 @@ import {LabelPosition} from '../../form/LabelPosition';
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent implements OnInit {
+  readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values */
+  readonly minPasswordLength: number = 7;
 
   registerForm: FormGroup;
   labelsPosition: LabelPosition;
@@ -19,7 +21,8 @@ export class NewUserComponent implements OnInit {
     this.registerForm = new FormGroup({
       'username': new FormControl(null, [Validators.required]),
       'password': new FormControl(null, [Validators.required]),
-      'repeatPassword': new FormControl(null, [Validators.required])
+      'repeatPassword': new FormControl(null, [Validators.required]),
+      'isActive': new FormControl(null)
     })
   }
 

@@ -23,15 +23,19 @@ export class FormInputComponent implements OnInit {
   @Input() errorMsg: string;
   @Input() labelPosition: LabelPosition;
   @Input() disabled: boolean;
+  @Input() inputClasses: string;
 
   inputFormGroup: FormGroup;
   id: string =  UUID.UUID();
-
+  // default values
   constructor(private controlContainer: ControlContainer) {
     this.type = 'text';
     this.inputFormGroup = new FormGroup({});
     this.labelPosition = LabelPosition.TOP;
     this.disabled = false;
+    this.inputClasses = 'form-control';
+    this.errorMsgCols = 3;
+    this.inputCols = 4;
   }
 
   ngOnInit() {

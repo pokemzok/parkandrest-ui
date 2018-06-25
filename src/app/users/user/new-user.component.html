@@ -16,9 +16,7 @@
       <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
                       type="password"
                       formCtrlName="password"
-                      [inputCols]="4"
                       [labelPosition]="labelsPosition"
-                      [errorMsgCols]="3"
                       label="{{'forms.password' | translate}}"
                       [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
       </app-form-input>
@@ -29,15 +27,24 @@
       <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
                       type="password"
                       formCtrlName="repeatPassword"
-                      [inputCols]="4"
                       [labelPosition]="labelsPosition"
-                      [errorMsgCols]="3"
                       label="{{'forms.repeatPass' | translate}}"
                       [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
       </app-form-input>
     </div>
   </div>
-
+  <div class="row">
+    <div class="col-md-12">
+      <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
+                      type="checkbox"
+                      formCtrlName="isActive"
+                      inputClasses=""
+                      [labelPosition]="labelsPosition"
+                      label="{{'forms.active' | translate}}"
+                      >
+      </app-form-input>
+    </div>
+  </div>
   <div class="row">
     <div class="col-sm-offset-4 col-md-8">
       <app-form-submit [description]="'forms.submit' | translate"

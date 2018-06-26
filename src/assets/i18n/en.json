@@ -35,7 +35,8 @@
   },
   "header": {
     "welcome": "Welcome {{param}}, ",
-    "logout": "Log Out"
+    "logout": "Log Out",
+    "register": "Register new user"
   },
   "info": {
     "accountMonitor": "Your result will appear here, after submitting the date"

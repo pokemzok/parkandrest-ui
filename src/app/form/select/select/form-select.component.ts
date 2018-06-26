@@ -26,6 +26,7 @@ export class FormSelectComponent implements OnInit {
   constructor(private controlContainer: ControlContainer) {
     this.labelPosition = LabelPosition.TOP;
     this.multiselect = null;
+    this.inputCols = 4;
   }
 
   ngOnInit() {

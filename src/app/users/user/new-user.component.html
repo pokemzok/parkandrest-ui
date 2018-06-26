@@ -1,9 +1,10 @@
+<h3>New user form</h3>
 <form (ngSubmit)="onSubmit()" [formGroup]="registerForm" class="newUserForm">
   <div class="row">
     <div class="col-md-12">
       <app-form-input [inputPlaceholder]="'forms.pholder.usernameRegister' | translate"
                       formCtrlName="username"
-                      [labelPosition]="labelsPosition"
+                      [labelPosition]="labelPosition"
                       [inputCols]="4"
                       [errorMsgCols]="3"
                       [errorMsg]="'forms.validation.usernameCharsQuantity' | translate:{param: minUsernameLength}"
@@ -16,7 +17,7 @@
       <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
                       type="password"
                       formCtrlName="password"
-                      [labelPosition]="labelsPosition"
+                      [labelPosition]="labelPosition"
                       label="{{'forms.password' | translate}}"
                       [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
       </app-form-input>
@@ -27,7 +28,7 @@
       <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
                       type="password"
                       formCtrlName="repeatPassword"
-                      [labelPosition]="labelsPosition"
+                      [labelPosition]="labelPosition"
                       label="{{'forms.repeatPass' | translate}}"
                       [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
       </app-form-input>
@@ -39,10 +40,20 @@
                       type="checkbox"
                       formCtrlName="isActive"
                       inputClasses=""
-                      [labelPosition]="labelsPosition"
-                      label="{{'forms.active' | translate}}"
-                      >
+                      [labelPosition]="labelPosition"
+                      label="{{'forms.active' | translate}}">
       </app-form-input>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <app-form-select
+        [labelPosition]="labelPosition"
+        formCtrlName="authorities"
+        [options]="statusesOptions"
+        label="{{'forms.authorities' | translate}}"
+        [multiselect]="true">
+      </app-form-select>
     </div>
   </div>
   <div class="row">

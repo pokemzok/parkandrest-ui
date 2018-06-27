@@ -36,8 +36,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
-                      type="checkbox"
+      <app-form-input type="checkbox"
                       formCtrlName="isActive"
                       inputClasses=""
                       [labelPosition]="labelPosition"
@@ -51,8 +50,7 @@
         [labelPosition]="labelPosition"
         formCtrlName="authorities"
         [options]="statusesOptions"
-        label="{{'forms.authorities' | translate}}"
-        [multiselect]="true">
+        label="{{'forms.authorities' | translate}}">
       </app-form-select>
     </div>
   </div>

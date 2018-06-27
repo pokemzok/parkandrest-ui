@@ -54,6 +54,12 @@
       "FREE": "Free",
       "OCCUPIED": "Occupied",
       "MAINTENANCE": "Maintenance"
+    },
+    "authorities": {
+      "DRIVER" : "Driver",
+      "OPERATOR": "Operator",
+      "OWNER": "Owner",
+      "ADMIN": "Admin"
     }
   },
   "notifications": {

@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LabelPosition} from '../../form/LabelPosition';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
-import {ParkingSpaceStatus} from '../../parkingmeter/parkingspace.status';
 import {SelectOption} from '../../form/select/options/select-option';
+import {NewUserRequest} from './new-user.request';
+import {UserAuthorities} from '../users.authorities';
 
 @Component({
   selector: 'app-new-user',
@@ -19,21 +20,28 @@ export class NewUserComponent implements OnInit {
   labelPosition = LabelPosition.LEFT;
   statusesOptions: SelectOption[];
 
-  constructor(private translatedOptionFactory: TranslatedOptionFactory) {
+  constructor(private translatedOptionFactory: TranslatedOptionFactory, private formBuilder: FormBuilder) {
     this.statusesOptions = translatedOptionFactory.optionsOf<string>(
-      'options.parkingSpace.',
-      Object.keys(ParkingSpaceStatus)
+      'options.authorities.',
+      Object.keys(UserAuthorities)
     );
   }
 
   ngOnInit() {
-    this.registerForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required]),
-      'password': new FormControl(null, [Validators.required]),
-      'repeatPassword': new FormControl(null, [Validators.required]),
-      'isActive': new FormControl(null),
-      'authorities': new FormControl(null, [Validators.required]),
+    this.registerForm = this.formBuilder.group({
+      username: [null, [Validators.required, Validators.minLength(this.minUsernameLength)]],
+      password: [null, [Validators.required, Validators.minLength(this.minPasswordLength)]],
+      // TODO: custom validator to check weather first password = second password
+      repeatPassword: [null, [Validators.required, Validators.minLength(this.minPasswordLength)]],
+      isActive: null, // TODO: boolean value
+      authorities: [null, Validators.required] // TODO: multiselect
     });
+  }
+
+  onSubmit() {
+   const request =  <NewUserRequest>this.registerForm.getRawValue();
+   request.isActive = true; // FIXME: jest to obejscie
+   alert(request);
   }
 
 }

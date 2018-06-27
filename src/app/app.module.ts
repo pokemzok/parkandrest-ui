@@ -40,7 +40,7 @@ import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
 import { FormSelectComponent } from './form/select/select/form-select.component';
 import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
 import { UsersManagementComponent } from './users/management/users-management.component';
-import { NewUserComponent } from './users/user/new-user.component';
+import { NewUserComponent } from './users/new/new-user.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login

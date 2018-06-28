@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {LabelPosition} from '../../form/LabelPosition';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
 import {SelectOption} from '../../form/select/options/select-option';
 import {NewUserRequest} from './new-user.request';
 import {UserAuthorities} from '../users.authorities';
+import {UserManagement} from '../new-user.interface';
 
 @Component({
   selector: 'app-new-user',
@@ -20,7 +21,9 @@ export class NewUserComponent implements OnInit {
   labelPosition = LabelPosition.LEFT;
   statusesOptions: SelectOption[];
 
-  constructor(private translatedOptionFactory: TranslatedOptionFactory, private formBuilder: FormBuilder) {
+  constructor(private translatedOptionFactory: TranslatedOptionFactory,
+              private formBuilder: FormBuilder,
+              @Inject('UserManagementService')  private userManagementService: UserManagement ) {
     this.statusesOptions = translatedOptionFactory.optionsOf<string>(
       'options.authorities.',
       Object.keys(UserAuthorities)
@@ -41,7 +44,7 @@ export class NewUserComponent implements OnInit {
   onSubmit() {
    const request =  <NewUserRequest>this.registerForm.getRawValue();
    request.isActive = true; // FIXME: jest to obejscie
-   alert(request);
+   this.userManagementService.add(request);
   }
 
 }

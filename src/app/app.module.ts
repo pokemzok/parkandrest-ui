@@ -39,8 +39,12 @@ import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service'
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
 import { FormSelectComponent } from './form/select/select/form-select.component';
 import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
-import { UsersManagementComponent } from './users/management/users-management.component';
+import { UsersManagementComponent } from './users/manage/users-management.component';
 import { NewUserComponent } from './users/new/new-user.component';
+import {MockUserManagementService} from './users/mock.user-management.service';
+import {UserManagementService} from './users/user-management.service';
+import {MockUsersService} from './users/manage/mock.users.service';
+import {UsersService} from './users/manage/users.service';
 
 const routes: Routes = [
   {path: '', component: LoginComponent}, // FIXME, should be main page after login
@@ -67,7 +71,9 @@ export function provideMockServices(): any[] {
   return [
     {provide: 'AuthService', useClass: MockAuthService},
     {provide: 'FinancialReportService', useClass: MockFinancialReportService},
-    {provide: 'ParkingSpaceService', useClass: MockParkingSpaceService}
+    {provide: 'ParkingSpaceService', useClass: MockParkingSpaceService},
+    {provide: 'UserManagementService', useClass: MockUserManagementService},
+    {provide: 'UsersService', useClass: MockUsersService}
   ]
 }
 
@@ -75,7 +81,9 @@ export function provideBackendServices(): Provider[] {
   return [
     {provide: 'AuthService', useClass: AuthenticationService},
     {provide: 'FinancialReportService', useClass: FinancialReportService},
-    {provide: 'ParkingSpaceService', useClass: ParkingSpaceService}
+    {provide: 'ParkingSpaceService', useClass: ParkingSpaceService},
+    {provide: 'UserManagementService', useClass: UserManagementService},
+    {provide: 'UsersService', useClass: UsersService}
   ]
 }
 

@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LabelPosition} from '../form/LabelPosition';
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
-import {ParkingSpaceRequest} from './parkingspace.filter';
+import {ParkingSpaceFilter} from './parkingspace.filter';
 import {ParkingSpaceResponse} from './parkingspace.response';
 import {SelectOption} from '../form/select/options/select-option';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
@@ -21,7 +21,7 @@ export class ParkingMeterComponent implements OnInit {
   statusesOptions: SelectOption[];
 
   constructor(@Inject('ParkingSpaceService') private parkingSpaceService: ParkingSpaceProvider, private translatedOptionFactory: TranslatedOptionFactory) {
-    this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceRequest.empty());
+    this.parkingSpaceRecords = parkingSpaceService.get(ParkingSpaceFilter.empty());
 
     this.statusesOptions = translatedOptionFactory.optionsOf<string>(
       'options.parkingSpace.',
@@ -38,6 +38,6 @@ export class ParkingMeterComponent implements OnInit {
   }
 
   onSearch() {
-    this.parkingSpaceRecords = this.parkingSpaceService.get(<ParkingSpaceRequest>this.parkingMeterForm.getRawValue());
+    this.parkingSpaceRecords = this.parkingSpaceService.get(<ParkingSpaceFilter>this.parkingMeterForm.getRawValue());
   }
 }

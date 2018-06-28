@@ -1,6 +1,6 @@
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
 import {ParkingSpaceResponse} from './parkingspace.response';
-import {ParkingSpaceRequest} from './parkingspace.filter';
+import {ParkingSpaceFilter} from './parkingspace.filter';
 import {Injectable} from '@angular/core';
 import * as _ from 'underscore';
 import {List} from 'underscore';
@@ -37,9 +37,9 @@ export class MockParkingSpaceService implements ParkingSpaceProvider {
     new ParkingSpaceResponse('25', 'OCCUPIED', 'RWL01D714', '2018-06-18 18:09'),
   ];
 
-  get(request: ParkingSpaceRequest): ParkingSpaceResponse[] {
+  get(filter: ParkingSpaceFilter): ParkingSpaceResponse[] {
     return _.filter(<List<ParkingSpaceResponse>>this.parkingSpaces, value => {
-      return new ParkingspaceRequestResponsePredicate(request, value).predicate()
+      return new ParkingspaceRequestResponsePredicate(filter, value).predicate()
     });
   }
 
@@ -47,10 +47,10 @@ export class MockParkingSpaceService implements ParkingSpaceProvider {
 
 export class ParkingspaceRequestResponsePredicate  {
 
-  constructor (private request: ParkingSpaceRequest, private response: ParkingSpaceResponse) {}
+  constructor (private request: ParkingSpaceFilter, private response: ParkingSpaceResponse) {}
 
   predicate(): boolean {
-    if (!_.isEqual(this.request, ParkingSpaceRequest.empty())) {
+    if (!_.isEqual(this.request, ParkingSpaceFilter.empty())) {
       return this.equalPredicate(this.request.parkingSpaceId, this.response.parkingSpaceId)
       && this.equalPredicate(this.request.parkingSpaceStatus, this.response.parkingSpaceStatus)
       &&  this.equalPredicate(this.request.registration, this.response.registration)

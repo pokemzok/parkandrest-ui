@@ -1,11 +1,11 @@
-export class ParkingSpaceRequest {
+export class ParkingSpaceFilter {
 
   parkingSpaceId: string;
   parkingSpaceStatus: string;
   registration: string;
 
-  public static empty(): ParkingSpaceRequest {
-    return new ParkingSpaceRequest(null, null, null);
+  public static empty(): ParkingSpaceFilter {
+    return new ParkingSpaceFilter(null, null, null);
   }
 
   constructor(parkingSpaceId: string, parkingSpaceStatus: string, registration: string) {

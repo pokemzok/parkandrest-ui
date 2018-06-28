@@ -66,7 +66,8 @@
     "forbidden": "No credentials provided. Access Forbidden.",
     "SERVER_OFFLINE": "Server is Offline Choosing Mock Authentication Service",
     "authenticated": "Successfully Authenticated!",
-    "authfailure": "Authentication Failed! Provided credentials are incorrect"
+    "authfailure": "Authentication Failed! Provided credentials are incorrect",
+    "userCreationSuccess": "Successfully created a new user"
   },
   "table" : {
     "parkingSpaceId": "Parking space id",

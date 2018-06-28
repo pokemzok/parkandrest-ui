@@ -6,6 +6,8 @@ import {SelectOption} from '../../form/select/options/select-option';
 import {NewUserRequest} from './new-user.request';
 import {UserAuthorities} from '../users.authorities';
 import {UserManagement} from '../new-user.interface';
+import {isNullOrUndefined} from 'util';
+import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 
 @Component({
   selector: 'app-new-user',
@@ -22,6 +24,7 @@ export class NewUserComponent implements OnInit {
   statusesOptions: SelectOption[];
 
   constructor(private translatedOptionFactory: TranslatedOptionFactory,
+              private toaster: TranslatedToastrFacade,
               private formBuilder: FormBuilder,
               @Inject('UserManagementService')  private userManagementService: UserManagement ) {
     this.statusesOptions = translatedOptionFactory.optionsOf<string>(
@@ -44,7 +47,11 @@ export class NewUserComponent implements OnInit {
   onSubmit() {
    const request =  <NewUserRequest>this.registerForm.getRawValue();
    request.isActive = true; // FIXME: jest to obejscie
-   this.userManagementService.add(request);
+   const response = this.userManagementService.add(request);
+   if (!isNullOrUndefined(response)) {
+     this.toaster.success('notifications.userCreationSuccess');
+     this.registerForm.reset();
+   }
   }
 
 }

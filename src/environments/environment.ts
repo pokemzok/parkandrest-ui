@@ -16,3 +16,4 @@ export const LOGIN = BASE_URL + '/login';
 export const HEALTH_CHECK = BASE_URL + '/pulse';
 
 export const DATE_FORMAT = 'YYYY-MM-DD';
+export const DATETIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';

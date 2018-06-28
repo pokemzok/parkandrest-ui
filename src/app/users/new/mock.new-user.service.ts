@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/compiler/src/core';
 import {NewUserRequest} from './new-user.request';
-import {EventEmitter} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {UserResponse} from '../user.response';
-import moment = require('moment');
 import {DATE_FORMAT} from '../../../environments/environment';
+import {NewUser} from './new-user.interface';
+import * as moment from 'moment';
+import {MockedUsersCollection} from '../mocked-users.collection';
 
 @Injectable()
-export class MockNewUserService {
-// TODO: finish, emit event and receive it
+export class MockNewUserService implements NewUser {
+
   add(request: NewUserRequest) {
-    new EventEmitter().emit(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive, request.authorities));
+    MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive, request.authorities));
   }
 
 }

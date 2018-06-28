@@ -1,13 +1,13 @@
 import {Auth} from './auth.interface';
 import {LoginRequest} from '../login/login.request';
-import {Optional} from '../api/optional/optional';
+import {Optional} from '../common/optional/optional';
 import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';
 import {AuthCookiesService} from './authcookies.service';
 import {Injectable} from '@angular/core';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
-import {TranslatedToastrFacade} from '../toaster/translated-toaster.service';
+import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 
 @Injectable()
 export class MockAuthService implements Auth {

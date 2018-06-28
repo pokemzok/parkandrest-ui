@@ -1,6 +1,6 @@
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
 import {ParkingSpaceResponse} from './parkingspace.response';
-import {ParkingSpaceRequest} from './parkingspace.request';
+import {ParkingSpaceRequest} from './parkingspace.filter';
 import {Injectable} from '@angular/core';
 
 @Injectable()

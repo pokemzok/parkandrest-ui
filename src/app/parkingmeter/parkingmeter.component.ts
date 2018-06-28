@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LabelPosition} from '../form/LabelPosition';
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
-import {ParkingSpaceRequest} from './parkingspace.request';
+import {ParkingSpaceRequest} from './parkingspace.filter';
 import {ParkingSpaceResponse} from './parkingspace.response';
 import {SelectOption} from '../form/select/options/select-option';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';

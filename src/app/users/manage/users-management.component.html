@@ -1,3 +1,26 @@
 <div id="management" class="tab-pane fade in active">
-  <p>{{json}}</p>
+
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">{{'table.username' | translate}}</th>
+        <th scope="col">{{'table.registrationDate' | translate}}</th>
+        <th scope="col">{{'table.isActive' | translate}}</th>
+        <th scope="col">{{'table.authorities' | translate}}</th>
+        <th scope="col">{{'table.actions' | translate}}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let row of users">
+        <td> {{row.username}}</td>
+        <td>{{row.registrationDate}}</td>
+        <td>{{row.isActive}}</td>
+        <td>{{row.authorities}}</td>
+        <td><button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>

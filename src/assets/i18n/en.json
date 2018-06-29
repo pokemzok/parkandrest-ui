@@ -1,4 +1,7 @@
 {
+  "actions":{
+    "deactivate": "Deactivate"
+  },
   "footer": {
     "adminContact": "Our team email adress is parkandrest@test.com",
     "disclamer": "@ 2018 Available under Apache licence"
@@ -73,7 +76,12 @@
     "parkingSpaceId": "Parking space id",
     "parkingSpaceStatus": "Parking space status",
     "registrationNr": "Parked vehicle registration nr",
-    "occupiedFrom" : "Occupied from"
+    "occupiedFrom" : "Occupied from",
+    "username": "Username",
+    "registrationDate": "Registration Date",
+    "isActive": "Is active",
+    "authorities": "Authorities",
+    "actions": "Action"
   },
   "tabs" : {
     "users" : {

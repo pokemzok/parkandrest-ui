@@ -13,13 +13,16 @@ export class UsersManagementComponent implements OnInit {
   users: UserResponse[];
   filter = new UsersFilter();
   json: string;
+
   constructor( @Inject('UsersService') private usersService: UsersProviderInterface ) {
     this.users = usersService.get(this.filter);
     this.json = JSON.stringify(this.users);
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
+  deactivate(user: UserResponse) {
+    alert(user.username + 'Deactivated (TODO: implement real action'); // TODO: implement real action
   }
 
 }

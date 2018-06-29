@@ -20,7 +20,11 @@ export class UsersManagementComponent implements OnInit {
   ngOnInit() {}
 
   deactivate(user: UserResponse) {
-    alert(user.username + 'Deactivated (TODO: implement real action'); // TODO: implement real action
+    alert(user.username + ' Deactivated (TODO: implement real action)'); // TODO: implement real action
+  }
+
+  activate(user: UserResponse) {
+    alert(user.username + ' Activated (TODO: implement real action)'); // TODO: implement real action
   }
 
 }

@@ -1,6 +1,7 @@
 {
   "actions":{
-    "deactivate": "Deactivate"
+    "deactivate": "Deactivate",
+    "activate": "Activate"
   },
   "footer": {
     "adminContact": "Our team email adress is parkandrest@test.com",

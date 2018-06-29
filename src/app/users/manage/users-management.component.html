@@ -1,14 +1,16 @@
 <div id="management" class="tab-pane fade in active">
-
   <div>
-    <table class="table">
+    <h2>TODO: filtering</h2>
+  </div>
+  <div>
+    <table class="table  table-striped table-hover">
       <thead>
       <tr>
-        <th scope="col">{{'table.username' | translate}}</th>
-        <th scope="col">{{'table.registrationDate' | translate}}</th>
-        <th scope="col">{{'table.isActive' | translate}}</th>
-        <th scope="col">{{'table.authorities' | translate}}</th>
-        <th scope="col">{{'table.actions' | translate}}</th>
+        <th>{{'table.username' | translate}}</th>
+        <th>{{'table.registrationDate' | translate}}</th>
+        <th>{{'table.isActive' | translate}}</th>
+        <th>{{'table.authorities' | translate}}</th>
+        <th>{{'table.actions' | translate}}</th>
       </tr>
       </thead>
       <tbody>
@@ -17,10 +19,14 @@
         <td>{{row.registrationDate}}</td>
         <td>{{row.isActive}}</td>
         <td>{{row.authorities}}</td>
-        <td><button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button></td>
+
+        <td *ngIf="row.isActive"><button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button></td>
+        <td *ngIf="!row.isActive"><button class="btn btn-secondary" (click)="activate(row)">{{'actions.activate' | translate}}</button></td>
       </tr>
       </tbody>
     </table>
   </div>
-
+  <div>
+    <h2>TODO: pagination</h2>
+  </div>
 </div>

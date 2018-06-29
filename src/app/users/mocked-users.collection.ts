@@ -8,6 +8,7 @@ export class MockedUsersCollection {
     new UserResponse('admin', '2018-06-28', true, [UserAuthorities.ADMIN.toString()]),
     new UserResponse('operator', '2018-06-28', true, [UserAuthorities.OPERATOR.toString()]),
     new UserResponse('driver', '2018-06-28', true, [UserAuthorities.DRIVER.toString()]),
+    new UserResponse('inactive_driver', '2018-06-28', false, [UserAuthorities.DRIVER.toString()]),
     new UserResponse('owner', '2018-06-28', true, [UserAuthorities.OWNER.toString()])
   ];
 

@@ -14,7 +14,8 @@ export class UsersManagementComponent implements OnInit {
   users: UserResponse[];
   filter = new UsersFilter();
 
-  constructor( @Inject('UsersService') private usersService: UsersProviderInterface , @Inject('UserManagementService')  private userManagementService: UserManagement) {
+  constructor(@Inject('UsersService') private usersService: UsersProviderInterface,
+              @Inject('UserManagementService')  private userManagementService: UserManagement) {
     this.users = usersService.get(this.filter);
   }
 

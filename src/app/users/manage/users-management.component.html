@@ -1,7 +1,48 @@
 <div id="management" class="tab-pane fade in active">
-  <div>
-    <h2>TODO: filtering</h2>
+
+  <div class="row filter">
+    <form (ngSubmit)="onSearch()" [formGroup]="usersForm">
+      <div class="col-md-2">
+        <app-form-input
+          [labelPosition]="labelPosition"
+          type="number"
+          formCtrlName="username"
+          inputPlaceholder="{{'forms.parkingSpaceId' | translate}}"
+          errorMsg="{{'forms.validation.maxChars' | translate}}"
+          [errorMsgCols]="12"
+          [inputCols]="12">
+        </app-form-input>
+      </div>
+      <div class="col-md-2">
+        <app-form-select
+          [labelPosition]="labelPosition"
+          formCtrlName="authority"
+          [options]="authoritiesOptions"
+          inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+          [inputCols]="12">
+        </app-form-select>
+      </div>
+      <div class="col-md-2">
+        <app-form-select
+          [labelPosition]="labelPosition"
+          formCtrlName="active"
+          [options]="booleanOptions"
+          inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+          [inputCols]="12">
+        </app-form-select>
+      </div>
+
+      <div class="col-md-2">
+        <app-form-submit [description]="'forms.search' | translate"
+                         [buttonCols]="12">
+        </app-form-submit>
+      </div>
+    </form>
+
   </div>
+
+  <hr class="separator">
+
   <div>
     <table class="table  table-striped table-hover">
       <thead>
@@ -20,8 +61,12 @@
         <td>{{row.isActive}}</td>
         <td>{{row.authorities}}</td>
 
-        <td *ngIf="row.isActive"><button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button></td>
-        <td *ngIf="!row.isActive"><button class="btn btn-secondary" (click)="activate(row)">{{'actions.activate' | translate}}</button></td>
+        <td *ngIf="row.isActive">
+          <button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button>
+        </td>
+        <td *ngIf="!row.isActive">
+          <button class="btn btn-secondary" (click)="activate(row)">{{'actions.activate' | translate}}</button>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -4,3 +4,8 @@
   width: 80%;
   border-color: #5e5e5e;
 }
+
+:host ::ng-deep .row {
+  margin-right: 0;
+  margin-left: -15px;
+}

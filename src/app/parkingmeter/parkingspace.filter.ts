@@ -1,3 +1,4 @@
+
 export class ParkingSpaceFilter {
 
   parkingSpaceId: string;

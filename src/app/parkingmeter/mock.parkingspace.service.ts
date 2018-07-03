@@ -4,7 +4,7 @@ import {ParkingSpaceFilter} from './parkingspace.filter';
 import {Injectable} from '@angular/core';
 import * as _ from 'underscore';
 import {List} from 'underscore';
-import {isNullOrUndefined} from 'util';
+import {FilterPredicate} from '../common/filter/filter.predicate';
 
 @Injectable()
 export class MockParkingSpaceService implements ParkingSpaceProvider {
@@ -45,22 +45,20 @@ export class MockParkingSpaceService implements ParkingSpaceProvider {
 
 }
 
-export class ParkingspaceRequestResponsePredicate  {
+export class ParkingspaceRequestResponsePredicate  extends FilterPredicate {
 
-  constructor (private request: ParkingSpaceFilter, private response: ParkingSpaceResponse) {}
+  constructor (private filter: ParkingSpaceFilter, private response: ParkingSpaceResponse) {
+    super();
+  }
 
   predicate(): boolean {
-    if (!_.isEqual(this.request, ParkingSpaceFilter.empty())) {
-      return this.equalPredicate(this.request.parkingSpaceId, this.response.parkingSpaceId)
-      && this.equalPredicate(this.request.parkingSpaceStatus, this.response.parkingSpaceStatus)
-      &&  this.equalPredicate(this.request.registration, this.response.registration)
+    if (!_.isEqual(this.filter, ParkingSpaceFilter.empty())) {
+      return this.equalPredicate(this.filter.parkingSpaceId, this.response.parkingSpaceId)
+      && this.equalPredicate(this.filter.parkingSpaceStatus, this.response.parkingSpaceStatus)
+      &&  this.equalPredicate(this.filter.registration, this.response.registration)
     } else {
       return true;
     }
-  }
-
-  private equalPredicate(requestParam: any, responseParam: any): boolean {
-    return !isNullOrUndefined(requestParam) && !_.isEmpty(requestParam) ? requestParam === responseParam : true;
   }
 
 }

@@ -18,7 +18,7 @@ export class UsersManagementComponent implements OnInit {
 
   usersForm: FormGroup;
   users: UserResponse[];
-  filter = new UsersFilter();
+  filter = UsersFilter.empty();
   authoritiesOptions: SelectOption[];
   booleanOptions: SelectOption[];
   labelPosition = LabelPosition.NONE;
@@ -41,7 +41,8 @@ export class UsersManagementComponent implements OnInit {
   }
 
   onSearch() {
-    // TODO: search
+    this.filter = this.usersForm.getRawValue();
+    this.users = this.usersService.get(this.filter);
   }
 
   deactivate(user: UserResponse) {

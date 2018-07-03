@@ -7,6 +7,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
 import {SelectOption} from '../../form/select/options/select-option';
 import {LabelPosition} from '../../form/LabelPosition';
+import {UserAuthorities} from '../users.authorities';
 
 @Component({
   selector: 'app-users-management',
@@ -27,10 +28,8 @@ export class UsersManagementComponent implements OnInit {
               private optionsFactory: TranslatedOptionFactory
   ) {
     this.users = usersService.get(this.filter);
-    /*
-    authoritiesOptions: SelectOption[];
-  booleanOptions: SelectOption[]; FIXME provide data
-     */
+    this.authoritiesOptions = optionsFactory.optionsOf('options.authorities.', Object.keys(UserAuthorities));
+    this.booleanOptions = optionsFactory.optionsOfBoolean('options.boolean.true', 'options.boolean.false');
   }
 
   ngOnInit() {
@@ -42,7 +41,7 @@ export class UsersManagementComponent implements OnInit {
   }
 
   onSearch() {
-
+    // TODO: search
   }
 
   deactivate(user: UserResponse) {

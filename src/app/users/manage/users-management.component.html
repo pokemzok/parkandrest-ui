@@ -5,9 +5,8 @@
       <div class="col-md-2">
         <app-form-input
           [labelPosition]="labelPosition"
-          type="number"
           formCtrlName="username"
-          inputPlaceholder="{{'forms.parkingSpaceId' | translate}}"
+          inputPlaceholder="{{'forms.username' | translate}}"
           errorMsg="{{'forms.validation.maxChars' | translate}}"
           [errorMsgCols]="12"
           [inputCols]="12">
@@ -16,18 +15,16 @@
       <div class="col-md-2">
         <app-form-select
           [labelPosition]="labelPosition"
-          formCtrlName="authority"
-          [options]="authoritiesOptions"
-          inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+          formCtrlName="active"
+          [options]="booleanOptions"
           [inputCols]="12">
         </app-form-select>
       </div>
       <div class="col-md-2">
         <app-form-select
           [labelPosition]="labelPosition"
-          formCtrlName="active"
-          [options]="booleanOptions"
-          inputPlaceholder="{{'forms.parkingSpaceStatus' | translate}}"
+          formCtrlName="authority"
+          [options]="authoritiesOptions"
           [inputCols]="12">
         </app-form-select>
       </div>

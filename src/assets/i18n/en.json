@@ -64,6 +64,10 @@
       "OPERATOR": "Operator",
       "OWNER": "Owner",
       "ADMIN": "Admin"
+    },
+    "boolean":{
+      "true": "true",
+      "false": "false"
     }
   },
   "notifications": {

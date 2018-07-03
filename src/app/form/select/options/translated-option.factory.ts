@@ -7,6 +7,7 @@ export class TranslatedOptionFactory {
 
   constructor(private translateService: TranslateService) {
   }
+
   /**
    *
    * @param {T} params everything passed here would be casted to string and translated
@@ -35,4 +36,16 @@ export class TranslatedOptionFactory {
     return option;
   }
 
+  /**
+   *
+   * @param {string} trueI18nPath json path to true option translation
+   * @param {string} falseI18nPath json path to false option translation
+   * @returns an array of two SelectOption
+   */
+  optionsOfBoolean(trueI18nPath: string, falseI18nPath: string): SelectOption[] {
+    const options = [];
+    options.push(this.optionOf(trueI18nPath, ''));
+    options.push(this.optionOf(falseI18nPath, ''));
+    return options;
+  }
 }

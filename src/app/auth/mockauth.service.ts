@@ -37,6 +37,7 @@ export class MockAuthService implements Auth {
     ).ifPresent(credential => {
       this.toasterService.success('notifications.authenticated');
        this.authCookiesService.setAuthCookies(credential.authorization);
+
     }).orElse(() => {
       this.toasterService.error('notifications.authfailure');
     });

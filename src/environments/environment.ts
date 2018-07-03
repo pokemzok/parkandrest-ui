@@ -6,7 +6,7 @@
 export const ENVIRONMENT = {
   PRODUCTION: false,
   SERVER_OFFLINE: true,
-  NO_AUTH_MODE: true
+  NO_AUTH_MODE: false
 };
 export const PROTOCOL = 'http';
 export const HOST = 'localhost';

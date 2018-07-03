@@ -15,20 +15,20 @@ export class MockUserManagementService implements UserManagement {
   constructor(private toastr: TranslatedToastrFacade) {}
 
   add(request: NewUserRequest): NewUserResponse {
-    MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive, request.authorities));
+    MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive.toString(), request.authorities));
     return new NewUserResponse(request.username, true, moment().format(DATETIME_FORMAT));
   }
 
   activate(username: string) {
     Optional.of(MockedUsersCollection.getByUsername(username)).ifPresent(
-      user => user.isActive = true
+      user => user.isActive = true.toString()
     );
     this.toastr.success('notifications.userActivationSuccess');
   }
 
   deactivate(username: string) {
     Optional.of(MockedUsersCollection.getByUsername(username)).ifPresent(
-      user => user.isActive = false
+      user => user.isActive = false.toString()
     );
     this.toastr.success('notifications.userDeactivationSuccess');
   }

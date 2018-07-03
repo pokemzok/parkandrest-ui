@@ -4,13 +4,13 @@ export class UsersFilter {
 
   username: string;
   authority: string;
-  isActive: boolean;
+  isActive: string;
 
   static empty(): UsersFilter {
     return new UsersFilter(null, null, null );
   }
 
-  constructor(username: string, authority: string, isActive: boolean) {
+  constructor(username: string, authority: string, isActive: string) {
     this.username = username;
     this.authority = authority;
     this.isActive = isActive;

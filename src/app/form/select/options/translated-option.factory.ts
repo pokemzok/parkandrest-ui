@@ -11,13 +11,13 @@ export class TranslatedOptionFactory {
   /**
    *
    * @param {T} params everything passed here would be casted to string and translated
-   * @param {string} i18nPath json path ending with dot (common for every passed parameter) to which we want to add casted to string param
+   * @param {string} i18nPathSuffix json path ending with dot (common for every passed parameter) to which we want to add casted to string param
    * (for example 'options.parkingmeter.' + 'FREE', 'options.parkingmeter.' +'MAINTENANCE')
    */
-  optionsOf<T>(i18nPath: string, params: T[]): SelectOption[] {
+  optionsOf<T>(i18nPathSuffix: string, params: T[]): SelectOption[] {
     const options = [];
     params.forEach((param: T) => {
-      options.push(this.optionOf(i18nPath, param))
+      options.push(this.optionOf(i18nPathSuffix + param, param))
     });
     return options;
   }
@@ -25,12 +25,12 @@ export class TranslatedOptionFactory {
   /**
    *
    * @param {T} param everything passed here would be casted to string and translated
-   * @param {string} i18nPath json path ending with dot to which we want to add casted to string param
+   * @param {string} i18nPath json path with a translation
    * (for example 'options.parkingmeter.' + 'FREE')
    */
   optionOf<T>(i18nPath: string, param: T): SelectOption {
     const option = new SelectOption(param.toString());
-    this.translateService.get(i18nPath + param).subscribe((desc: string) => {
+    this.translateService.get(i18nPath).subscribe((desc: string) => {
       option.addDescription(desc);
     });
     return option;
@@ -44,8 +44,8 @@ export class TranslatedOptionFactory {
    */
   optionsOfBoolean(trueI18nPath: string, falseI18nPath: string): SelectOption[] {
     const options = [];
-    options.push(this.optionOf(trueI18nPath, ''));
-    options.push(this.optionOf(falseI18nPath, ''));
+    options.push(this.optionOf(trueI18nPath, 'true'));
+    options.push(this.optionOf(falseI18nPath, 'false'));
     return options;
   }
 }

@@ -3,10 +3,10 @@ export class UserResponse {
 
   username: string;
   registrationDate: string;
-  isActive: boolean;
+  isActive: string;
   authorities: string[];
 
-  constructor(username: string, registrationDate: string, isActive: boolean, authorities: string[]) {
+  constructor(username: string, registrationDate: string, isActive: string, authorities: string[]) {
     this.username = username;
     this.registrationDate = registrationDate;
     this.isActive = isActive;

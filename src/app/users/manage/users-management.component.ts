@@ -36,7 +36,7 @@ export class UsersManagementComponent implements OnInit {
     this.usersForm = new FormGroup({
       'username': new FormControl(null, [Validators.maxLength(255)]),
       'authority': new FormControl(null),
-      'active': new FormControl(null)
+      'isActive': new FormControl(null)
     })
   }
 

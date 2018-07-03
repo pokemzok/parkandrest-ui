@@ -15,7 +15,7 @@
       <div class="col-md-2">
         <app-form-select
           [labelPosition]="labelPosition"
-          formCtrlName="active"
+          formCtrlName="isActive"
           [options]="booleanOptions"
           [inputCols]="12">
         </app-form-select>
@@ -58,10 +58,10 @@
         <td>{{row.isActive}}</td>
         <td>{{row.authorities}}</td>
 
-        <td *ngIf="row.isActive">
+        <td *ngIf="row.isActive === 'true'">
           <button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button>
         </td>
-        <td *ngIf="!row.isActive">
+        <td *ngIf="row.isActive === 'false'">
           <button class="btn btn-secondary" (click)="activate(row)">{{'actions.activate' | translate}}</button>
         </td>
       </tr>

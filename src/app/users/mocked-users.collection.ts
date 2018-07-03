@@ -1,5 +1,6 @@
 import {UserAuthorities} from './users.authorities';
 import {UserResponse} from './user.response';
+import * as _ from 'underscore';
 
 export class MockedUsersCollection {
 
@@ -18,5 +19,9 @@ export class MockedUsersCollection {
 
   static users() {
     return MockedUsersCollection.userList;
+  }
+
+  static getByUsername(username: string): UserResponse {
+    return _.findWhere(MockedUsersCollection.userList, {username: username});
   }
 }

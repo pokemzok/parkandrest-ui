@@ -11,4 +11,12 @@ export class UserManagementService implements UserManagement {
     return new NewUserResponse(null, null, null);
   }
 
+  activate(username: string) {
+    alert('Implement me'); // TODO: implement
+  }
+
+  deactivate(username: string) {
+    alert('Implement me'); // TODO: implement
+  }
+
 }

@@ -8,4 +8,5 @@
   text-align: center;
   padding: 30px;
   border-top:  2px black solid;
+  z-index:1;
 }

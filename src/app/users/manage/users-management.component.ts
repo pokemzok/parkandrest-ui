@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UsersProviderInterface} from './users.provider.interface';
 import {UserResponse} from '../user.response';
 import {UsersFilter} from './users.filter';
+import {UserManagement} from '../new-user.interface';
 
 @Component({
   selector: 'app-users-management',
@@ -13,18 +14,18 @@ export class UsersManagementComponent implements OnInit {
   users: UserResponse[];
   filter = new UsersFilter();
 
-  constructor( @Inject('UsersService') private usersService: UsersProviderInterface ) {
+  constructor( @Inject('UsersService') private usersService: UsersProviderInterface , @Inject('UserManagementService')  private userManagementService: UserManagement) {
     this.users = usersService.get(this.filter);
   }
 
   ngOnInit() {}
 
   deactivate(user: UserResponse) {
-    alert(user.username + ' Deactivated (TODO: implement real action)'); // TODO: implement real action
+    this.userManagementService.deactivate(user.username);
   }
 
   activate(user: UserResponse) {
-    alert(user.username + ' Activated (TODO: implement real action)'); // TODO: implement real action
+    this.userManagementService.activate(user.username);
   }
 
 }

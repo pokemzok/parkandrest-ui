@@ -6,13 +6,31 @@ import {UserManagement} from './new-user.interface';
 import * as moment from 'moment';
 import {MockedUsersCollection} from './mocked-users.collection';
 import {NewUserResponse} from './new/new-user.response';
+import {Optional} from '../common/optional/optional';
+import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 
 @Injectable()
 export class MockUserManagementService implements UserManagement {
 
+  constructor(private toastr: TranslatedToastrFacade) {}
+
   add(request: NewUserRequest): NewUserResponse {
     MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive, request.authorities));
     return new NewUserResponse(request.username, true, moment().format(DATETIME_FORMAT));
+  }
+
+  activate(username: string) {
+    Optional.of(MockedUsersCollection.getByUsername(username)).ifPresent(
+      user => user.isActive = true
+    );
+    this.toastr.success('notifications.userActivationSuccess');
+  }
+
+  deactivate(username: string) {
+    Optional.of(MockedUsersCollection.getByUsername(username)).ifPresent(
+      user => user.isActive = false
+    );
+    this.toastr.success('notifications.userDeactivationSuccess');
   }
 
 }

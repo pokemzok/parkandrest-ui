@@ -45,15 +45,9 @@ import {MockUserManagementService} from './users/mock.user-management.service';
 import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
+import {RouteDefinitions} from './route-definitions';
 
-const routes: Routes = [
-  {path: '', component: LoginComponent}, // FIXME, should be main page after login
-  {path: 'login', component: LoginComponent},
-  {path: 'account/monitoring', canActivate: [AuthGuard], component: AccountMonitoringComponent},
-  {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent},
-  {path: 'users', canActivate: [AuthGuard], component: UsersComponent},
-  {path: 'drivermock', canActivate: [AuthGuard], component: DrivermockComponent},
-];
+const routes: Routes = RouteDefinitions.routes;
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -67,7 +61,7 @@ export function provideServices (): any[] {
   }
 }
 
-export function provideMockServices(): any[] {
+export function provideMockServices(): Provider[] {
   return [
     {provide: 'AuthService', useClass: MockAuthService},
     {provide: 'FinancialReportService', useClass: MockFinancialReportService},

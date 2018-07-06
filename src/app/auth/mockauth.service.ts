@@ -8,6 +8,8 @@ import {Injectable} from '@angular/core';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
+import {Router} from '@angular/router';
+import {AuthorityHomerouteMapping} from './authority-homeroute.mapping';
 
 @Injectable()
 export class MockAuthService implements Auth {
@@ -29,7 +31,7 @@ export class MockAuthService implements Auth {
     {request: new LoginRequest('owner', 'password'), authorization:  new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader)}
   ];
 
-  constructor (private authCookiesService: AuthCookiesService, private toasterService: TranslatedToastrFacade) {}
+  constructor (private authCookiesService: AuthCookiesService, private toasterService: TranslatedToastrFacade, private router: Router) {}
 
   authenticate(loginRequest: LoginRequest) {
     Optional.of(
@@ -37,7 +39,11 @@ export class MockAuthService implements Auth {
     ).ifPresent(credential => {
       this.toasterService.success('notifications.authenticated');
        this.authCookiesService.setAuthCookies(credential.authorization);
-
+       this.router.navigateByUrl(
+         AuthorityHomerouteMapping
+           .getFirstForAuthorities(credential.authorization.authorities)
+           .path
+       );
     }).orElse(() => {
       this.toasterService.error('notifications.authfailure');
     });

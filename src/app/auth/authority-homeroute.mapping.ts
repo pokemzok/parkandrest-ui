@@ -8,6 +8,7 @@ import {ParkingMeterComponent} from '../parkingmeter/parkingmeter.component';
 import {DrivermockComponent} from '../drivermock/drivermock.component';
 import * as _ from 'underscore';
 import {Optional} from '../common/optional/optional';
+import {LoginComponent} from '../login/login.component';
 
 // TODO: Testme
 export class AuthorityHomerouteMapping {
@@ -19,9 +20,19 @@ export class AuthorityHomerouteMapping {
     new AuthRoutePair(Authority.DRIVER, RouteDefinitions.getFirstRouteByComponent(DrivermockComponent)),
   ];
 
+  static getFirstForAuthorities(authorities: Authority[]): Route {
+   const sortedAuthorities = _.sortBy(authorities, function (authority) {
+     return authority.valueOf()
+   });
+   if (sortedAuthorities.length > 0) {
+     return AuthorityHomerouteMapping.getFirstForAuthority(sortedAuthorities[0]);
+   }
+   return RouteDefinitions.getFirstRouteByComponent(LoginComponent);
+  }
+
   static getFirstForAuthority(authority: Authority): Route {
     const result = Optional.of(
-      _.where(this.mapping, {authority: authority})
+      _.where(this.mapping, {auth: authority})
     ).getOrProvide(function () {
       throw new Error('Default home route is missing for authority: ' + authority);
     });

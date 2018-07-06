@@ -1,7 +1,10 @@
-
+/**
+ * Authorities sorted in order from most important, to least
+ * Order is necessary for route selection during login operation
+ */
 export enum Authority {
-  DRIVER,
-  OPERATOR,
   OWNER,
-  ADMIN
+  ADMIN,
+  OPERATOR,
+  DRIVER
 }

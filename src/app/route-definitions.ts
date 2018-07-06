@@ -10,10 +10,11 @@ import {Type} from '@angular/core';
 import {Optional} from './common/optional/optional';
 import * as _ from 'underscore';
 
+// TODO: add route for signout (popup similar to login, which appears during deauthentication, than we go back to login screen)
 export class RouteDefinitions {
 
   private static _routes: Routes = [
-    {path: '', component: LoginComponent}, // FIXME, should be main page after login
+    {path: '', component: LoginComponent},
     {path: 'login', component: LoginComponent},
     {path: 'account/monitoring', canActivate: [AuthGuard], component: AccountMonitoringComponent},
     {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent},
@@ -26,7 +27,6 @@ export class RouteDefinitions {
   }
 
 // TODO: Testme
-
   static getFirstRouteByComponent(componentType: Type<any>): Route {
     const routes = Optional.of(
       _.where(this._routes, {component: componentType})

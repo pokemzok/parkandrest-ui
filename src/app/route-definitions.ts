@@ -27,11 +27,15 @@ export class RouteDefinitions {
     return this._routes;
   }
 
+  static getLoginRoute(): Route {
+    return RouteDefinitions.getFirstRouteByComponent(LoginComponent);
+  }
+
 // TODO: Testme
   static getFirstRouteByComponent(componentType: Type<any>): Route {
     const routes = Optional.of(
       _.where(this._routes, {component: componentType})
-    ).getOrProvide(function() {
+    ).getOrProvide(function () {
       return [this.routes[0]];
     });
     return routes[0];

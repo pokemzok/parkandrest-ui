@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {Auth} from '../auth/auth.interface';
 
 @Component({
   selector: 'app-logout',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject('AuthService')private authService: Auth) { }
 
   ngOnInit() {
+    this.delay(1000).then(() => this.authService.deauthenticate());
   }
 
+   private delay(ms: number): Promise {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
 }

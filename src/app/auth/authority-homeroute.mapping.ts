@@ -8,13 +8,13 @@ import {ParkingMeterComponent} from '../parkingmeter/parkingmeter.component';
 import {DrivermockComponent} from '../drivermock/drivermock.component';
 import * as _ from 'underscore';
 import {Optional} from '../common/optional/optional';
-import {LoginComponent} from '../login/login.component';
+import {LogoutComponent} from '../logout/logout.component';
 
 // TODO: Testme
 export class AuthorityHomerouteMapping {
 
   private static mapping = [
-    new AuthRoutePair(Authority.NO_AUTHORITY, RouteDefinitions.getFirstRouteByComponent(LoginComponent)),
+    new AuthRoutePair(Authority.NO_AUTHORITY, RouteDefinitions.getFirstRouteByComponent(LogoutComponent)),
     new AuthRoutePair(Authority.OWNER, RouteDefinitions.getFirstRouteByComponent(AccountMonitoringComponent)),
     new AuthRoutePair(Authority.ADMIN, RouteDefinitions.getFirstRouteByComponent(UsersComponent)),
     new AuthRoutePair(Authority.OPERATOR, RouteDefinitions.getFirstRouteByComponent(ParkingMeterComponent)),
@@ -36,6 +36,7 @@ export class AuthorityHomerouteMapping {
     const result = Optional.of(
       _.where(this.mapping, {auth: authority})
     ).getOrProvide(function () {
+      console.log('Found no authority allowing to route to website content, returning logout route');
       return [AuthorityHomerouteMapping.getNoAuthorityMapping()];
     });
     return result[0].route;

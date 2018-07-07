@@ -40,7 +40,8 @@
   "header": {
     "welcome": "Welcome {{param}}, ",
     "logout": "Log Out",
-    "register": "Register new user"
+    "register": "Register new user",
+    "goodbye": "Signing Out. Have a nice day."
   },
   "info": {
     "accountMonitor": "Your result will appear here, after submitting the date"
@@ -75,6 +76,7 @@
     "SERVER_OFFLINE": "Server is Offline Choosing Mock Authentication Service",
     "authenticated": "Successfully Authenticated!",
     "authfailure": "Authentication Failed! Provided credentials are incorrect",
+    "deauth": "Signing out",
     "userCreationSuccess": "Successfully created a new user",
     "userActivationSuccess": "Successfully activated user",
     "userDeactivationSuccess": "Successfully deactivated user"

@@ -41,7 +41,7 @@
     "welcome": "Welcome {{param}}, ",
     "logout": "Log Out",
     "register": "Register new user",
-    "goodbye": "Signing Out. Have a nice day."
+    "goodbye": "Have a nice day! Signing Out.."
   },
   "info": {
     "accountMonitor": "Your result will appear here, after submitting the date"

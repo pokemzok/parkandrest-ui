@@ -3,6 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Event, NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {LoginComponent} from './login/login.component';
 import * as _ from 'underscore';
+import {LogoutComponent} from './logout/logout.component';
 
 @Component({
   selector: 'app-root',
@@ -33,16 +34,15 @@ export class AppComponent {
 
         if (event instanceof NavigationEnd) {
           // TODO: hide loading animation
-          // TODO: detect route and blur background with flag
-          this.onLoginRoute(activatedRoute);
+          this.onAuthenticationRelatedRoute(activatedRoute);
         }
 
       });
   }
 
-  private onLoginRoute(activatedRoute: ActivatedRoute) {
+  private onAuthenticationRelatedRoute(activatedRoute: ActivatedRoute) {
     const loginRoutes = _.find(activatedRoute.children, (activatedChildRoute: any) => {
-        return activatedChildRoute.component.name === LoginComponent.name;
+        return  _.contains([LoginComponent.name, LogoutComponent.name], activatedChildRoute.component.name);
       }
     );
     this._shouldBlurComponent = !_.isEmpty(loginRoutes);

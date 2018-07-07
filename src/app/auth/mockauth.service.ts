@@ -10,7 +10,7 @@ import * as _ from 'underscore';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 import {Router} from '@angular/router';
 import {AuthorityHomerouteMapping} from './authority-homeroute.mapping';
-import {RouteDefinitions} from '../route-definitions';
+import {RoutesDefinitionsWrapper} from '../routes-definitions.wrapper';
 
 @Injectable()
 export class MockAuthService implements Auth {
@@ -53,7 +53,7 @@ export class MockAuthService implements Auth {
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
     this.router.navigateByUrl(
-      RouteDefinitions.getLoginRoute().path
+      RoutesDefinitionsWrapper.getLoginRoute().path
     );
   }
 

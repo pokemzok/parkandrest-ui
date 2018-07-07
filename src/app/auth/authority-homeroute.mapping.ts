@@ -1,6 +1,6 @@
 import {Authority} from './authority';
 import {AuthRoutePair} from './auth-route.pair';
-import {RouteDefinitions} from '../route-definitions';
+import {RoutesDefinitionsWrapper} from '../routes-definitions.wrapper';
 import {AccountMonitoringComponent} from '../accountmonitoring/accountmonitoring.component';
 import {Route} from '@angular/router';
 import {UsersComponent} from '../users/users.component';
@@ -14,11 +14,11 @@ import {LogoutComponent} from '../logout/logout.component';
 export class AuthorityHomerouteMapping {
 
   private static readonly mapping = [
-    new AuthRoutePair(Authority.NO_AUTHORITY, RouteDefinitions.getFirstRouteByComponent(LogoutComponent)),
-    new AuthRoutePair(Authority.OWNER, RouteDefinitions.getFirstRouteByComponent(AccountMonitoringComponent)),
-    new AuthRoutePair(Authority.ADMIN, RouteDefinitions.getFirstRouteByComponent(UsersComponent)),
-    new AuthRoutePair(Authority.OPERATOR, RouteDefinitions.getFirstRouteByComponent(ParkingMeterComponent)),
-    new AuthRoutePair(Authority.DRIVER, RouteDefinitions.getFirstRouteByComponent(DrivermockComponent)),
+    new AuthRoutePair(Authority.NO_AUTHORITY, RoutesDefinitionsWrapper.getFirstRouteByComponent(LogoutComponent)),
+    new AuthRoutePair(Authority.OWNER, RoutesDefinitionsWrapper.getFirstRouteByComponent(AccountMonitoringComponent)),
+    new AuthRoutePair(Authority.ADMIN, RoutesDefinitionsWrapper.getFirstRouteByComponent(UsersComponent)),
+    new AuthRoutePair(Authority.OPERATOR, RoutesDefinitionsWrapper.getFirstRouteByComponent(ParkingMeterComponent)),
+    new AuthRoutePair(Authority.DRIVER, RoutesDefinitionsWrapper.getFirstRouteByComponent(DrivermockComponent)),
   ];
 
   static getFirstForAuthorities(authorities: Authority[]): Route {

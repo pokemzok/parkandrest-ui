@@ -16,7 +16,7 @@ export class LoginAuthGuard implements CanActivate {
               private cookies: AuthCookiesService) { // FIXME: cookies works like shit, they incorrectly store authorities
                                                     // (should return array instead of one borring string)
   }
-
+// TODO: fix circular dependency warning (will happen after I fix cookie service)
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isAuthenticated()) {
       this.toaster.warning('notifications.loginForbidden');

@@ -37,19 +37,19 @@ import {AuthenticationService} from './auth/authentication.service';
 import {FinancialReportService} from './accountmonitoring/financialreport.service';
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
-import { FormSelectComponent } from './form/select/select/form-select.component';
+import {FormSelectComponent} from './form/select/select/form-select.component';
 import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
-import { UsersManagementComponent } from './users/manage/users-management.component';
-import { NewUserComponent } from './users/new/new-user.component';
+import {UsersManagementComponent} from './users/manage/users-management.component';
+import {NewUserComponent} from './users/new/new-user.component';
 import {MockUserManagementService} from './users/mock.user-management.service';
 import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
-import {RouteDefinitions} from './route-definitions';
-import { LogoutComponent } from './logout/logout.component';
+import {LogoutComponent} from './logout/logout.component';
 import {LoginAuthGuard} from './auth/guard/login-authguard.service';
+import {ROUTES_DEFINITIONS} from './routes-definitions';
 
-const routes: Routes = RouteDefinitions.routes;
+export const routes: Routes = ROUTES_DEFINITIONS;
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');

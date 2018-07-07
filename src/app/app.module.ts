@@ -17,7 +17,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
 import {UsersComponent} from './users/users.component';
 import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
-import {AuthGuard} from './auth/authguard.service';
+import {AuthGuard} from './auth/guard/authguard.service';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './common/toaster/translated-toaster.service';
@@ -47,6 +47,7 @@ import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
 import {RouteDefinitions} from './route-definitions';
 import { LogoutComponent } from './logout/logout.component';
+import {LoginAuthGuard} from './auth/guard/login-authguard.service';
 
 const routes: Routes = RouteDefinitions.routes;
 
@@ -128,6 +129,7 @@ export function provideBackendServices(): Provider[] {
     AuthCookiesService,
     HealthCheckService,
     AuthGuard,
+    LoginAuthGuard,
     TranslatedToastrFacade,
     TranslatedOptionFactory,
     {provide: DateAdapter, useClass: MomentDateAdapter}

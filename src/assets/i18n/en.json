@@ -73,6 +73,7 @@
   },
   "notifications": {
     "forbidden": "No credentials provided. Access Forbidden.",
+    "loginForbidden": "You are already logged in",
     "SERVER_OFFLINE": "Server is Offline Choosing Mock Authentication Service",
     "authenticated": "Successfully Authenticated!",
     "authfailure": "Authentication Failed! Provided credentials are incorrect",

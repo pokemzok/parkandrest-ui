@@ -17,7 +17,7 @@ export class AuthCookiesService {
 
   setAuthCookies(authModel: AuthorizationModel) {
     this._authToken = authModel.authenticationHeader;
-    this._authorities = authModel.authorities.toString(); // TODO check result
+    this._authorities = authModel.authorities.toString(); // TODO fix the authority storage, perhaps change Authority enum to hold string value
     this.cookieService.set(AuthCookiesService.authTokenName, this._authToken);
     this.cookieService.set(AuthCookiesService.authoritiesName, this._authorities);
   }
@@ -25,6 +25,8 @@ export class AuthCookiesService {
   clearAuthCookies() {
     this.cookieService.delete(AuthCookiesService.authTokenName);
     this.cookieService.delete(AuthCookiesService.authoritiesName);
+    this._authToken = null;
+    this._authorities = null;
   }
 
   get authToken(): string {

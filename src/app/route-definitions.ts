@@ -2,7 +2,7 @@ import {DrivermockComponent} from './drivermock/drivermock.component';
 import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
 import {LoginComponent} from './login/login.component';
 import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
-import {AuthGuard} from './auth/authguard.service';
+import {AuthGuard} from './auth/guard/authguard.service';
 import {UsersComponent} from './users/users.component';
 import {Routes} from '@angular/router';
 import {Route} from '@angular/router/src/config';
@@ -10,12 +10,13 @@ import {Type} from '@angular/core';
 import {Optional} from './common/optional/optional';
 import * as _ from 'underscore';
 import {LogoutComponent} from './logout/logout.component';
+import {LoginAuthGuard} from './auth/guard/login-authguard.service';
 
 export class RouteDefinitions {
 
-  private static _routes: Routes = [
-    {path: '', component: LoginComponent},
-    {path: 'login', component: LoginComponent},
+  private static readonly _routes: Routes = [
+    {path: '', canActivate: [LoginAuthGuard], component: LoginComponent},
+    {path: 'login', canActivate: [LoginAuthGuard], component: LoginComponent},
     {path: 'account/monitoring', canActivate: [AuthGuard], component: AccountMonitoringComponent},
     {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent},
     {path: 'users', canActivate: [AuthGuard], component: UsersComponent},

@@ -1,9 +1,9 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/index';
 import {Inject, Injectable} from '@angular/core';
-import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
-import {ENVIRONMENT} from '../../environments/environment';
-import {Auth} from './auth.interface';
+import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
+import {ENVIRONMENT} from '../../../environments/environment';
+import {Auth} from '../auth.interface';
 
 @Injectable()
 export class AuthGuard implements CanActivate {

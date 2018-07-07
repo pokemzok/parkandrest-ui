@@ -13,7 +13,7 @@ import {LogoutComponent} from '../logout/logout.component';
 // TODO: Testme
 export class AuthorityHomerouteMapping {
 
-  private static mapping = [
+  private static readonly mapping = [
     new AuthRoutePair(Authority.NO_AUTHORITY, RouteDefinitions.getFirstRouteByComponent(LogoutComponent)),
     new AuthRoutePair(Authority.OWNER, RouteDefinitions.getFirstRouteByComponent(AccountMonitoringComponent)),
     new AuthRoutePair(Authority.ADMIN, RouteDefinitions.getFirstRouteByComponent(UsersComponent)),

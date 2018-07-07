@@ -1,0 +1,21 @@
+<route-modal #logoutModal
+             modalClass="modal-lg"
+             [hideCloseButton]="true"
+             [closeOnEscape]="false"
+             [closeOnOutsideClick]="false">
+  <modal-header>
+    <h1 class="text-center ">{{'welcomeMessage' | translate}}</h1>
+  </modal-header>
+  <modal-content>
+    <div class="row center-block">
+      <div class="col-md-8 col-md-offset-4">
+        LOGGING OUT MEJT
+      </div>
+    </div>
+  </modal-content>
+  <modal-footer >
+    <h6>
+      {{'footer.adminContact' | translate}}
+    </h6>
+  </modal-footer>
+</route-modal>

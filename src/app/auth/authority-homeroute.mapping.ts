@@ -14,6 +14,7 @@ import {LoginComponent} from '../login/login.component';
 export class AuthorityHomerouteMapping {
 
   private static mapping = [
+    new AuthRoutePair(Authority.NO_AUTHORITY, RouteDefinitions.getFirstRouteByComponent(LoginComponent)),
     new AuthRoutePair(Authority.OWNER, RouteDefinitions.getFirstRouteByComponent(AccountMonitoringComponent)),
     new AuthRoutePair(Authority.ADMIN, RouteDefinitions.getFirstRouteByComponent(UsersComponent)),
     new AuthRoutePair(Authority.OPERATOR, RouteDefinitions.getFirstRouteByComponent(ParkingMeterComponent)),
@@ -21,22 +22,26 @@ export class AuthorityHomerouteMapping {
   ];
 
   static getFirstForAuthorities(authorities: Authority[]): Route {
-   const sortedAuthorities = _.sortBy(authorities, function (authority) {
-     return authority.valueOf()
-   });
-   if (sortedAuthorities.length > 0) {
-     return AuthorityHomerouteMapping.getFirstForAuthority(sortedAuthorities[0]);
-   }
-   return RouteDefinitions.getFirstRouteByComponent(LoginComponent);
+    const sortedAuthorities = _.sortBy(authorities, function (authority) {
+      return authority.valueOf()
+    });
+    if (sortedAuthorities.length > 0) {
+      return AuthorityHomerouteMapping.getFirstForAuthority(sortedAuthorities[0]);
+    } else {
+      throw new Error('There was no authorities to select from');
+    }
   }
 
   static getFirstForAuthority(authority: Authority): Route {
     const result = Optional.of(
       _.where(this.mapping, {auth: authority})
     ).getOrProvide(function () {
-      throw new Error('Default home route is missing for authority: ' + authority);
+      return [AuthorityHomerouteMapping.getNoAuthorityMapping()];
     });
     return result[0].route;
   }
 
+  private static getNoAuthorityMapping(): AuthRoutePair {
+    return _.first(this.mapping);
+  }
 }

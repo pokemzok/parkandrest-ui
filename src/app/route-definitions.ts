@@ -9,8 +9,8 @@ import {Route} from '@angular/router/src/config';
 import {Type} from '@angular/core';
 import {Optional} from './common/optional/optional';
 import * as _ from 'underscore';
+import {LogoutComponent} from './logout/logout.component';
 
-// TODO: add route for signout (popup similar to login, which appears during deauthentication, than we go back to login screen)
 export class RouteDefinitions {
 
   private static _routes: Routes = [
@@ -20,6 +20,7 @@ export class RouteDefinitions {
     {path: 'parkingmeter', canActivate: [AuthGuard], component: ParkingMeterComponent},
     {path: 'users', canActivate: [AuthGuard], component: UsersComponent},
     {path: 'drivermock', canActivate: [AuthGuard], component: DrivermockComponent},
+    {path: 'logout', canActivate: [AuthGuard], component: LogoutComponent},
   ];
 
   static get routes(): Routes {

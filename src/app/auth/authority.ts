@@ -6,5 +6,6 @@ export enum Authority {
   OWNER,
   ADMIN,
   OPERATOR,
-  DRIVER
+  DRIVER,
+  NO_AUTHORITY
 }

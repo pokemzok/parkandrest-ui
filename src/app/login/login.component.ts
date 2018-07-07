@@ -11,7 +11,7 @@ import {Auth} from '../auth/auth.interface';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values */
+  readonly minUsernameLength: number = 4; /*TODO: provide with backoffice values, perhaps we would hold this values into js file? */
   readonly minPasswordLength: number = 7;
 
   constructor(@Inject('AuthService')private authService: Auth) { }
@@ -25,6 +25,5 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.authenticate(<LoginRequest>this.loginForm.getRawValue())
-    // TODO: route page
   }
 }

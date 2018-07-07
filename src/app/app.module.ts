@@ -46,6 +46,7 @@ import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
 import {RouteDefinitions} from './route-definitions';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = RouteDefinitions.routes;
 
@@ -98,7 +99,8 @@ export function provideBackendServices(): Provider[] {
     FormReadonlyComponent,
     FormSelectComponent,
     UsersManagementComponent,
-    NewUserComponent
+    NewUserComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

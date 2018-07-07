@@ -14,7 +14,7 @@ export class LogoutComponent implements OnInit {
     this.delay(1000).then(() => this.authService.deauthenticate());
   }
 
-   private delay(ms: number): Promise {
+   private delay(ms: number): Promise<void> {
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 }

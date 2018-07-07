@@ -52,7 +52,6 @@ export class MockAuthService implements Auth {
 
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
-    this.toasterService.success('notifications.deauth');
     this.router.navigateByUrl(
       RouteDefinitions.getLoginRoute().path
     );

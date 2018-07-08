@@ -1,10 +1,9 @@
 import {LoginRequest} from '../login/login.request';
 import {HttpClient} from '@angular/common/http';
 import {Auth} from './auth.interface';
-import {AuthCookiesService} from './authcookies.service';
+import {AuthCookiesService} from './cookies/authcookies.service';
 import {AuthorizationModel} from './authorization.model';
 import {LOGIN} from '../../environments/environment';
-import {isNullOrUndefined} from 'util';
 import {Injectable} from '@angular/core';
 
 @Injectable()
@@ -32,10 +31,6 @@ export class AuthenticationService implements  Auth {
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
     // TODO: another things
-  }
-
-  isAuthenticated(): boolean {
-    return !isNullOrUndefined(this.authCookiesService.authToken);
   }
 
 }

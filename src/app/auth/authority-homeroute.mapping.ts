@@ -7,7 +7,6 @@ import {UsersComponent} from '../users/users.component';
 import {ParkingMeterComponent} from '../parkingmeter/parkingmeter.component';
 import {DrivermockComponent} from '../drivermock/drivermock.component';
 import * as _ from 'underscore';
-import {Optional} from '../common/optional/optional';
 import {LogoutComponent} from '../logout/logout.component';
 
 // TODO: Testme
@@ -33,12 +32,11 @@ export class AuthorityHomerouteMapping {
   }
 
   static getFirstForAuthority(authority: Authority): Route {
-    const result = Optional.of(
-      _.where(this.mapping, {auth: authority})
-    ).getOrProvide(function () {
+    const result = _.where(this.mapping, {auth: authority});
+    if (result.length === 0) {
       console.log('Found no authority allowing to route to website content, returning logout route');
-      return [AuthorityHomerouteMapping.getNoAuthorityMapping()];
-    });
+      return AuthorityHomerouteMapping.getNoAuthorityMapping().route;
+    }
     return result[0].route;
   }
 

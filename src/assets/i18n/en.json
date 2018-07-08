@@ -38,7 +38,7 @@
     }
   },
   "header": {
-    "welcome": "Welcome {{param}}, ",
+    "welcome": "You are logged in, ",
     "logout": "Log Out",
     "register": "Register new user",
     "goodbye": "Have a nice day! Signing Out.."

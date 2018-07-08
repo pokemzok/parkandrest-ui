@@ -11,7 +11,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {FooterComponent} from './footer/footer.component';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AuthCookiesService} from './auth/authcookies.service';
+import {AuthCookiesService} from './auth/cookies/authcookies.service';
 import {HealthCheckService} from './healthcheck/healthcheck.service';
 import {RouterModule, Routes} from '@angular/router';
 import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';

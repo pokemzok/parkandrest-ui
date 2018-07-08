@@ -3,10 +3,8 @@ import {LoginRequest} from '../login/login.request';
 import {Optional} from '../common/optional/optional';
 import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';
-import {AuthCookiesService} from './authcookies.service';
+import {AuthCookiesService} from './cookies/authcookies.service';
 import {Injectable} from '@angular/core';
-import {isNullOrUndefined} from 'util';
-import * as _ from 'underscore';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 import {Router} from '@angular/router';
 import {AuthorityHomerouteMapping} from './authority-homeroute.mapping';
@@ -57,7 +55,4 @@ export class MockAuthService implements Auth {
     );
   }
 
-  isAuthenticated(): boolean {
-    return !isNullOrUndefined(this.authCookiesService.authToken) && !_.isEmpty(this.authCookiesService.authToken);
-  }
 }

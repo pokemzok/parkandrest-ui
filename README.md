@@ -13,6 +13,10 @@ To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
 ##Known problem:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection
+2. Extracting routes from app-module is problematic. You can't store as a static param in class, you have to export the const to make it work (compilator limitarion)
+3. ngx-cookie-service - sometimes will not delete a cookie, workaround is to provide an optional param (path) to method
+4. angular migration destroyed test compatibility
+5. use Enums with caution because they work quite differently than in Java
 
 ##TODO:
 * mocki

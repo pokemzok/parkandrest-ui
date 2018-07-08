@@ -1,21 +1,23 @@
 import {Authority} from './authority';
 import {Route} from '@angular/router';
+import {Component} from '@angular/core';
 
-export class AuthRoutePair {
+// FIXME AuthorityComponent interface instead of T
+export class AuthRoutePair<T> {
 
   private _auth: Authority;
-  private _route: Route;
+  private _component: T;
 
-  constructor(auth: Authority, route: Route) {
+  constructor(auth: Authority, component: T) {
     this._auth = auth;
-    this._route = route;
+    this._component = component;
   }
 
   get auth(): Authority {
     return this._auth;
   }
 
-  get route(): Route {
-    return this._route;
+  get component(): T {
+    return this._component;
   }
 }

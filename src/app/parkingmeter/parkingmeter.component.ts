@@ -7,13 +7,14 @@ import {ParkingSpaceResponse} from './parkingspace.response';
 import {SelectOption} from '../form/select/options/select-option';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
 import {ParkingSpaceStatus} from './parkingspace.status';
+import {AuthorityComponent} from '../auth/authority.component';
 
 @Component({
   selector: 'app-parkingmeter',
   templateUrl: './parkingmeter.component.html',
   styleUrls: ['./parkingmeter.component.css']
 })
-export class ParkingMeterComponent implements OnInit {
+export class ParkingMeterComponent implements OnInit, AuthorityComponent {
 
   parkingMeterForm: FormGroup;
   labelPosition = LabelPosition.NONE;

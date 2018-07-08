@@ -4,6 +4,7 @@ import {Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 import {ENVIRONMENT} from '../../../environments/environment';
 import {AuthCookiesService} from '../cookies/authcookies.service';
+import {RoutesDefinitionsCollection} from '../../routes-definitions.collection';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -20,7 +21,9 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (!this.cookies.containsSecurityToken() && !AuthGuard.noAuthModeAvailable()) {
       this.toaster.warning('notifications.forbidden');
-      this.router.navigate(['/login']);
+      this.router.navigateByUrl(
+         RoutesDefinitionsCollection.getInstance().getLoginRoute().path
+      );
       return false;
     }
     return true;

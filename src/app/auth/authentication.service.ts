@@ -5,11 +5,13 @@ import {AuthCookiesService} from './cookies/authcookies.service';
 import {AuthorizationModel} from './authorization.model';
 import {LOGIN} from '../../environments/environment';
 import {Injectable} from '@angular/core';
+import {RoutesDefinitionsCollection} from '../routes-definitions.collection';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class AuthenticationService implements  Auth {
 
-  constructor(private http: HttpClient, private authCookiesService: AuthCookiesService) {
+  constructor(private http: HttpClient, private authCookiesService: AuthCookiesService, private router: Router) {
   }
 
   authenticate(login: LoginRequest) {
@@ -30,7 +32,9 @@ export class AuthenticationService implements  Auth {
 
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
-    // TODO: another things
+    this.router.navigateByUrl(
+      RoutesDefinitionsCollection.getInstance().getLoginRoute().path
+    );
   }
 
 }

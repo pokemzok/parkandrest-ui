@@ -7,12 +7,11 @@ import {AuthCookiesService} from './cookies/authcookies.service';
 import {Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 import {Router} from '@angular/router';
-import {AuthorityHomerouteMapping} from './authority-homeroute.mapping';
-import {RoutesDefinitionsWrapper} from '../routes-definitions.wrapper';
+import {AuthorityToComponentMapping} from './authority-component.mapping';
+import {RoutesDefinitionsCollection} from '../routes-definitions.collection';
 
 @Injectable()
 export class MockAuthService implements Auth {
-
 
   private static readonly authorityHeader = 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImF1dGhvcml0aWVzIjoiT1BFUkFUT1Is' +
     'QURNSU4sRFJJVkVSLE9XTkVSIiwiZXhwIjoxNTIzMzY4ODUxfQ.ina2f-DN7DTJw1bAGYCWYFF46HPRzEIlSkdZd9vNs-ivyjWhJg8wMCsh5XnuLjuvdep' +
@@ -39,8 +38,10 @@ export class MockAuthService implements Auth {
       this.toasterService.success('notifications.authenticated');
        this.authCookiesService.setAuthCookies(credential.authorization);
        this.router.navigateByUrl(
-         AuthorityHomerouteMapping
-           .getFirstForAuthorities(credential.authorization.authorities)
+         RoutesDefinitionsCollection
+           .getInstance()
+           .getFirstRouteByComponent(
+             AuthorityToComponentMapping.getFirstForAuthorities(credential.authorization.authorities))
            .path
        );
     }).orElse(() => {
@@ -51,7 +52,7 @@ export class MockAuthService implements Auth {
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
     this.router.navigateByUrl(
-      RoutesDefinitionsWrapper.getLoginRoute().path
+      RoutesDefinitionsCollection.getInstance().getLoginRoute().path
     );
   }
 

@@ -1,5 +1,5 @@
 import {Authority} from './authority';
-import {AuthRoutePair} from './auth-route.pair';
+import {AuthComponentTypePair} from './auth-component-type.pair';
 import {AccountMonitoringComponent} from '../accountmonitoring/accountmonitoring.component';
 import {UsersComponent} from '../users/users.component';
 import {ParkingMeterComponent} from '../parkingmeter/parkingmeter.component';
@@ -7,18 +7,19 @@ import {DrivermockComponent} from '../drivermock/drivermock.component';
 import * as _ from 'underscore';
 import {LogoutComponent} from '../logout/logout.component';
 import {Type} from '@angular/core';
+import {AuthorityComponent} from './authority.component';
 
 export class AuthorityToComponentMapping {
 
   private static readonly mapping = [
-    new AuthRoutePair(Authority.NO_AUTHORITY, LogoutComponent),
-    new AuthRoutePair(Authority.OWNER, AccountMonitoringComponent),
-    new AuthRoutePair(Authority.ADMIN, UsersComponent),
-    new AuthRoutePair(Authority.OPERATOR, ParkingMeterComponent),
-    new AuthRoutePair(Authority.DRIVER, DrivermockComponent),
+    new AuthComponentTypePair(Authority.NO_AUTHORITY, LogoutComponent),
+    new AuthComponentTypePair(Authority.OWNER, AccountMonitoringComponent),
+    new AuthComponentTypePair(Authority.ADMIN, UsersComponent),
+    new AuthComponentTypePair(Authority.OPERATOR, ParkingMeterComponent),
+    new AuthComponentTypePair(Authority.DRIVER, DrivermockComponent),
   ];
 
-  static getFirstForAuthorities(authorities: Authority[]): Type<any> {
+  static getFirstForAuthorities(authorities: Authority[]): Type<AuthorityComponent> {
     const sortedAuthorities = _.sortBy(authorities, function (authority) {
       return authority.valueOf()
     });
@@ -29,7 +30,7 @@ export class AuthorityToComponentMapping {
     }
   }
 
-  static getFirstForAuthority(authority: Authority): Type<any> {
+  static getFirstForAuthority(authority: Authority): Type<AuthorityComponent> {
     const result = _.where(this.mapping, {auth: authority});
     if (result.length === 0) {
       console.log('Found no authority allowing to route to website content, returning logout route');
@@ -38,7 +39,7 @@ export class AuthorityToComponentMapping {
     return result[0].component;
   }
 
-  private static getNoAuthorityMapping(): AuthRoutePair<Type<any>> {
+  private static getNoAuthorityMapping(): AuthComponentTypePair {
     return _.first(this.mapping);
   }
 }

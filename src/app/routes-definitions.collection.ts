@@ -5,6 +5,7 @@ import {Type} from '@angular/core';
 import {Optional} from './common/optional/optional';
 import * as _ from 'underscore';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
+import {AuthorityComponent} from './auth/authority.component';
 
 /**
  * Singleton class for making operation on routes definitions array
@@ -35,7 +36,7 @@ export class RoutesDefinitionsCollection {
   }
 
 // TODO: Testme
-  getFirstRouteByComponent(componentType: Type<any>): Route {
+  getFirstRouteByComponent(componentType: Type<AuthorityComponent>): Route {
     const componentRoutes = Optional.of(
       _.where(this._routes, {component: componentType})
     ).getOrProvide(function () {

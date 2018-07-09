@@ -1,8 +1,6 @@
 import {Authority} from './authority';
-import {Route} from '@angular/router';
-import {Component} from '@angular/core';
 
-// FIXME AuthorityComponent interface instead of T
+// FIXME AuthorityComponent interface instead of T/ rename to AuthComponent
 export class AuthRoutePair<T> {
 
   private _auth: Authority;

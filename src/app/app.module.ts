@@ -13,11 +13,10 @@ import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthCookiesService} from './auth/cookies/authcookies.service';
 import {HealthCheckService} from './healthcheck/healthcheck.service';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
 import {UsersComponent} from './users/users.component';
 import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
-import {AuthGuard} from './auth/guard/authguard.service';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './common/toaster/translated-toaster.service';
@@ -47,9 +46,9 @@ import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
 import {LogoutComponent} from './logout/logout.component';
 import {LoginAuthGuard} from './auth/guard/login-authguard.service';
+import {AuthGuard} from './auth/guard/authguard.service';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
 
-export const routes: Routes = ROUTES_DEFINITIONS;
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -116,7 +115,7 @@ export function provideBackendServices(): Provider[] {
     }),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(ROUTES_DEFINITIONS),
     ModalModule,
     MomentModule,
     MatDatepickerModule,

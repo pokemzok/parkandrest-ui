@@ -18,32 +18,40 @@ export class MockAuthService implements Auth {
     'PbTp5Ey-P0BkZLl2ymw ';
 
   private static readonly validCredentials = [
-    {request: new LoginRequest('admin', 'password'),
-      authorization: new AuthorizationModel([Authority.ADMIN], MockAuthService.authorityHeader)},
-    {request: new LoginRequest('fulladmin', 'password'),
-      authorization: new AuthorizationModel([Authority.ADMIN, Authority.OPERATOR, Authority.OWNER, Authority.DRIVER], MockAuthService.authorityHeader)},
-    {request: new LoginRequest('operator', 'password'),
-      authorization:  new AuthorizationModel([Authority.OPERATOR], MockAuthService.authorityHeader)},
-    {request: new LoginRequest('driver', 'password'),
-      authorization:  new AuthorizationModel([Authority.DRIVER], MockAuthService.authorityHeader)},
-    {request: new LoginRequest('owner', 'password'), authorization:  new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader)}
+    {
+      request: new LoginRequest('admin', 'password'),
+      authorization: new AuthorizationModel([Authority.ADMIN], MockAuthService.authorityHeader)
+    },
+    {
+      request: new LoginRequest('fulladmin', 'password'),
+      authorization: new AuthorizationModel([Authority.ADMIN, Authority.OPERATOR, Authority.OWNER, Authority.DRIVER], MockAuthService.authorityHeader)
+    },
+    {
+      request: new LoginRequest('operator', 'password'),
+      authorization: new AuthorizationModel([Authority.OPERATOR], MockAuthService.authorityHeader)
+    },
+    {
+      request: new LoginRequest('driver', 'password'),
+      authorization: new AuthorizationModel([Authority.DRIVER], MockAuthService.authorityHeader)
+    },
+    {request: new LoginRequest('owner', 'password'), authorization: new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader)}
   ];
 
-  constructor (private authCookiesService: AuthCookiesService, private toasterService: TranslatedToastrFacade, private router: Router) {}
+  constructor(private authCookiesService: AuthCookiesService, private toasterService: TranslatedToastrFacade, private router: Router) {
+  }
 
   authenticate(loginRequest: LoginRequest) {
     Optional.of(
       MockAuthService.validCredentials.find(value => value.request.equals(loginRequest))
     ).ifPresent(credential => {
       this.toasterService.success('notifications.authenticated');
-       this.authCookiesService.setAuthCookies(credential.authorization);
-       this.router.navigateByUrl(
-         RoutesDefinitionsCollection
-           .getInstance()
-           .getFirstRouteByComponent(
-             AuthorityToComponentMapping.getFirstForAuthorities(credential.authorization.authorities))
-           .path
-       );
+      this.authCookiesService.setAuthCookies(credential.authorization);
+      const selectedRoute = RoutesDefinitionsCollection
+        .getInstance()
+        .getFirstRouteByComponent(
+          AuthorityToComponentMapping.getFirstForAuthorities(credential.authorization.authorities)
+        );
+      this.router.navigateByUrl(selectedRoute.path);
     }).orElse(() => {
       this.toasterService.error('notifications.authfailure');
     });

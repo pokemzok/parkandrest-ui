@@ -59,9 +59,10 @@ export class MockAuthService implements Auth {
 
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
-    this.router.navigateByUrl(
-      RoutesDefinitionsCollection.getInstance().getLoginRoute().path
-    );
+    const loginRoute = RoutesDefinitionsCollection
+      .getInstance()
+      .getLoginRoute();
+    this.router.navigateByUrl(loginRoute.path);
   }
 
 }

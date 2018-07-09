@@ -17,13 +17,10 @@ export class LoginAuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.cookies.containsSecurityToken()) {
       this.toaster.warning('notifications.loginForbidden');
-      this.router.navigateByUrl(
-        RoutesDefinitionsCollection
-          .getInstance()
-          .getFirstRouteByComponent(
-            AuthorityToComponentMapping.getFirstForAuthorities(this.cookies.authorities))
-          .path
-      );
+      const selectedRoute =  RoutesDefinitionsCollection
+        .getInstance()
+        .getFirstRouteByComponent(AuthorityToComponentMapping.getFirstForAuthorities(this.cookies.authorities));
+      this.router.navigateByUrl(selectedRoute.path);
       return false;
     }
     return true;

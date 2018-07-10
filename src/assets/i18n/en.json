@@ -79,7 +79,8 @@
     "authfailure": "Authentication Failed! Provided credentials are incorrect",
     "userCreationSuccess": "Successfully created a new user",
     "userActivationSuccess": "Successfully activated user",
-    "userDeactivationSuccess": "Successfully deactivated user"
+    "userDeactivationSuccess": "Successfully deactivated user",
+    "unauthorized": "User does not have required authority to view this page. Routing back to main page."
   },
   "table" : {
     "parkingSpaceId": "Parking space id",

@@ -34,6 +34,10 @@ export class AuthCookiesService {
     return !isNullOrUndefined(this.authToken) && !_.isEmpty(this.authToken)
   }
 
+  containsAuthority(authority: Authority): boolean {
+    return _.contains(this.authorities, authority);
+  }
+
   get authToken(): string {
     if (isNullOrUndefined(this._authToken)) {
       this._authToken = this.cookieService.get(AuthCookiesService.AUTH_TOKEN_NAME);

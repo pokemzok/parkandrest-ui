@@ -46,8 +46,11 @@ import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
 import {LogoutComponent} from './logout/logout.component';
 import {LoginAuthGuard} from './auth/guard/login-authguard.service';
-import {AuthGuard} from './auth/guard/authguard.service';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
+import {OwnerAuthGuard} from './auth/guard/owner-authguard.service';
+import {OperatorAuthGuard} from './auth/guard/operator-authguard.service';
+import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
+import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -127,8 +130,11 @@ export function provideBackendServices(): Provider[] {
     CookieService,
     AuthCookiesService,
     HealthCheckService,
-    AuthGuard,
+    OwnerAuthGuard,
     LoginAuthGuard,
+    OperatorAuthGuard,
+    AdminAuthGuard,
+    LogoutAuthGuard,
     TranslatedToastrFacade,
     TranslatedOptionFactory,
     {provide: DateAdapter, useClass: MomentDateAdapter}

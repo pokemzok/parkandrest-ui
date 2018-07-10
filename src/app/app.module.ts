@@ -52,6 +52,7 @@ import {OperatorAuthGuard} from './auth/guard/operator-authguard.service';
 import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
 import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
 import {DriverAuthGuard} from './auth/guard/driver-authguard.service';
+import { HasAuthDirective } from './auth/directive/has-auth.directive';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -104,7 +105,8 @@ export function provideBackendServices(): Provider[] {
     FormSelectComponent,
     UsersManagementComponent,
     NewUserComponent,
-    LogoutComponent
+    LogoutComponent,
+    HasAuthDirective
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,6 @@
   <a routerLink="account/monitoring">{{'navbar.monitor' | translate}}</a>
   <a routerLink="parkingmeter">{{'navbar.parkingmeter' | translate}}</a>
   <a routerLink="users">{{'navbar.users' | translate}}</a>
-  <a routerLink="drivermock">{{'navbar.mock' | translate}}</a>
+  <a appHasAuth="{{driverAuthority}}" routerLink="drivermock">{{'navbar.mock' | translate}}</a>
   <a routerLink="logout">{{'navbar.logout' | translate}}</a>
 </nav>

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Authority} from '../auth/authority';
 
 @Component({
   selector: 'app-navbar',
@@ -6,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+
+  driverAuthority = Authority.DRIVER;
 
   constructor() { }
 

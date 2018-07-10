@@ -51,6 +51,7 @@ import {OwnerAuthGuard} from './auth/guard/owner-authguard.service';
 import {OperatorAuthGuard} from './auth/guard/operator-authguard.service';
 import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
 import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
+import {DriverAuthGuard} from './auth/guard/driver-authguard.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -135,6 +136,7 @@ export function provideBackendServices(): Provider[] {
     OperatorAuthGuard,
     AdminAuthGuard,
     LogoutAuthGuard,
+    DriverAuthGuard,
     TranslatedToastrFacade,
     TranslatedOptionFactory,
     {provide: DateAdapter, useClass: MomentDateAdapter}

@@ -18,7 +18,7 @@ export abstract class SecureAuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.cookies.containsSecurityToken() && !SecureAuthGuard.noAuthModeAvailable()) {
+    if (!this.cookies.containsSecurityToken() && !SecureAuthGuard.noAuthModeAvailable()) { // FIXME change to ngrx store
       this.toaster.warning('notifications.forbidden');
       this.router.navigateByUrl(
         RoutesDefinitionsCollection.getInstance().getLoginRoute().path

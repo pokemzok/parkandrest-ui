@@ -14,15 +14,15 @@ export class HasAuthDirective implements OnInit, OnDestroy {
   private subscription: Subscription;
 
   // FIXME: correct implementation - does not work
-  constructor(elementRef: ElementRef, cookies: AuthCookiesService, private authStore: Store<{authorization: AuthorizationModel}>) {
+  constructor(elementRef: ElementRef, cookies: AuthCookiesService, private authStore: Store<AuthorizationModel>) {
 
-   /* let hasAllAuthorities = false;
-    _.each(this.appHasAuth, function (authority) {
-      hasAllAuthorities = hasAllAuthorities && cookies.containsAuthority(authority);
-    });
-    if (!hasAllAuthorities) {
-      elementRef.nativeElement.remove();
-    }*/
+    /* let hasAllAuthorities = false;
+     _.each(this.appHasAuth, function (authority) {
+       hasAllAuthorities = hasAllAuthorities && cookies.containsAuthority(authority);
+     });
+     if (!hasAllAuthorities) {
+       elementRef.nativeElement.remove();
+     }*/
   }
 
   ngOnInit(): void {

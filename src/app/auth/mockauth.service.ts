@@ -44,7 +44,7 @@ export class MockAuthService implements Auth {
     private authCookiesService: AuthCookiesService,
     private toasterService: TranslatedToastrFacade,
     private router: Router,
-    private authStore: Store<{authorization: AuthorizationModel}>
+    private authStore: Store< AuthorizationModel>
   ) {}
 
   authenticate(loginRequest: LoginRequest) {

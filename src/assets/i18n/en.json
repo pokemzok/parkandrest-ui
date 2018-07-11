@@ -80,7 +80,8 @@
     "userCreationSuccess": "Successfully created a new user",
     "userActivationSuccess": "Successfully activated user",
     "userDeactivationSuccess": "Successfully deactivated user",
-    "unauthorized": "User does not have required authority to view this page. Routing back to main page."
+    "unauthorized": "User does not have required authority to view this page. Routing back to main page.",
+    "authStoreFailure" : "There was a problem with credentials. Please contact your administrator."
   },
   "table" : {
     "parkingSpaceId": "Parking space id",

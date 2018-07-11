@@ -23,7 +23,7 @@ export class AuthorizationModel {
   }
 
   containsSecurityToken(): boolean {
-    return !isNullOrUndefined(this._authorities) && !_.isEmpty(this._authenticationHeader);
+    return !isNullOrUndefined(this._authenticationHeader) && !_.isEmpty(this._authenticationHeader);
   }
 
   containsAuthority(authority: Authority): boolean {

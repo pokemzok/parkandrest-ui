@@ -8,13 +8,14 @@ import * as _ from 'underscore';
 @Injectable()
 export class AuthCookiesService {
 
-  private static readonly  AUTH_TOKEN_NAME = 'authToken';
+  private static readonly AUTH_TOKEN_NAME = 'authToken';
   private static readonly AUTHORITIES_NAME = 'authorities';
 
   private _authToken: string;
   private _authorities: Authority[];
 
-  constructor (private cookieService: CookieService) {}
+  constructor(private cookieService: CookieService) {
+  }
 
   setAuthCookies(authModel: AuthorizationModel) {
     this._authToken = authModel.authenticationHeader;
@@ -29,6 +30,7 @@ export class AuthCookiesService {
     this._authToken = null;
     this._authorities = null;
   }
+
   // TODO: create a service which would monitor and destroys security Token when it times out
   containsSecurityToken(): boolean {
     return !isNullOrUndefined(this.authToken) && !_.isEmpty(this.authToken)
@@ -47,10 +49,12 @@ export class AuthCookiesService {
 
   get authorities(): Authority[] {
     if (isNullOrUndefined(this._authorities)) {
-      const parsedAuthoritiesArray: Authority[] = JSON.parse(this.cookieService.get(AuthCookiesService.AUTHORITIES_NAME));
-      this._authorities = parsedAuthoritiesArray;
+      const unparsedAuthoritiesArrray = this.cookieService.get(AuthCookiesService.AUTHORITIES_NAME);
+      if (!isNullOrUndefined(unparsedAuthoritiesArrray) && !_.isEmpty(unparsedAuthoritiesArrray)) {
+        this._authorities = JSON.parse(this.cookieService.get(AuthCookiesService.AUTHORITIES_NAME));;
+      }
     }
-     return this._authorities;
+    return this._authorities;
   }
 
 

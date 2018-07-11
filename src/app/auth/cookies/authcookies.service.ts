@@ -14,7 +14,7 @@ export class AuthCookiesService {
   private _authToken: string;
   private _authorities: Authority[];
 
-  constructor(private cookieService: CookieService) {
+  constructor(private cookieService: CookieService  ) {
   }
 
   setAuthCookies(authModel: AuthorizationModel) {
@@ -51,7 +51,7 @@ export class AuthCookiesService {
     if (isNullOrUndefined(this._authorities)) {
       const unparsedAuthoritiesArrray = this.cookieService.get(AuthCookiesService.AUTHORITIES_NAME);
       if (!isNullOrUndefined(unparsedAuthoritiesArrray) && !_.isEmpty(unparsedAuthoritiesArrray)) {
-        this._authorities = JSON.parse(this.cookieService.get(AuthCookiesService.AUTHORITIES_NAME));;
+        this._authorities = JSON.parse(this.cookieService.get(AuthCookiesService.AUTHORITIES_NAME));
       }
     }
     return this._authorities;

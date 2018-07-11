@@ -53,7 +53,8 @@ import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
 import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
 import {DriverAuthGuard} from './auth/guard/driver-authguard.service';
 import { HasAuthDirective } from './auth/directive/has-auth.directive';
-import {NgReduxModule} from '@angular-redux/store';
+import {StoreModule} from '@ngrx/store';
+import {authorityReducer} from './auth/store/authority-reducer';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -129,7 +130,7 @@ export function provideBackendServices(): Provider[] {
     MatNativeDateModule,
     MatMomentDateModule,
     MatTabsModule,
-    NgReduxModule
+    StoreModule.forRoot({authorization: authorityReducer})
   ],
   providers: [
     CookieService,

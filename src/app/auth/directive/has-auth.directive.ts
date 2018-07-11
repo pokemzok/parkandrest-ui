@@ -1,7 +1,9 @@
 import {Directive, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {Authority} from '../authority';
 import {AuthCookiesService} from '../cookies/authcookies.service';
-import {SubscriptionLike} from 'rxjs/src/internal/types';
+import {Store} from '@ngrx/store';
+import {Subscription} from 'rxjs/index';
+import {AuthorizationModel} from '../authorization.model';
 
 @Directive({
   selector: '[appHasAuth]'
@@ -9,10 +11,11 @@ import {SubscriptionLike} from 'rxjs/src/internal/types';
 export class HasAuthDirective implements OnInit, OnDestroy {
 
   @Input() appHasAuth: Authority[] = [];
-  private subscription: SubscriptionLike;
+  private subscription: Subscription;
 
   // FIXME: correct implementation - does not work
-  constructor(elementRef: ElementRef, cookies: AuthCookiesService) {
+  constructor(elementRef: ElementRef, cookies: AuthCookiesService, private authStore: Store<{authorization: AuthorizationModel}>) {
+
    /* let hasAllAuthorities = false;
     _.each(this.appHasAuth, function (authority) {
       hasAllAuthorities = hasAllAuthorities && cookies.containsAuthority(authority);
@@ -23,9 +26,13 @@ export class HasAuthDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.subscription = this.authStore.select('authorization').subscribe(value => {
+      console.log(value);
+    });
   }
 
   ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
 }

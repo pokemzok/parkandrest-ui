@@ -9,6 +9,9 @@ import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.servi
 import {Router} from '@angular/router';
 import {AuthorityToComponentMapping} from './authority-component.mapping';
 import {RoutesDefinitionsCollection} from '../routes-definitions.collection';
+import {Store} from '@ngrx/store';
+import {Authenticate} from './store/actions/authenticate';
+import {Deauthenticate} from './store/actions/deauthenticate';
 
 @Injectable()
 export class MockAuthService implements Auth {
@@ -37,8 +40,12 @@ export class MockAuthService implements Auth {
     {request: new LoginRequest('owner', 'password'), authorization: new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader)}
   ];
 
-  constructor(private authCookiesService: AuthCookiesService, private toasterService: TranslatedToastrFacade, private router: Router) {
-  }
+  constructor(
+    private authCookiesService: AuthCookiesService,
+    private toasterService: TranslatedToastrFacade,
+    private router: Router,
+    private authStore: Store<{authorization: AuthorizationModel}>
+  ) {}
 
   authenticate(loginRequest: LoginRequest) {
     Optional.of(
@@ -46,6 +53,7 @@ export class MockAuthService implements Auth {
     ).ifPresent(credential => {
       this.toasterService.success('notifications.authenticated');
       this.authCookiesService.setAuthCookies(credential.authorization);
+      this.authStore.dispatch(new Authenticate(credential.authorization));
       const selectedRoute = RoutesDefinitionsCollection
         .getInstance()
         .getFirstRouteByComponent(
@@ -59,6 +67,7 @@ export class MockAuthService implements Auth {
 
   deauthenticate() {
     this.authCookiesService.clearAuthCookies();
+    this.authStore.dispatch(new Deauthenticate());
     const loginRoute = RoutesDefinitionsCollection
       .getInstance()
       .getLoginRoute();

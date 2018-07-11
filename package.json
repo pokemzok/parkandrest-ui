@@ -12,7 +12,6 @@
   },
   "private": true,
   "dependencies": {
-    "@angular-redux/store": "^9.0.0",
     "@angular/animations": "6.0.0",
     "@angular/cdk": "^6.2.0",
     "@angular/common": "6.0.0",
@@ -27,6 +26,7 @@
     "@angular/platform-browser-dynamic": "6.0.0",
     "@angular/platform-server": "6.0.0",
     "@angular/router": "6.0.0",
+    "@ngrx/store": "^6.0.1",
     "@ngx-translate/core": "^10.0.1",
     "@ngx-translate/http-loader": "^3.0.1",
     "@types/underscore": "^1.8.8",
@@ -37,7 +37,6 @@
     "ngx-modal": "0.0.29",
     "ngx-moment": "^3.0.1",
     "ngx-toastr": "^8.6.0",
-    "redux": "^4.0.0",
     "rxjs": "6.1.0",
     "underscore": "^1.9.0",
     "zone.js": "^0.8.26"

@@ -9,7 +9,7 @@ export function authorityReducer(state = initialState, action: Authenticate) {
     case AUTHENTICATE:
       return AuthorizationModel.of(action.payload);
     case DEAUTHENTICATE:
-      return initialState;
+      return AuthorizationModel.empty();
     default:
       return state;
   }

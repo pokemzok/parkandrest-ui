@@ -6,7 +6,7 @@ import {RoutesDefinitionsCollection} from '../../routes-definitions.collection';
 import {AuthorityToComponentMapping} from '../authority-component.mapping';
 import {AuthorizationModel} from '../authorization.model';
 import {Store} from '@ngrx/store';
-import {map} from 'rxjs/internal/operators';
+import {map, take} from 'rxjs/internal/operators';
 
 export abstract class SecureAuthGuard implements CanActivate {
 
@@ -20,7 +20,7 @@ export abstract class SecureAuthGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authStore.select('authorization').pipe(map(
+    return this.authStore.select('authorization').pipe(take(1)).pipe(map(
       authModel => {
         if (!authModel.containsSecurityToken() && !SecureAuthGuard.noAuthModeAvailable()) {
           this.toaster.warning('notifications.forbidden');

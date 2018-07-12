@@ -6,7 +6,7 @@ import {AuthorityToComponentMapping} from '../authority-component.mapping';
 import {RoutesDefinitionsCollection} from '../../routes-definitions.collection';
 import {AuthorizationModel} from '../authorization.model';
 import {Store} from '@ngrx/store';
-import {map} from 'rxjs/internal/operators';
+import {map, take} from 'rxjs/internal/operators';
 
 @Injectable()
 export class LoginAuthGuard implements CanActivate {
@@ -18,7 +18,7 @@ export class LoginAuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
-    return this.authStore.select('authorization').pipe(map(
+    return this.authStore.select('authorization').pipe(take(1)).pipe(map(
       authModel => {
         if (authModel.containsSecurityToken()) {
           this.toaster.warning('notifications.loginForbidden');

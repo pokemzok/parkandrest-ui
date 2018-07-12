@@ -7,9 +7,7 @@ const initialState = AuthorizationModel.empty();
 export function authorityReducer(state = initialState, action: Authenticate) {
   switch (action.type) {
     case AUTHENTICATE:
-      return {
-          authorization:  AuthorizationModel.of(action.payload)
-      };
+      return AuthorizationModel.of(action.payload);
     case DEAUTHENTICATE:
       return initialState;
     default:

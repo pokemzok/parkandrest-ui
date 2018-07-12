@@ -52,16 +52,16 @@ import {OperatorAuthGuard} from './auth/guard/operator-authguard.service';
 import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
 import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
 import {DriverAuthGuard} from './auth/guard/driver-authguard.service';
-import { HasAuthDirective } from './auth/directive/has-auth.directive';
+import {HasAuthDirective} from './auth/directive/has-auth.directive';
 import {StoreModule} from '@ngrx/store';
 import {authorityReducer} from './auth/store/authority-reducer';
-
+import {StoreInitializer} from './auth/store/store-initializer';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-export function provideServices (): any[] {
+export function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
     return provideMockServices();
   } else {
@@ -144,9 +144,14 @@ export function provideBackendServices(): Provider[] {
     DriverAuthGuard,
     TranslatedToastrFacade,
     TranslatedOptionFactory,
+    StoreInitializer,
     {provide: DateAdapter, useClass: MomentDateAdapter}
   ].concat(provideServices()),
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+  constructor(storeInitializer: StoreInitializer) {
+    storeInitializer.initialize();
+  }
 }

@@ -1,33 +1,32 @@
 import {Directive, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {Authority} from '../authority';
-import {AuthCookiesService} from '../cookies/authcookies.service';
 import {Store} from '@ngrx/store';
 import {Subscription} from 'rxjs/index';
 import {AuthorizationModel} from '../authorization.model';
+import * as _ from 'underscore';
 
 @Directive({
   selector: '[appHasAuth]'
 })
 export class HasAuthDirective implements OnInit, OnDestroy {
 
-  @Input() appHasAuth: Authority[] = [];
+  @Input() appHasAuth: Authority[];
   private subscription: Subscription;
 
-  // FIXME: correct implementation - does not work
-  constructor(elementRef: ElementRef, cookies: AuthCookiesService, private authStore: Store<AuthorizationModel>) {
-
-    /* let hasAllAuthorities = false;
-     _.each(this.appHasAuth, function (authority) {
-       hasAllAuthorities = hasAllAuthorities && cookies.containsAuthority(authority);
-     });
-     if (!hasAllAuthorities) {
-       elementRef.nativeElement.remove();
-     }*/
-  }
+  constructor(private elementRef: ElementRef, private authStore: Store<AuthorizationModel>) {}
 
   ngOnInit(): void {
-    this.subscription = this.authStore.select('authorization').subscribe(value => {
-      console.log(value);
+    this.subscription = this.authStore.select('authorization').subscribe(authModel => {
+      let hasAllAuthorities = true;
+      _.each(this.appHasAuth, function (authority) {
+        hasAllAuthorities = hasAllAuthorities && authModel.containsAuthority(authority);
+      });
+      if (!hasAllAuthorities) {
+        this.elementRef.nativeElement.style.display = 'none';
+      } else {
+        this.elementRef.nativeElement.style.display =  '';
+        console.log('Adding component');
+      }
     });
   }
 

@@ -8,7 +8,10 @@ import {Authority} from '../auth/authority';
 })
 export class NavbarComponent implements OnInit {
 
-  driverAuthority = Authority.DRIVER;
+  driverAuthority = [Authority.DRIVER];
+  ownerAuthority = [Authority.OWNER];
+  adminAuthority = [Authority.ADMIN];
+  operatorAuthority = [Authority.OPERATOR];
 
   constructor() { }
 

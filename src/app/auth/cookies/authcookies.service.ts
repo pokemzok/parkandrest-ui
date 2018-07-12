@@ -5,6 +5,7 @@ import {isNullOrUndefined} from 'util';
 import {Authority} from '../authority';
 import * as _ from 'underscore';
 
+// TODO: create a service which would monitor and destroys security Token when it times out
 @Injectable()
 export class AuthCookiesService {
 
@@ -29,15 +30,6 @@ export class AuthCookiesService {
     this.cookieService.delete(AuthCookiesService.AUTHORITIES_NAME, '/');
     this._authToken = null;
     this._authorities = null;
-  }
-
-  // TODO: create a service which would monitor and destroys security Token when it times out
-  containsSecurityToken(): boolean {
-    return !isNullOrUndefined(this.authToken) && !_.isEmpty(this.authToken)
-  }
-
-  containsAuthority(authority: Authority): boolean {
-    return _.contains(this.authorities, authority);
   }
 
   get authToken(): string {

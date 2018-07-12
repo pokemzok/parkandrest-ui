@@ -1,19 +1,22 @@
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {AuthCookiesService} from '../cookies/authcookies.service';
 import {Authority} from '../authority';
 import {SecureAuthGuard} from './secure-authguard.template';
+import {Store} from '@ngrx/store';
+import {AuthorizationModel} from '../authorization.model';
 
 @Injectable()
 export class OwnerAuthGuard extends SecureAuthGuard {
 
-  constructor(cookies: AuthCookiesService, router: Router, toaster: TranslatedToastrFacade) {
-    super(cookies, router, toaster);
+  constructor(authStore: Store<AuthorizationModel>,
+              router: Router,
+              toaster: TranslatedToastrFacade) {
+    super(authStore, router, toaster);
   }
 
-  isUserNotHaveAuthority(): boolean {
-    return !this.cookies.containsAuthority(Authority.OWNER);
+  isUserNotHaveAuthority(authModel: AuthorizationModel): boolean {
+    return !authModel.containsAuthority(Authority.OWNER);
   }
 
 }

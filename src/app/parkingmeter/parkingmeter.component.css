@@ -1,9 +1,4 @@
-.separator {
-  margin: 2px;
-  padding-bottom: 20px;
-  width: 80%;
-  border-color: #5e5e5e;
-}
+
 
 :host ::ng-deep .row {
   margin-right: 0;

@@ -29,11 +29,11 @@ export class AppComponent {
       (event: Event) => {
 
         if (event instanceof NavigationStart) {
-          // TODO: show loading animation
+          // TODO: #Issue21 show loading animation
         }
 
         if (event instanceof NavigationEnd) {
-          // TODO: hide loading animation
+          // TODO: #Issue21 hide loading animation
           this.onAuthenticationRelatedRoute(activatedRoute);
         }
 

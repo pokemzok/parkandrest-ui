@@ -1,7 +1,8 @@
 {
   "actions":{
     "deactivate": "Deactivate",
-    "activate": "Activate"
+    "activate": "Activate",
+    "close": "Close"
   },
   "footer": {
     "adminContact": "Our team email adress is parkandrest@test.com",
@@ -41,10 +42,12 @@
     "welcome": "You are logged in, ",
     "logout": "Log Out",
     "register": "Register new user",
-    "goodbye": "Have a nice day! Signing Out.."
+    "goodbye": "Have a nice day! Signing Out..",
+    "info": "About Parkandrest"
   },
   "info": {
-    "accountMonitor": "Your result will appear here, after submitting the date"
+    "accountMonitor": "Your result will appear here, after submitting the date",
+    "about": "Parkandrest is angular 6 based demo application made for educational purposes. Current version is fully client side and does not have drivermock functionality. You can find more about the project on it's README page: https://bitbucket.org/kozemkop/parkandrest-ui/src/master/"
   },
   "navbar": {
     "appname": "Parkandrest",

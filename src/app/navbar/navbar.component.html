@@ -1,5 +1,5 @@
 <nav class="sidenav">
-  <a href="#"> <!-- TODO info popup on click-->
+  <a (click)="infoModal.open()">
     <span class="glyphicon glyphicon-road" aria-hidden="true"></span> {{'navbar.appname' | translate}}</a>
 
   <a [appHasAuth]="ownerAuthority"
@@ -20,3 +20,12 @@
 
   <a routerLink="logout">{{'navbar.logout' | translate}}</a>
 </nav>
+
+<modal #infoModal  cancelButtonLabel="{{'actions.close' | translate}}" >
+  <modal-header>
+    <h3 class="text-center ">{{'header.info' | translate}}</h3>
+  </modal-header>
+  <modal-content>
+    {{'info.about' | translate}}
+  </modal-content>
+</modal>

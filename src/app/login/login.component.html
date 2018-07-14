@@ -14,7 +14,7 @@
                           formCtrlName="username"
                           [inputCols]="5"
                           [errorMsgCols]="3"
-                          [errorMsg]="'forms.validation.usernameCharsQuantity' | translate:{param: minUsernameLength}"
+                          [errorMsg]="'forms.validation.usernameCharsQuantity' | translate"
                           [label]="'forms.loginWelcome' | translate">
           </app-form-input>
           <app-form-input [inputPlaceholder]="'forms.pholder.password' | translate"
@@ -22,7 +22,7 @@
                           formCtrlName="password"
                           [inputCols]="5"
                           [errorMsgCols]="3"
-                          [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}"
+                          [errorMsg]="'forms.validation.passwordCharsQuantity' | translate"
                           [description]="'forms.loginHelper' | translate">
           </app-form-input>
           <app-form-submit [description]="'forms.login' | translate"

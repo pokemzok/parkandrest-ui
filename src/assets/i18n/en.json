@@ -33,8 +33,8 @@
       "usernameRegister":"only letters and numbers"
     },
     "validation":{
-      "usernameCharsQuantity": "Username has to have at least {{param}} characters",
-      "passwordCharsQuantity": "Password has to have at least {{param}} characters",
+      "usernameCharsQuantity": "Username has illegal characters quantity",
+      "passwordCharsQuantity": "Password has illegal characters quantity",
       "maxChars": "Too many characters"
     }
   },

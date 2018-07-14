@@ -8,6 +8,7 @@ import {TranslatedOptionFactory} from '../../form/select/options/translated-opti
 import {SelectOption} from '../../form/select/options/select-option';
 import {LabelPosition} from '../../form/LabelPosition';
 import {UserAuthorities} from '../users.authorities';
+import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 
 @Component({
   selector: 'app-users-management',
@@ -34,7 +35,7 @@ export class UsersManagementComponent implements OnInit {
 
   ngOnInit() {
     this.usersForm = new FormGroup({
-      'username': new FormControl(null, [Validators.maxLength(255)]),
+      'username': new FormControl(null, [Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)]),
       'authority': new FormControl(null),
       'isActive': new FormControl(null)
     })

@@ -7,6 +7,15 @@ export const ENVIRONMENT = {
   PRODUCTION: false,
   SERVER_OFFLINE: true
 };
+
+export const VALIDATIONS_CONFIG = {
+  MIN_USERNAME_LENGTH: 4,
+  MIN_PASSWORD_LENGTH: 7,
+  MAX_ID_LENGTH: 20,
+  MAX_REGISTRATION_NR_LENGTH: 20,
+  MAX_TEXT_INPUT_LENGTH: 255
+};
+
 export const PROTOCOL = 'http';
 export const HOST = 'localhost';
 export const PORT = '8080';

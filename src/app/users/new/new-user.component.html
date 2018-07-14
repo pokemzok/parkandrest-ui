@@ -7,7 +7,7 @@
                       [labelPosition]="labelPosition"
                       [inputCols]="4"
                       [errorMsgCols]="3"
-                      [errorMsg]="'forms.validation.usernameCharsQuantity' | translate:{param: minUsernameLength}"
+                      [errorMsg]="'forms.validation.usernameCharsQuantity' | translate"
                       [label]="'forms.username' | translate">
       </app-form-input>
     </div>
@@ -19,7 +19,7 @@
                       formCtrlName="password"
                       [labelPosition]="labelPosition"
                       label="{{'forms.password' | translate}}"
-                      [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
+                      [errorMsg]="'forms.validation.passwordCharsQuantity' | translate">
       </app-form-input>
     </div>
   </div>

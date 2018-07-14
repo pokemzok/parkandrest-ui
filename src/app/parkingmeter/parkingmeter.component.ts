@@ -8,6 +8,7 @@ import {SelectOption} from '../form/select/options/select-option';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
 import {ParkingSpaceStatus} from './parkingspace.status';
 import {AuthorityComponent} from '../auth/authority.component';
+import {VALIDATIONS_CONFIG} from '../../environments/environment';
 
 @Component({
   selector: 'app-parkingmeter',
@@ -32,9 +33,9 @@ export class ParkingMeterComponent implements OnInit, AuthorityComponent {
 
   ngOnInit() {
     this.parkingMeterForm = new FormGroup({
-      'parkingSpaceId': new FormControl(null, Validators.maxLength(20)),
+      'parkingSpaceId': new FormControl(null, Validators.maxLength(VALIDATIONS_CONFIG.MAX_ID_LENGTH)),
       'parkingSpaceStatus': new FormControl(null),
-      'registration': new FormControl(null, Validators.maxLength(20))
+      'registration': new FormControl(null, Validators.maxLength(VALIDATIONS_CONFIG.MAX_REGISTRATION_NR_LENGTH))
     })
   }
 

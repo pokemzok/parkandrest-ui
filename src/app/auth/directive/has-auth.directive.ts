@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {Authority} from '../authority';
 import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs/index';
+import {Subscription} from 'rxjs/Rx';
 import {AuthorizationModel} from '../authorization.model';
 import * as _ from 'underscore';
 
@@ -25,7 +25,6 @@ export class HasAuthDirective implements OnInit, OnDestroy {
         this.elementRef.nativeElement.style.display = 'none';
       } else {
         this.elementRef.nativeElement.style.display =  '';
-        console.log('Adding component');
       }
     });
   }

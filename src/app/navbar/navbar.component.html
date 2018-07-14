@@ -4,27 +4,19 @@
 
   <a [appHasAuth]="ownerAuthority"
      routerLink="account/monitoring"
-     id="account-monitoring"
-     [ngClass]="{'active': isClicked('account-monitoring')}"
-     (click)="markAsClicked('account-monitoring')">{{'navbar.monitor' | translate}}</a>
+     routerLinkActive="active">{{'navbar.monitor' | translate}}</a>
 
   <a [appHasAuth]="operatorAuthority"
      routerLink="parkingmeter"
-     id="parkingmeter"
-     [ngClass]="{'active': isClicked('parkingmeter')}"
-     (click)="markAsClicked('parkingmeter')">{{'navbar.parkingmeter' | translate}}</a>
+     routerLinkActive="active">{{'navbar.parkingmeter' | translate}}</a>
 
   <a [appHasAuth]="adminAuthority"
      routerLink="users"
-     id="users"
-     [ngClass]="{'active': isClicked('users')}"
-     (click)="markAsClicked('users')">{{'navbar.users' | translate}}</a>
+     routerLinkActive="active">{{'navbar.users' | translate}}</a>
 
   <a [appHasAuth]="driverAuthority"
      routerLink="drivermock"
-     id="drivermock"
-     [ngClass]="{'active': isClicked('drivermock')}"
-     (click)="markAsClicked('drivermock')">{{'navbar.mock' | translate}}</a>
+     routerLinkActive="active">{{'navbar.mock' | translate}}</a>
 
   <a routerLink="logout">{{'navbar.logout' | translate}}</a>
 </nav>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {Authority} from '../auth/authority';
 
 @Component({
@@ -6,27 +6,14 @@ import {Authority} from '../auth/authority';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
 
   driverAuthority = [Authority.DRIVER];
   ownerAuthority = [Authority.OWNER];
   adminAuthority = [Authority.ADMIN];
   operatorAuthority = [Authority.OPERATOR];
 
-  private selectedLinkId = null;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-  markAsClicked(linkId: string) {
-    this.selectedLinkId = linkId;
-  }
-
-
-  isClicked(linkId: string) {
-    return this.selectedLinkId === linkId;
+  constructor() {
   }
 
 }

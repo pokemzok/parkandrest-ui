@@ -35,6 +35,7 @@
     "validation":{
       "usernameCharsQuantity": "Username has illegal characters quantity",
       "passwordCharsQuantity": "Password has illegal characters quantity",
+      "passwordMismatch": "Passwords does not match",
       "maxChars": "Too many characters"
     }
   },

@@ -31,8 +31,13 @@
                         formCtrlName="repeatPassword"
                         [labelPosition]="labelPosition"
                         label="{{'forms.repeatPass' | translate}}"
-                        [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
+                        [errorMsg]="'forms.validation.passwordCharsQuantity' | translate">
         </app-form-input>
+      </div>
+    </div>
+    <div class="row" *ngIf="isPasswordsFormInvalid()">
+      <div class="col-md-12 text-center">
+        <span class="text-danger ">{{'forms.validation.passwordMismatch' | translate}}</span>
       </div>
     </div>
   </div>

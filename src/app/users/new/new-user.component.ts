@@ -9,6 +9,7 @@ import {UserManagement} from '../new-user.interface';
 import {isNullOrUndefined} from 'util';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
+import {PasswordsValidator} from './validator/passwords.validator';
 
 @Component({
   selector: 'app-new-user',
@@ -49,10 +50,15 @@ export class NewUserComponent implements OnInit {
           Validators.minLength(VALIDATIONS_CONFIG.MIN_PASSWORD_LENGTH),
           Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)
         ])
-      }),
+      }, {validators: PasswordsValidator.validate.bind(this)}),
       isActive: [false, [Validators.required]],
       authorities: [null, Validators.required] // TODO: multiselect
     });
+  }
+
+  isPasswordsFormInvalid(): boolean {
+    const passwordsForm =  this.registerForm.get('passwords');
+    return passwordsForm.invalid && passwordsForm.touched;
   }
 
   onSubmit() {
@@ -63,5 +69,4 @@ export class NewUserComponent implements OnInit {
       this.registerForm.reset({isActive: false});
     }
   }
-
 }

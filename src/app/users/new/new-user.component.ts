@@ -37,7 +37,7 @@ export class NewUserComponent implements OnInit {
       username: [null, [
         Validators.required,
         Validators.minLength(VALIDATIONS_CONFIG.MIN_USERNAME_LENGTH),
-        Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)]
+        Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)] // FIXME async username validator
       ],
       passwords: new FormGroup({
         password: new FormControl(null, [

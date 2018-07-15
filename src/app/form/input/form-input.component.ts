@@ -4,7 +4,7 @@ import {LabelPosition} from '../LabelPosition';
 import {UUID} from 'angular2-uuid';
 
 /**
- * Default params are @type = 'text', labelPosition = LabelPosition.TOP, disabled = false
+ * Default params are @type = 'text', labelPosition = LabelPosition.TOP
  */
 @Component({
   selector: 'app-form-input',
@@ -22,7 +22,6 @@ export class FormInputComponent implements OnInit {
   @Input() formCtrlName: string;
   @Input() errorMsg: string;
   @Input() labelPosition: LabelPosition;
-  @Input() disabled: boolean;
   @Input() inputClasses: string;
 
   inputFormGroup: FormGroup;
@@ -32,7 +31,6 @@ export class FormInputComponent implements OnInit {
     this.type = 'text';
     this.inputFormGroup = new FormGroup({});
     this.labelPosition = LabelPosition.TOP;
-    this.disabled = false;
     this.inputClasses = 'form-control';
     this.errorMsgCols = 3;
     this.inputCols = 4;

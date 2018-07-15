@@ -26,10 +26,9 @@ export class FormInputComponent implements OnInit {
 
   inputFormGroup: FormGroup;
   id: string =  UUID.UUID();
-  // default values
+
   constructor(private controlContainer: ControlContainer) {
     this.type = 'text';
-    this.inputFormGroup = new FormGroup({});
     this.labelPosition = LabelPosition.TOP;
     this.inputClasses = 'form-control';
     this.errorMsgCols = 3;

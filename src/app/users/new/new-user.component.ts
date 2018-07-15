@@ -49,18 +49,17 @@ export class NewUserComponent implements OnInit {
         Validators.minLength(VALIDATIONS_CONFIG.MIN_PASSWORD_LENGTH),
         Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)]
       ],
-      isActive: null, // TODO: boolean value
+      isActive: [false, [ Validators.required]],
       authorities: [null, Validators.required] // TODO: multiselect
     });
   }
 
   onSubmit() {
     const request = <NewUserRequest>this.registerForm.getRawValue();
-    request.isActive = true; // FIXME: jest to obejscie
     const response = this.userManagementService.add(request);
     if (!isNullOrUndefined(response)) {
       this.toaster.success('notifications.userCreationSuccess');
-      this.registerForm.reset();
+      this.registerForm.reset({isActive: false});
     }
   }
 

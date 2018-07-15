@@ -12,26 +12,28 @@
       </app-form-input>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
-                      type="password"
-                      formCtrlName="password"
-                      [labelPosition]="labelPosition"
-                      label="{{'forms.password' | translate}}"
-                      [errorMsg]="'forms.validation.passwordCharsQuantity' | translate">
-      </app-form-input>
+  <div formGroupName="passwords">
+    <div class="row">
+      <div class="col-md-12">
+        <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
+                        type="password"
+                        formCtrlName="password"
+                        [labelPosition]="labelPosition"
+                        label="{{'forms.password' | translate}}"
+                        [errorMsg]="'forms.validation.passwordCharsQuantity' | translate">
+        </app-form-input>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
-                      type="password"
-                      formCtrlName="repeatPassword"
-                      [labelPosition]="labelPosition"
-                      label="{{'forms.repeatPass' | translate}}"
-                      [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
-      </app-form-input>
+    <div class="row">
+      <div class="col-md-12">
+        <app-form-input [inputPlaceholder]="'forms.pholder.passwordRegister' | translate"
+                        type="password"
+                        formCtrlName="repeatPassword"
+                        [labelPosition]="labelPosition"
+                        label="{{'forms.repeatPass' | translate}}"
+                        [errorMsg]="'forms.validation.passwordCharsQuantity' | translate:{param: minPasswordLength}">
+        </app-form-input>
+      </div>
     </div>
   </div>
   <div class="row">

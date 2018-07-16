@@ -51,5 +51,5 @@ To run application test type 'ng test' in *parkandrest-ui* main catalogue
 ##What is planned for the future:
 * Real implementation of services which would use parkandrest application
 * Implement driver mock functionality (it requires connection to server)
-* Make tables pageinable and sortable
+* Make tables paginable and sortable
 * More tests

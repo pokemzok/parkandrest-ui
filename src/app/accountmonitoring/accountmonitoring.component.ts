@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {FinancialReportRequest} from './financialreport.request';
-import {ReportformModel} from './reportform.model';
-import {FinancialReportResponse} from './financialreport.response';
+import {FinancialReportRequest} from './report/financialreport.request';
+import {ReportformModel} from './report/reportform.model';
+import {FinancialReportResponse} from './report/financialreport.response';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
-import {FinancialReport} from './financialreport.interface';
+import {FinancialReport} from './report/financialreport.interface';
 import {AuthorityComponent} from '../security/authority.component';
 
 @Component({

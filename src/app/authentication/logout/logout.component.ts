@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Auth} from '../auth/auth.interface';
-import {AuthorityComponent} from '../auth/authority.component';
+import {Auth} from '../../security/auth.interface';
+import {AuthorityComponent} from '../../security/authority.component';
 
 @Component({
   selector: 'app-logout',

@@ -1,14 +1,14 @@
 import {UsersComponent} from './users/users.component';
-import {LogoutComponent} from './logout/logout.component';
-import {LoginComponent} from './login/login.component';
+import {LogoutComponent} from './authentication/logout/logout.component';
+import {LoginComponent} from './authentication/login/login.component';
 import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
 import {DrivermockComponent} from './drivermock/drivermock.component';
-import {LoginAuthGuard} from './auth/guard/login-authguard.service';
+import {LoginAuthGuard} from './security/guard/login-authguard.service';
 import {Routes} from '@angular/router';
-import {OwnerAuthGuard} from './auth/guard/owner-authguard.service';
-import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
-import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
-import {DriverAuthGuard} from './auth/guard/driver-authguard.service';
+import {OwnerAuthGuard} from './security/guard/owner-authguard.service';
+import {LogoutAuthGuard} from './security/guard/logout-authguard.service';
+import {AdminAuthGuard} from './security/guard/admin-authguard.service';
+import {DriverAuthGuard} from './security/guard/driver-authguard.service';
 
 export const ROUTES_DEFINITIONS: Routes = [
   {path: '', canActivate: [LoginAuthGuard], component: LoginComponent},

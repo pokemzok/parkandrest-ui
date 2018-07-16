@@ -3,13 +3,13 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './authentication/login/login.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {FooterComponent} from './footer/footer.component';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AuthCookiesService} from './auth/cookies/authcookies.service';
+import {AuthCookiesService} from './security/cookies/authcookies.service';
 import {RouterModule} from '@angular/router';
 import {UsersComponent} from './users/users.component';
 import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
@@ -22,10 +22,10 @@ import {DateAdapter, MatTabsModule} from '@angular/material';
 import {MomentModule} from 'ngx-moment';
 import {MockFinancialReportService} from './accountmonitoring/mockfinancialreport.service';
 import {Provider} from '@angular/core/src/di/provider';
-import {MockAuthService} from './auth/mockauth.service';
+import {MockAuthService} from './security/mockauth.service';
 import {ENVIRONMENT} from '../environments/environment';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
-import {AuthenticationService} from './auth/authentication.service';
+import {AuthenticationService} from './security/authentication.service';
 import {FinancialReportService} from './accountmonitoring/financialreport.service';
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
@@ -36,30 +36,30 @@ import {MockUserManagementService} from './users/mock.user-management.service';
 import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
-import {LogoutComponent} from './logout/logout.component';
-import {LoginAuthGuard} from './auth/guard/login-authguard.service';
+import {LogoutComponent} from './authentication/logout/logout.component';
+import {LoginAuthGuard} from './security/guard/login-authguard.service';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
-import {OwnerAuthGuard} from './auth/guard/owner-authguard.service';
-import {OperatorAuthGuard} from './auth/guard/operator-authguard.service';
-import {AdminAuthGuard} from './auth/guard/admin-authguard.service';
-import {LogoutAuthGuard} from './auth/guard/logout-authguard.service';
-import {DriverAuthGuard} from './auth/guard/driver-authguard.service';
-import {HasAuthDirective} from './auth/directive/has-auth.directive';
+import {OwnerAuthGuard} from './security/guard/owner-authguard.service';
+import {OperatorAuthGuard} from './security/guard/operator-authguard.service';
+import {AdminAuthGuard} from './security/guard/admin-authguard.service';
+import {LogoutAuthGuard} from './security/guard/logout-authguard.service';
+import {DriverAuthGuard} from './security/guard/driver-authguard.service';
+import {HasAuthDirective} from './security/directive/has-auth.directive';
 import {StoreModule} from '@ngrx/store';
-import {authorityReducer} from './auth/store/authority-reducer';
-import {StoreInitializer} from './auth/store/store-initializer';
+import {authorityReducer} from './security/store/authority-reducer';
+import {StoreInitializer} from './security/store/store-initializer';
 import {UsernameValidator} from './users/new/validator/username.validator.interface';
 import {MockUsernameValidator} from './users/new/validator/mock.username.validator';
 import {AsyncUsernameValidator} from './users/new/validator/async.username.validator';
 import {DrivermockModule} from './drivermock/drivermock.module';
+import {CommonsModule} from './common/commons.module';
 import {FormModule} from './form/form.module';
-import {CommonModule} from './common/common.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-export function provideServices(): any[] {
+function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
     return provideMockServices();
   } else {
@@ -67,7 +67,7 @@ export function provideServices(): any[] {
   }
 }
 
-export function provideMockServices(): Provider[] {
+function provideMockServices(): Provider[] {
   return [
     {provide: 'AuthService', useClass: MockAuthService},
     {provide: 'FinancialReportService', useClass: MockFinancialReportService},
@@ -78,7 +78,7 @@ export function provideMockServices(): Provider[] {
   ]
 }
 
-export function provideBackendServices(): Provider[] {
+function provideBackendServices(): Provider[] {
   return [
     {provide: 'AuthService', useClass: AuthenticationService},
     {provide: 'FinancialReportService', useClass: FinancialReportService},
@@ -121,8 +121,8 @@ export function provideBackendServices(): Provider[] {
     MomentModule,
     MatTabsModule,
     StoreModule.forRoot({authorization: authorityReducer}),
+    CommonsModule,
     FormModule,
-    CommonModule,
     DrivermockModule,
     // ParkingMeterModule
   ],

@@ -1,5 +1,5 @@
 import {Auth} from './auth.interface';
-import {LoginRequest} from '../login/login.request';
+import {LoginRequest} from '../authentication/login/login.request';
 import {Optional} from '../common/optional/optional';
 import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';

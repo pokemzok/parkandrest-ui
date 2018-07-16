@@ -6,7 +6,7 @@ import {FinancialReportResponse} from './financialreport.response';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
 import {FinancialReport} from './financialreport.interface';
-import {AuthorityComponent} from '../auth/authority.component';
+import {AuthorityComponent} from '../security/authority.component';
 
 @Component({
   selector: 'app-accountmonitor',

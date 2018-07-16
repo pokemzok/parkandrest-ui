@@ -5,7 +5,7 @@ import {UsersComponent} from '../users/users.component';
 import {ParkingMeterComponent} from '../parkingmeter/parkingmeter.component';
 import {DrivermockComponent} from '../drivermock/drivermock.component';
 import * as _ from 'underscore';
-import {LogoutComponent} from '../logout/logout.component';
+import {LogoutComponent} from '../authentication/logout/logout.component';
 import {Type} from '@angular/core';
 import {AuthorityComponent} from './authority.component';
 

@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginRequest} from './login.request';
-import {Auth} from '../auth/auth.interface';
-import {AuthorityComponent} from '../auth/authority.component';
-import {VALIDATIONS_CONFIG} from '../../environments/environment';
+import {Auth} from '../../security/auth.interface';
+import {AuthorityComponent} from '../../security/authority.component';
+import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',

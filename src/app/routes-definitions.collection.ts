@@ -1,11 +1,11 @@
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './authentication/login/login.component';
 import {Routes} from '@angular/router';
 import {Route} from '@angular/router/src/config';
 import {Type} from '@angular/core';
 import {Optional} from './common/optional/optional';
 import * as _ from 'underscore';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
-import {AuthorityComponent} from './auth/authority.component';
+import {AuthorityComponent} from './security/authority.component';
 
 /**
  * Singleton class for making operation on routes definitions array

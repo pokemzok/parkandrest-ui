@@ -10,7 +10,8 @@ import {DateAdapter} from '@angular/material';
     DrivermockComponent
   ],
   imports: [
-    CommonModule, ReactiveFormsModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: DateAdapter, useClass: MomentDateAdapter}

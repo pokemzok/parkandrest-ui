@@ -53,6 +53,7 @@ import {MockUsernameValidator} from './users/new/validator/mock.username.validat
 import {AsyncUsernameValidator} from './users/new/validator/async.username.validator';
 import {DrivermockModule} from './drivermock/drivermock.module';
 import {FormModule} from './form/form.module';
+import {CommonModule} from './common/common.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -121,6 +122,7 @@ export function provideBackendServices(): Provider[] {
     MatTabsModule,
     StoreModule.forRoot({authorization: authorityReducer}),
     FormModule,
+    CommonModule,
     DrivermockModule,
     // ParkingMeterModule
   ],

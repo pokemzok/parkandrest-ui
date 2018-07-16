@@ -19,7 +19,6 @@ import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './common/toaster/translated-toaster.service';
-import {DrivermockComponent} from './drivermock/drivermock.component';
 import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
 import {DateAdapter, MatDatepickerModule, MatNativeDateModule, MatTabsModule} from '@angular/material';
@@ -58,6 +57,7 @@ import {StoreInitializer} from './auth/store/store-initializer';
 import {UsernameValidator} from './users/new/validator/username.validator.interface';
 import {MockUsernameValidator} from './users/new/validator/mock.username.validator';
 import {AsyncUsernameValidator} from './users/new/validator/async.username.validator';
+import {DrivermockModule} from './drivermock/drivermock.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -104,7 +104,6 @@ export function provideBackendServices(): Provider[] {
     ParkingMeterComponent,
     UsersComponent,
     AccountMonitoringComponent,
-    DrivermockComponent,
     HeaderComponent,
     DatepickerComponent,
     FormReadonlyComponent,
@@ -134,7 +133,8 @@ export function provideBackendServices(): Provider[] {
     MatNativeDateModule,
     MatMomentDateModule,
     MatTabsModule,
-    StoreModule.forRoot({authorization: authorityReducer})
+    StoreModule.forRoot({authorization: authorityReducer}),
+    DrivermockModule
   ],
   providers: [
     CookieService,

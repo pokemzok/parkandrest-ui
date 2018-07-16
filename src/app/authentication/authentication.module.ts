@@ -1,4 +1,3 @@
-/*
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormModule} from '../form/form.module';
@@ -58,4 +57,3 @@ function provideBackendServices(): Provider[] {
 export class AuthenticationModule {
 
 }
-*/

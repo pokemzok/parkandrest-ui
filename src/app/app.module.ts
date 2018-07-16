@@ -3,7 +3,6 @@ import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {LoginComponent} from './authentication/login/login.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {FooterComponent} from './footer/footer.component';
@@ -32,7 +31,6 @@ import {MockUserManagementService} from './users/mock.user-management.service';
 import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
 import {UsersService} from './users/manage/users.service';
-import {LogoutComponent} from './authentication/logout/logout.component';
 import {LoginAuthGuard} from './security/guard/login-authguard.service';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
 import {OwnerAuthGuard} from './security/guard/owner-authguard.service';
@@ -53,6 +51,7 @@ import {FormModule} from './form/form.module';
 import {ParkingMeterModule} from './parkingmeter/parkingmeter.module';
 import {AccountMonitoringModule} from './accountmonitoring/accountmonitoring.module';
 import {UsersModule} from './users/users.module';
+import {AuthenticationModule} from './authentication/authentication.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -92,10 +91,8 @@ function provideBackendServices(): Provider[] {
   declarations: [
     NavbarComponent,
     AppComponent,
-    LoginComponent,
     FooterComponent,
     HeaderComponent,
-    LogoutComponent,
     HasAuthDirective
   ],
   imports: [
@@ -121,7 +118,8 @@ function provideBackendServices(): Provider[] {
     AccountMonitoringModule,
     DrivermockModule,
     ParkingMeterModule,
-    UsersModule
+    UsersModule,
+    AuthenticationModule
   ],
   providers: [
     CookieService,

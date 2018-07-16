@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -16,7 +15,6 @@ import {TranslatedToastrFacade} from './common/toaster/translated-toaster.servic
 import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
 import {DateAdapter, MatTabsModule} from '@angular/material';
-import {MomentModule} from 'ngx-moment';
 import {MockFinancialReportService} from './accountmonitoring/report/mockfinancialreport.service';
 import {Provider} from '@angular/core/src/di/provider';
 import {MockAuthService} from './security/mockauth.service';
@@ -47,7 +45,6 @@ import {MockUsernameValidator} from './users/new/validator/mock.username.validat
 import {AsyncUsernameValidator} from './users/new/validator/async.username.validator';
 import {DrivermockModule} from './drivermock/drivermock.module';
 import {CommonsModule} from './common/commons.module';
-import {FormModule} from './form/form.module';
 import {ParkingMeterModule} from './parkingmeter/parkingmeter.module';
 import {AccountMonitoringModule} from './accountmonitoring/accountmonitoring.module';
 import {UsersModule} from './users/users.module';
@@ -97,7 +94,6 @@ function provideBackendServices(): Provider[] {
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -110,11 +106,9 @@ function provideBackendServices(): Provider[] {
     ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES_DEFINITIONS),
     ModalModule,
-    MomentModule,
     MatTabsModule,
     StoreModule.forRoot({authorization: authorityReducer}),
     CommonsModule,
-    FormModule,
     AccountMonitoringModule,
     DrivermockModule,
     ParkingMeterModule,

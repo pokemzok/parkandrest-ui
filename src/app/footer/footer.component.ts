@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  // FIXME resize with a page instead of blocking view
   constructor() { }
 
   ngOnInit() {

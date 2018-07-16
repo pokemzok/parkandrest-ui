@@ -2,7 +2,6 @@ import {Authority} from './authority';
 import {AuthorityComponent} from './authority.component';
 import {Type} from '@angular/core';
 
-// FIXME AuthorityComponent interface instead of T/ rename to AuthComponent
 export class AuthComponentTypePair {
 
   private _auth: Authority;

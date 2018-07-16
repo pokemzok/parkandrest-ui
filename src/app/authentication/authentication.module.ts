@@ -9,6 +9,7 @@ import {MockAuthService} from '../security/mockauth.service';
 import {AuthenticationService} from '../security/authentication.service';
 import {Provider} from '@angular/core/src/di/provider';
 import {LogoutComponent} from './logout/logout.component';
+import {ModalModule} from 'ngx-modal';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -37,6 +38,7 @@ function provideBackendServices(): Provider[] {
   ],
   imports: [
     CommonModule,
+    ModalModule,
     ReactiveFormsModule,
     TranslateModule.forChild(),
     FormModule,

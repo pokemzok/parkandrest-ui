@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParkingMeterComponent} from './parkingmeter.component';
 import {ParkingMeterRoutingModule} from './parkingmeter-routing.module';
-import {FormInputComponent} from '../form/input/form-input.component';
 import {FormModule} from '../form/form.module';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
@@ -12,8 +11,7 @@ import {TranslateModule} from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
-    ParkingMeterComponent,
-    FormInputComponent
+    ParkingMeterComponent
   ],
   imports: [
     CommonModule,

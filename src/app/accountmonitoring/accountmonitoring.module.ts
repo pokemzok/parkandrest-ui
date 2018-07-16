@@ -8,6 +8,7 @@ import {MockFinancialReportService} from './report/mockfinancialreport.service';
 import {FinancialReportService} from './report/financialreport.service';
 import {FormModule} from '../form/form.module';
 import {TranslateModule} from '@ngx-translate/core';
+import {MomentModule} from 'ngx-moment';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -35,6 +36,7 @@ function provideBackendServices(): Provider[] {
   ],
   imports: [
     CommonModule,
+    MomentModule,
     ReactiveFormsModule,
     TranslateModule.forChild(),
     FormModule

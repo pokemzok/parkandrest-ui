@@ -43,18 +43,12 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <!-- FIXME  reuse app-form-input component-->
-      <div class="row">
-        <div class="col-md-4">
-          <label for="isActiveId" class="leftLabel" style="float: right">{{'forms.active' | translate}}</label>
-        </div>
-        <div class="col-md-4">
-          <input type="checkbox"
-                 class=""
-                 id="isActiveId"
-                 formControlName="isActive"/>
-        </div>
-      </div>
+      <app-form-input type="checkbox"
+                      formCtrlName="isActive"
+                      inputClasses=""
+                      [labelPosition]="labelPosition"
+                      label="{{'forms.active' | translate}}">
+      </app-form-input>
     </div>
   </div>
   <div class="row">

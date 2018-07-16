@@ -8,12 +8,19 @@
       <label for={{id}} class="leftLabel">{{label}}</label>
     </div>
     <div class="col-md-{{inputCols}}">
-      <input type={{type}}
+      <input *ngIf="type!=='checkbox'"
+             type={{type}}
              class="{{inputClasses}}"
              id={{id}}
              aria-describedby="inputHelp"
              formControlName={{formCtrlName}}
              placeholder={{inputPlaceholder}}>
+      <input *ngIf="type==='checkbox'"
+             type="checkbox"
+             class="{{inputClasses}}"
+             id={{id}}
+             aria-describedby="inputHelp"
+             formControlName={{formCtrlName}}>
     </div>
     <div class="row" *ngIf="isFormInvalid()">
       <div class="col-md-{{errorMsgCols}} text-center">

@@ -10,6 +10,8 @@ import {isNullOrUndefined} from 'util';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 import {PasswordsValidator} from './validator/passwords.validator';
 import {UsernameValidator} from './validator/username.validator.interface';
+import {FormErrorPair} from '../../form/input/form-error.pair';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-user',
@@ -24,6 +26,7 @@ export class NewUserComponent implements OnInit {
 
   constructor(private translatedOptionFactory: TranslatedOptionFactory,
               private formBuilder: FormBuilder,
+              private translateService: TranslateService,
               @Inject('UsernameValidator') private asyncUsernameValidator: UsernameValidator,
               @Inject('UserManagementService') private userManagementService: UserManagement) {
     this.statusesOptions = translatedOptionFactory.optionsOf<string>(
@@ -70,7 +73,23 @@ export class NewUserComponent implements OnInit {
     }
   }
 
-  getUsernameErrorCodes() {
-    return [this.asyncUsernameValidator.getErrorCode()];
+  getUsernameErrorPairs(): FormErrorPair[] {
+    const usernameAlreadyTaken = new FormErrorPair(this.asyncUsernameValidator.getErrorCode());
+    const required = new FormErrorPair('required');
+    const minLength = new FormErrorPair('minlength');
+    const maxLength = new FormErrorPair('maxlength');
+    this.translateService.get('forms.validation.usernameAlreadyTaken').subscribe((translation: string) => {
+      usernameAlreadyTaken.addTranslation(translation);
+    });
+    this.translateService.get('forms.validation.required').subscribe((translation: string) => {
+      required.addTranslation(translation);
+    });
+    this.translateService.get('forms.validation.usernameCharsQuantity').subscribe((translation: string) => {
+      minLength.addTranslation(translation);
+    });
+    this.translateService.get('forms.validation.usernameCharsQuantity').subscribe((translation: string) => {
+      maxLength.addTranslation(translation);
+    });
+    return [usernameAlreadyTaken, required, minLength, maxLength];
   }
 }

@@ -36,7 +36,9 @@
       "usernameCharsQuantity": "Username has illegal characters quantity",
       "passwordCharsQuantity": "Password has illegal characters quantity",
       "passwordMismatch": "Passwords does not match",
-      "maxChars": "Too many characters"
+      "maxChars": "Too many characters",
+      "usernameAlreadyTaken": "Username already taken",
+      "required": "Username is required"
     }
   },
   "header": {

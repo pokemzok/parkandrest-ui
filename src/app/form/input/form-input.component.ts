@@ -4,6 +4,7 @@ import {LabelPosition} from '../LabelPosition';
 import {UUID} from 'angular2-uuid';
 import {AbstractControl} from '@angular/forms/src/model';
 import {isNullOrUndefined} from 'util';
+import {FormErrorPair} from './form-error.pair';
 
 /**
  * Default params are @type = 'text', labelPosition = LabelPosition.TOP
@@ -23,7 +24,7 @@ export class FormInputComponent implements OnInit {
   @Input() errorMsgCols: number;
   @Input() formCtrlName: string;
   @Input() genericErrorMsg: string;
-  @Input() specificErrorMsgCodes: string[];
+  @Input() specificErrorMsgPairs: FormErrorPair[];
   @Input() labelPosition: LabelPosition;
   @Input() inputClasses: string;
 
@@ -38,7 +39,7 @@ export class FormInputComponent implements OnInit {
     this.inputClasses = 'form-control';
     this.errorMsgCols = 3;
     this.inputCols = 4;
-    this.specificErrorMsgCodes = [];
+    this.specificErrorMsgPairs = [];
   }
 
   ngOnInit() {
@@ -47,7 +48,6 @@ export class FormInputComponent implements OnInit {
   }
 
   isControlInvalid(): boolean {
-    console.log(this.currentControl.errors);
     return this.currentControl.invalid && this.currentControl.touched;
   }
 
@@ -63,9 +63,9 @@ export class FormInputComponent implements OnInit {
     return LabelPosition.LEFT === this.labelPosition;
   }
 
-  shouldRender(code: string): boolean {
+  shouldRender(pair: FormErrorPair): boolean {
     if (!isNullOrUndefined(this.currentControl.errors)) {
-      return this.currentControl.errors[code];
+      return this.currentControl.errors[pair.errorCode];
     }
   }
 }

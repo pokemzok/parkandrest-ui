@@ -26,9 +26,9 @@
       <div class="col-md-{{errorMsgCols}} text-center">
         <span class="text-danger ">{{genericErrorMsg}}</span>
       </div>
-      <!--<div class="col-md-{{errorMsgCols}} text-center" *ngFor="let code of specificErrorMsgCodes">
-        <span class="text-danger " *ngIf="shouldRender(code)">test</span>
-      </div>-->
+      <div class="col-md-{{errorMsgCols}} text-center" *ngFor="let pair of specificErrorMsgPairs">
+        <span class="text-danger " *ngIf="shouldRender(pair)">{{pair.translation}}</span>
+      </div>
     </div>
   </div>
   <small id="inputHelp" class="form-text text-muted">{{description}}</small>

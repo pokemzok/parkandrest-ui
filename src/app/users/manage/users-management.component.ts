@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UsersProviderInterface} from './users.provider.interface';
 import {UserResponse} from '../user.response';
 import {UsersFilter} from './users.filter';
-import {UserManagement} from '../new-user.interface';
+import {UserManagement} from '../user-management.interface';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
 import {SelectOption} from '../../form/select/options/select-option';

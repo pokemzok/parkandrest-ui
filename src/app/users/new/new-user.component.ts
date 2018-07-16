@@ -5,7 +5,7 @@ import {TranslatedOptionFactory} from '../../form/select/options/translated-opti
 import {SelectOption} from '../../form/select/options/select-option';
 import {NewUserRequest} from './new-user.request';
 import {UserAuthorities} from '../users.authorities';
-import {UserManagement} from '../new-user.interface';
+import {UserManagement} from '../user-management.interface';
 import {isNullOrUndefined} from 'util';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 import {PasswordsValidator} from './validator/passwords.validator';

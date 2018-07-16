@@ -30,12 +30,15 @@ To run application type 'ng serve' in *parkandrest-ui* main catalogue
 To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
 ## Loggin in
-1. Current version have hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)
-2. User with authorities necessary to see all features have credentials:
-
-| username		  | password       |
-|: ------------- :|:--------------:|
-| fulladmin		  | password 	   |
+1. Current version has hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)
+2. You can login using provided credentials (fulladmin would allow access to all application features)
+| username		  | password       |authorities  				  |
+|: ------------- :|:--------------:|:----------------------------:|
+| fulladmin		  | password 	   |ADMIN, OPERATOR, OWNER, DRIVER|
+| admin		  	  | password 	   |ADMIN						  |
+| operator		  | password 	   |OPERATOR					  | 
+| driver		  | password 	   |DRIVER					  	  | 
+| owner		  	  | password 	   |OWNER					  	  | 
 
 ##Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection
@@ -45,5 +48,6 @@ To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
 ##What is planned for the future:
 * Real implementation of services which would use parkandrest application
+* Implement driver mock functionality (it requires connection to server)
 * Make tables pageinable and sortable
 * More tests

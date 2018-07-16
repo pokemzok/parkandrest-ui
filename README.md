@@ -2,7 +2,7 @@
 
 Frontend application made in angular 6 for educational purposes. Current version is fully client-side (mocked services). 
 
-###Key features:
+##Key features:
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.
 3. Guarded routing which discovers home route based on authority. 

@@ -17,6 +17,7 @@ import {CommonsModule} from '../common/commons.module';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 import {ToastrModule} from 'ngx-toastr';
 import {MatTabsModule} from '@angular/material';
+import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -58,7 +59,8 @@ function provideBackendServices(): Provider[] {
       FormModule,
     ],
     providers: [
-      TranslatedToastrFacade
+      TranslatedToastrFacade,
+      TranslatedOptionFactory
     ]
       .concat(provideServices()),
   }

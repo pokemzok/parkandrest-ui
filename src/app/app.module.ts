@@ -14,7 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './common/toaster/translated-toaster.service';
 import {HeaderComponent} from './header/header.component';
 import {ModalModule} from 'ngx-modal';
-import {DateAdapter, MatTabsModule} from '@angular/material';
+import {DateAdapter} from '@angular/material';
 import {MockFinancialReportService} from './accountmonitoring/report/mockfinancialreport.service';
 import {Provider} from '@angular/core/src/di/provider';
 import {MockAuthService} from './security/mockauth.service';
@@ -24,7 +24,6 @@ import {AuthenticationService} from './security/authentication.service';
 import {FinancialReportService} from './accountmonitoring/report/financialreport.service';
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
-import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
 import {MockUserManagementService} from './users/mock.user-management.service';
 import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
@@ -106,7 +105,6 @@ function provideBackendServices(): Provider[] {
     ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES_DEFINITIONS),
     ModalModule,
-    MatTabsModule,
     StoreModule.forRoot({authorization: authorityReducer}),
     CommonsModule,
     AccountMonitoringModule,
@@ -125,7 +123,6 @@ function provideBackendServices(): Provider[] {
     LogoutAuthGuard,
     DriverAuthGuard,
     TranslatedToastrFacade,
-    TranslatedOptionFactory,
     StoreInitializer,
     {provide: DateAdapter, useClass: MomentDateAdapter}
   ].concat(provideServices()),

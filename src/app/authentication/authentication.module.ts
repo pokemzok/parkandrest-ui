@@ -1,3 +1,4 @@
+/*
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 import {FormModule} from '../form/form.module';
@@ -10,6 +11,10 @@ import {AuthenticationService} from '../security/authentication.service';
 import {Provider} from '@angular/core/src/di/provider';
 import {LogoutComponent} from './logout/logout.component';
 import {ModalModule} from 'ngx-modal';
+import {LoginAuthGuard} from '../security/guard/login-authguard.service';
+import {LogoutAuthGuard} from '../security/guard/logout-authguard.service';
+import {AuthCookiesService} from '../security/cookies/authcookies.service';
+import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -43,9 +48,14 @@ function provideBackendServices(): Provider[] {
     TranslateModule.forChild(),
     FormModule,
   ],
-  providers: []
-    .concat(provideServices()),
+  providers: [
+    LoginAuthGuard,
+    LogoutAuthGuard,
+    AuthCookiesService,
+    TranslatedToastrFacade
+  ].concat(provideServices()),
 })
 export class AuthenticationModule {
 
 }
+*/

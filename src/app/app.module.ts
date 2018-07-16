@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './navbar/navbar.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -33,11 +33,37 @@ import {DrivermockModule} from './drivermock/drivermock.module';
 import {CommonsModule} from './common/commons.module';
 import {ParkingMeterModule} from './parkingmeter/parkingmeter.module';
 import {AccountMonitoringModule} from './accountmonitoring/accountmonitoring.module';
-import {AuthenticationModule} from './authentication/authentication.module';
 import {UsersModule} from './users/users.module';
+import {LoginComponent} from './authentication/login/login.component';
+import {LogoutComponent} from './authentication/logout/logout.component';
+import {AuthenticationService} from './security/authentication.service';
+import {ENVIRONMENT} from '../environments/environment';
+import {MockAuthService} from './security/mockauth.service';
+import {Provider} from '@angular/core/src/di/provider';
+import {FormModule} from './form/form.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+function provideServices(): any[] {
+  if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
+    return provideMockServices();
+  } else {
+    return provideBackendServices()
+  }
+}
+
+function provideMockServices(): Provider[] {
+  return [
+    {provide: 'AuthService', useClass: MockAuthService},
+  ]
+}
+
+function provideBackendServices(): Provider[] {
+  return [
+    {provide: 'AuthService', useClass: AuthenticationService},
+  ]
 }
 
 @NgModule({
@@ -46,7 +72,9 @@ export function createTranslateLoader(http: HttpClient) {
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    HasAuthDirective
+    HasAuthDirective,
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -65,10 +93,10 @@ export function createTranslateLoader(http: HttpClient) {
     StoreModule.forRoot({authorization: authorityReducer}),
     ModalModule,
     CommonsModule,
+    FormModule,
     DrivermockModule,
     ParkingMeterModule,
     AccountMonitoringModule,
-    AuthenticationModule,
     UsersModule
   ],
   providers: [
@@ -84,7 +112,7 @@ export function createTranslateLoader(http: HttpClient) {
     TranslatedOptionFactory,
     StoreInitializer,
     {provide: DateAdapter, useClass: MomentDateAdapter}
-  ],
+  ].concat(provideServices()),
   bootstrap: [AppComponent]
 })
 export class AppModule {

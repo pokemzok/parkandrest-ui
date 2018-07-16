@@ -52,7 +52,7 @@ import {AuthenticationModule} from './authentication/authentication.module';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
+// FIXME sprobuj pozbyc sie tego, o dziwo jak to usunac aplikacja sie wykrzacza
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
     return provideMockServices();
@@ -125,7 +125,7 @@ function provideBackendServices(): Provider[] {
     TranslatedToastrFacade,
     StoreInitializer,
     {provide: DateAdapter, useClass: MomentDateAdapter}
-  ].concat(provideServices()),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

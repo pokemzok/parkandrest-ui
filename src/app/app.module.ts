@@ -11,8 +11,6 @@ import {CookieService} from 'ngx-cookie-service';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {AuthCookiesService} from './security/cookies/authcookies.service';
 import {RouterModule} from '@angular/router';
-import {UsersComponent} from './users/users.component';
-import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslatedToastrFacade} from './common/toaster/translated-toaster.service';
@@ -30,8 +28,6 @@ import {FinancialReportService} from './accountmonitoring/report/financialreport
 import {MockParkingSpaceService} from './parkingmeter/mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingmeter/parkingspace.service';
 import {TranslatedOptionFactory} from './form/select/options/translated-option.factory';
-import {UsersManagementComponent} from './users/manage/users-management.component';
-import {NewUserComponent} from './users/new/new-user.component';
 import {MockUserManagementService} from './users/mock.user-management.service';
 import {UserManagementService} from './users/user-management.service';
 import {MockUsersService} from './users/manage/mock.users.service';
@@ -54,7 +50,9 @@ import {AsyncUsernameValidator} from './users/new/validator/async.username.valid
 import {DrivermockModule} from './drivermock/drivermock.module';
 import {CommonsModule} from './common/commons.module';
 import {FormModule} from './form/form.module';
-import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
+import {ParkingMeterModule} from './parkingmeter/parkingmeter.module';
+import {AccountMonitoringModule} from './accountmonitoring/accountmonitoring.module';
+import {UsersModule} from './users/users.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -96,12 +94,7 @@ function provideBackendServices(): Provider[] {
     AppComponent,
     LoginComponent,
     FooterComponent,
-    UsersComponent,
-    AccountMonitoringComponent,
-    ParkingMeterComponent,
     HeaderComponent,
-    UsersManagementComponent,
-    NewUserComponent,
     LogoutComponent,
     HasAuthDirective
   ],
@@ -125,8 +118,10 @@ function provideBackendServices(): Provider[] {
     StoreModule.forRoot({authorization: authorityReducer}),
     CommonsModule,
     FormModule,
+    AccountMonitoringModule,
     DrivermockModule,
-    // ParkingMeterModule
+    ParkingMeterModule,
+    UsersModule
   ],
   providers: [
     CookieService,

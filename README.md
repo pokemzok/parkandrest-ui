@@ -31,7 +31,8 @@ To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
 ## Loggin in
 1. Current version has hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)
-2. You can login using provided credentials (fulladmin would allow access to all application features)
+2. You can login using provided credentials (fulladmin would allow access to all application features):
+
 | username		  | password       |authorities  				  |
 |: ------------- :|:--------------:|:----------------------------:|
 | fulladmin		  | password 	   |ADMIN, OPERATOR, OWNER, DRIVER|
@@ -39,6 +40,7 @@ To run application test type 'ng test' in *parkandrest-ui* main catalogue
 | operator		  | password 	   |OPERATOR					  | 
 | driver		  | password 	   |DRIVER					  	  | 
 | owner		  	  | password 	   |OWNER					  	  | 
+
 
 ##Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection

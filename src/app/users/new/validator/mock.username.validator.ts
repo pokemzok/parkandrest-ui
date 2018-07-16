@@ -8,17 +8,24 @@ import {isNullOrUndefined} from 'util';
 @Injectable()
 export class MockUsernameValidator implements UsernameValidator {
 
+  private static readonly ERROR_CODE = 'usernameAlreadyTaken';
+
   check(control: FormControl): Promise<any> | Observable<any> {
     return new Promise(resolve => {
       setTimeout(() => {
         const userInstance = MockedUsersCollection.getByUsername(control.value);
         if ( ! isNullOrUndefined(userInstance) ) {
-            resolve({'usernameAlreadyTaken': true});
+            const string = MockUsernameValidator.ERROR_CODE;
+            resolve({string: true});
         } else {
           resolve(null);
         }
       }, 1000);
     });
+  }
+
+  getErrorCode(): string {
+    return MockUsernameValidator.ERROR_CODE;
   }
 
 }

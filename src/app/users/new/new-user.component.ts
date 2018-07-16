@@ -69,4 +69,8 @@ export class NewUserComponent implements OnInit {
       this.registerForm.reset({isActive: false});
     }
   }
+
+  getUsernameErrorCodes() {
+    return [this.asyncUsernameValidator.getErrorCode()];
+  }
 }

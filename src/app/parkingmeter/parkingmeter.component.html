@@ -6,7 +6,7 @@
         type="number"
         formCtrlName="parkingSpaceId"
         inputPlaceholder="{{'forms.parkingSpaceId' | translate}}"
-        errorMsg="{{'forms.validation.maxChars' | translate}}"
+        [genericErrorMsg]="'forms.validation.maxChars' | translate"
         [errorMsgCols]="12"
         [inputCols]="12">
       </app-form-input>
@@ -25,7 +25,7 @@
         [labelPosition]="labelPosition"
         formCtrlName="registration"
         inputPlaceholder="{{'forms.registration' | translate}}"
-        errorMsg="{{'forms.validation.maxChars' | translate}}"
+        [genericErrorMsg]="'forms.validation.maxChars' | translate"
         [errorMsgCols]="12"
         [inputCols]="12">
       </app-form-input>

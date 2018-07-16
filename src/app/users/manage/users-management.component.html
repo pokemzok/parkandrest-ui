@@ -7,7 +7,7 @@
           [labelPosition]="labelPosition"
           formCtrlName="username"
           inputPlaceholder="{{'forms.username' | translate}}"
-          errorMsg="{{'forms.validation.maxChars' | translate}}"
+          [genericErrorMsg]="'forms.validation.maxChars' | translate"
           [errorMsgCols]="12"
           [inputCols]="12">
         </app-form-input>

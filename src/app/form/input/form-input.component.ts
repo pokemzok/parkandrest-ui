@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ControlContainer, FormGroup} from '@angular/forms';
 import {LabelPosition} from '../LabelPosition';
 import {UUID} from 'angular2-uuid';
+import {AbstractControl} from '@angular/forms/src/model';
+import {isNullOrUndefined} from 'util';
 
 /**
  * Default params are @type = 'text', labelPosition = LabelPosition.TOP
@@ -20,11 +22,14 @@ export class FormInputComponent implements OnInit {
   @Input() inputCols: number;
   @Input() errorMsgCols: number;
   @Input() formCtrlName: string;
-  @Input() errorMsg: string;
+  @Input() genericErrorMsg: string;
+  @Input() specificErrorMsgCodes: string[];
   @Input() labelPosition: LabelPosition;
   @Input() inputClasses: string;
 
   inputFormGroup: FormGroup;
+  currentControl: AbstractControl;
+
   id: string =  UUID.UUID();
 
   constructor(private controlContainer: ControlContainer) {
@@ -33,18 +38,21 @@ export class FormInputComponent implements OnInit {
     this.inputClasses = 'form-control';
     this.errorMsgCols = 3;
     this.inputCols = 4;
+    this.specificErrorMsgCodes = [];
   }
 
   ngOnInit() {
     this.inputFormGroup = <FormGroup>this.controlContainer.control;
+    this.currentControl = this.inputFormGroup.get(this.formCtrlName);
   }
 
-  isFormInvalid(): boolean {
-    return this.inputFormGroup.get(this.formCtrlName).invalid && this.inputFormGroup.get(this.formCtrlName).touched;
+  isControlInvalid(): boolean {
+    console.log(this.currentControl.errors);
+    return this.currentControl.invalid && this.currentControl.touched;
   }
 
-  isFormValid(): boolean {
-    return this.inputFormGroup.get(this.formCtrlName).valid;
+  isControlValid(): boolean {
+    return this.currentControl.valid;
   }
 
   labelTopPosition() {
@@ -53,5 +61,11 @@ export class FormInputComponent implements OnInit {
 
   labelLeftPosition() {
     return LabelPosition.LEFT === this.labelPosition;
+  }
+
+  shouldRender(code: string): boolean {
+    if (!isNullOrUndefined(this.currentControl.errors)) {
+      return this.currentControl.errors[code];
+    }
   }
 }

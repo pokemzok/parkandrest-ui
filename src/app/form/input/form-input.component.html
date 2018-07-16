@@ -1,6 +1,6 @@
 <div class="form-group" [formGroup]="inputFormGroup"
-     [ngClass]="{'has-error': isFormInvalid(),
-                'has-success': isFormValid()}">
+     [ngClass]="{'has-error': isControlInvalid(),
+                'has-success': isControlValid()}">
   <label for={{id}} *ngIf="labelTopPosition()">{{label}}</label>
 
   <div class="row">
@@ -22,10 +22,13 @@
              aria-describedby="inputHelp"
              formControlName={{formCtrlName}}>
     </div>
-    <div class="row" *ngIf="isFormInvalid()">
+    <div class="row" *ngIf="isControlInvalid()">
       <div class="col-md-{{errorMsgCols}} text-center">
-        <span class="text-danger ">{{errorMsg}}</span>
+        <span class="text-danger ">{{genericErrorMsg}}</span>
       </div>
+      <!--<div class="col-md-{{errorMsgCols}} text-center" *ngFor="let code of specificErrorMsgCodes">
+        <span class="text-danger " *ngIf="shouldRender(code)">test</span>
+      </div>-->
     </div>
   </div>
   <small id="inputHelp" class="form-text text-muted">{{description}}</small>

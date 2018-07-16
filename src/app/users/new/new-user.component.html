@@ -7,7 +7,8 @@
                       [labelPosition]="labelPosition"
                       [inputCols]="4"
                       [errorMsgCols]="3"
-                      [errorMsg]="'forms.validation.usernameCharsQuantity' | translate"
+                      [genericErrorMsg]="'forms.validation.usernameCharsQuantity' | translate"
+                      [specificErrorMsgCodes]="getUsernameErrorCodes()"
                       [label]="'forms.username' | translate">
       </app-form-input>
     </div>
@@ -20,7 +21,7 @@
                         formCtrlName="password"
                         [labelPosition]="labelPosition"
                         label="{{'forms.password' | translate}}"
-                        [errorMsg]="'forms.validation.passwordCharsQuantity' | translate">
+                        [genericErrorMsg]="'forms.validation.passwordCharsQuantity' | translate">
         </app-form-input>
       </div>
     </div>
@@ -31,7 +32,7 @@
                         formCtrlName="repeatPassword"
                         [labelPosition]="labelPosition"
                         label="{{'forms.repeatPass' | translate}}"
-                        [errorMsg]="'forms.validation.passwordCharsQuantity' | translate">
+                        [genericErrorMsg]="'forms.validation.passwordCharsQuantity' | translate">
         </app-form-input>
       </div>
     </div>

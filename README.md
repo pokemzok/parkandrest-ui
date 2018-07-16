@@ -1,7 +1,7 @@
 # parkandrest-ui
 
-Fronten application made in angular 6 for educational purposes. Current version is fully client-side (mocked services). 
-<br>
+Frontend application made in angular 6 for educational purposes. Current version is fully client-side (mocked services). 
+
 ###Key features:
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.
@@ -31,11 +31,11 @@ To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
 ## Loggin in
 1. Current version have hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)
-2. User with authorities necessary to see all features have credentials 
+2. User with authorities necessary to see all features have credentials:
 
-| username      | password      |
-| ------------- |--------------	|
-| fulladmin		| password 		|
+| username		  | password       |
+|: ------------- :|:--------------:|
+| fulladmin		  | password 	   |
 
 ##Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection

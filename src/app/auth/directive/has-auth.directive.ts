@@ -1,9 +1,9 @@
 import {Directive, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
 import {Authority} from '../authority';
 import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs/Rx';
 import {AuthorizationModel} from '../authorization.model';
 import * as _ from 'underscore';
+import {Subscription} from 'rxjs/index';
 
 @Directive({
   selector: '[appHasAuth]'

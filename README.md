@@ -25,9 +25,8 @@ Frontend application made in angular 6 for educational purposes. Current version
 2. Type npm install in "parkandrest-ui" catalogue
 
 ##How to run?
-To run application type 'ng serve' in *parkandrest-ui* main catalogue
-<br>
-To run application test type 'ng test' in *parkandrest-ui* main catalogue
+1. To run application type 'ng serve' in *parkandrest-ui* main catalogue
+2. To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
 ## Loggin in
 1. Current version has hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)

@@ -6,7 +6,7 @@ import {UserManagement} from '../user-management.interface';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
 import {SelectOption} from '../../form/select/options/select-option';
-import {LabelPosition} from '../../form/LabelPosition';
+import {LabelPosition} from '../../form/label-position';
 import {UserAuthorities} from '../users.authorities';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 

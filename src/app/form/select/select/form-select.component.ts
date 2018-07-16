@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LabelPosition} from '../../LabelPosition';
+import {LabelPosition} from '../../label-position';
 import {UUID} from 'angular2-uuid';
 import {SelectOption} from '../options/select-option';
 import {ControlContainer, FormGroup} from '@angular/forms';

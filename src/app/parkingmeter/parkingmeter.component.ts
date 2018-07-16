@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LabelPosition} from '../form/LabelPosition';
+import {LabelPosition} from '../form/label-position';
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
 import {ParkingSpaceFilter} from './parkingspace.filter';
 import {ParkingSpaceResponse} from './parkingspace.response';

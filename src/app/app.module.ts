@@ -55,6 +55,9 @@ import {HasAuthDirective} from './auth/directive/has-auth.directive';
 import {StoreModule} from '@ngrx/store';
 import {authorityReducer} from './auth/store/authority-reducer';
 import {StoreInitializer} from './auth/store/store-initializer';
+import {UsernameValidator} from './users/new/validator/username.validator.interface';
+import {MockUsernameValidator} from './users/new/validator/mock.username.validator';
+import {AsyncUsernameValidator} from './users/new/validator/async.username.validator';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -74,7 +77,8 @@ export function provideMockServices(): Provider[] {
     {provide: 'FinancialReportService', useClass: MockFinancialReportService},
     {provide: 'ParkingSpaceService', useClass: MockParkingSpaceService},
     {provide: 'UserManagementService', useClass: MockUserManagementService},
-    {provide: 'UsersService', useClass: MockUsersService}
+    {provide: 'UsersService', useClass: MockUsersService},
+    {provide: 'UsernameValidator', useClass: MockUsernameValidator},
   ]
 }
 
@@ -84,7 +88,8 @@ export function provideBackendServices(): Provider[] {
     {provide: 'FinancialReportService', useClass: FinancialReportService},
     {provide: 'ParkingSpaceService', useClass: ParkingSpaceService},
     {provide: 'UserManagementService', useClass: UserManagementService},
-    {provide: 'UsersService', useClass: UsersService}
+    {provide: 'UsersService', useClass: UsersService},
+    {provide: 'UsernameValidator', useClass: AsyncUsernameValidator},
   ]
 }
 

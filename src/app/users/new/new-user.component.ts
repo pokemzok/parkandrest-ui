@@ -7,9 +7,9 @@ import {NewUserRequest} from './new-user.request';
 import {UserAuthorities} from '../users.authorities';
 import {UserManagement} from '../new-user.interface';
 import {isNullOrUndefined} from 'util';
-import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 import {PasswordsValidator} from './validator/passwords.validator';
+import {UsernameValidator} from './validator/username.validator.interface';
 
 @Component({
   selector: 'app-new-user',
@@ -23,8 +23,8 @@ export class NewUserComponent implements OnInit {
   statusesOptions: SelectOption[];
 
   constructor(private translatedOptionFactory: TranslatedOptionFactory,
-              private toaster: TranslatedToastrFacade,
               private formBuilder: FormBuilder,
+              @Inject('UsernameValidator') private asyncUsernameValidator: UsernameValidator,
               @Inject('UserManagementService') private userManagementService: UserManagement) {
     this.statusesOptions = translatedOptionFactory.optionsOf<string>(
       'options.authorities.',
@@ -37,7 +37,8 @@ export class NewUserComponent implements OnInit {
       username: [null, [
         Validators.required,
         Validators.minLength(VALIDATIONS_CONFIG.MIN_USERNAME_LENGTH),
-        Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)] // FIXME async username validator
+        Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)],
+        this.asyncUsernameValidator.check.bind(this)
       ],
       passwords: new FormGroup({
         password: new FormControl(null, [
@@ -57,7 +58,7 @@ export class NewUserComponent implements OnInit {
   }
 
   isPasswordsFormInvalid(): boolean {
-    const passwordsForm =  this.registerForm.get('passwords');
+    const passwordsForm = this.registerForm.get('passwords');
     return passwordsForm.invalid && passwordsForm.touched;
   }
 
@@ -65,7 +66,6 @@ export class NewUserComponent implements OnInit {
     const request = <NewUserRequest>this.registerForm.getRawValue();
     const response = this.userManagementService.add(request);
     if (!isNullOrUndefined(response)) {
-      this.toaster.success('notifications.userCreationSuccess');
       this.registerForm.reset({isActive: false});
     }
   }

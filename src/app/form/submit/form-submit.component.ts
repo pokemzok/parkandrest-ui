@@ -19,4 +19,7 @@ export class FormSubmitComponent implements OnInit {
     this.inputFormGroup = <FormGroup>this.controlContainer.control;
   }
 
+  isDisabled(): boolean {
+    return this.inputFormGroup.invalid || this.inputFormGroup.pending;
+  }
 }

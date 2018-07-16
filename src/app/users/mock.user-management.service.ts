@@ -16,6 +16,7 @@ export class MockUserManagementService implements UserManagement {
 
   add(request: NewUserRequest): NewUserResponse {
     MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive.toString(), request.authorities));
+    this.toastr.success('notifications.userCreationSuccess');
     return new NewUserResponse(request.username, true, moment().format(DATETIME_FORMAT));
   }
 

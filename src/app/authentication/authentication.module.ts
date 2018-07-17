@@ -14,6 +14,7 @@ import {LoginAuthGuard} from '../security/guard/login-authguard.service';
 import {LogoutAuthGuard} from '../security/guard/logout-authguard.service';
 import {AuthCookiesService} from '../security/cookies/authcookies.service';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
+import {SecurityModule} from '../security/security.module';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -44,6 +45,7 @@ function provideBackendServices(): Provider[] {
     CommonModule,
     ModalModule,
     ReactiveFormsModule,
+    SecurityModule,
     TranslateModule.forChild(),
     FormModule,
   ],

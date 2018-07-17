@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 import {Route} from '@angular/router/src/config';
 import {Type} from '@angular/core';
-import {AuthorityComponentInterface} from '../auth/authority-component.interface';
+import {AuthorityComponent} from '../auth/authority.component';
 
 export interface RoutesWithComponentCollection {
 
@@ -9,6 +9,6 @@ export interface RoutesWithComponentCollection {
 
   getLoginRoute(): Route;
 
-  getFirstRouteByComponent(componentType: Type<AuthorityComponentInterface>): Route ;
+  getFirstRouteByComponent(componentType: Type<AuthorityComponent>): Route ;
 
 }

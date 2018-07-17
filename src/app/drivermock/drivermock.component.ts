@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorityComponentInterface} from '../security/auth/authority-component.interface';
+import {AuthorityComponent} from '../security/auth/authority.component';
 
 @Component({
   selector: 'app-drivermock',
   templateUrl: './drivermock.component.html',
   styleUrls: ['./drivermock.component.css']
 })
-export class DrivermockComponent implements OnInit, AuthorityComponentInterface {
+export class DrivermockComponent implements OnInit, AuthorityComponent {
 
   constructor() { }
 

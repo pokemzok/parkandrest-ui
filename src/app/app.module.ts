@@ -76,7 +76,7 @@ function provideBackendServices(): Provider[] {
     ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES_DEFINITIONS),
     StoreModule.forRoot({authorization: authorityReducer}),
-    SecurityModule.forRoot(new RoutesDefinitionsCollection()),
+    SecurityModule.forRoot(new RoutesDefinitionsCollection(ROUTES_DEFINITIONS)),
     CommonsModule,
     CoreModule,
     AccountMonitoringModule,

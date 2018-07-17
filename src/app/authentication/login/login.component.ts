@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginRequest} from './login.request';
 import {Auth} from '../../security/auth/auth.interface';
-import {AuthorityComponentInterface} from '../../security/auth/authority-component.interface';
+import {AuthorityComponent} from '../../security/auth/authority.component';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 
 @Component({
@@ -10,7 +10,7 @@ import {VALIDATIONS_CONFIG} from '../../../environments/environment';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit, AuthorityComponentInterface {
+export class LoginComponent implements OnInit, AuthorityComponent {
 
   loginForm: FormGroup;
 

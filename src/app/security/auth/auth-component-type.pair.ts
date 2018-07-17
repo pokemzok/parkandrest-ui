@@ -1,13 +1,13 @@
 import {Authority} from './authority';
-import {AuthorityComponentInterface} from './authority-component.interface';
+import {AuthorityComponent} from './authority.component';
 import {Type} from '@angular/core';
 
 export class AuthComponentTypePair {
 
   private _auth: Authority;
-  private _component: Type<AuthorityComponentInterface>;
+  private _component: Type<AuthorityComponent>;
 
-  constructor(auth: Authority, component: Type<AuthorityComponentInterface>) {
+  constructor(auth: Authority, component: Type<AuthorityComponent>) {
     this._auth = auth;
     this._component = component;
   }
@@ -16,7 +16,7 @@ export class AuthComponentTypePair {
     return this._auth;
   }
 
-  get component(): Type<AuthorityComponentInterface> {
+  get component(): Type<AuthorityComponent> {
     return this._component;
   }
 }

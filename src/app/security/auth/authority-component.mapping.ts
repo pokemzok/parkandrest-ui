@@ -7,7 +7,7 @@ import {DrivermockComponent} from '../../drivermock/drivermock.component';
 import * as _ from 'underscore';
 import {LogoutComponent} from '../../authentication/logout/logout.component';
 import {Type} from '@angular/core';
-import {AuthorityComponentInterface} from './authority-component.interface';
+import {AuthorityComponent} from './authority.component';
 
 // FIXME decouple component reference from mapping
 export class AuthorityToComponentMapping {
@@ -20,7 +20,7 @@ export class AuthorityToComponentMapping {
     new AuthComponentTypePair(Authority.DRIVER, DrivermockComponent),
   ];
 
-  static getFirstForAuthorities(authorities: Authority[]): Type<AuthorityComponentInterface> {
+  static getFirstForAuthorities(authorities: Authority[]): Type<AuthorityComponent> {
     const sortedAuthorities = _.sortBy(authorities, function (authority) {
       return authority.valueOf()
     });
@@ -31,7 +31,7 @@ export class AuthorityToComponentMapping {
     }
   }
 
-  static getFirstForAuthority(authority: Authority): Type<AuthorityComponentInterface> {
+  static getFirstForAuthority(authority: Authority): Type<AuthorityComponent> {
     const result = _.where(this.mapping, {auth: authority});
     if (result.length === 0) {
       console.log('Found no authority allowing to route to website content, returning logout route');

@@ -1,4 +1,4 @@
-import {LoginRequest} from '../authentication/login/login.request';
+import {LoginRequest} from '../../authentication/login/login.request';
 import {Auth} from './auth.interface';
 import {Injectable} from '@angular/core';
 

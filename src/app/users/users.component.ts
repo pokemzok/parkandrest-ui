@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorityComponent} from '../security/authority.component';
+import {AuthorityComponent} from '../security/auth/authority.component';
 
 @Component({
   selector: 'app-users',

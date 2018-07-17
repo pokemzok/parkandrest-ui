@@ -1,5 +1,5 @@
 import {Authenticate, AUTHENTICATE} from './actions/authenticate';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorizationModel} from '../auth/authorization.model';
 import {DEAUTHENTICATE} from './actions/deauthenticate';
 
 const initialState = AuthorizationModel.empty();

@@ -1,9 +1,9 @@
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {Authority} from '../authority';
+import {Authority} from '../auth/authority';
 import {SecureAuthGuard} from './secure-authguard.template';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorizationModel} from '../auth/authorization.model';
 import {Store} from '@ngrx/store';
 
 @Injectable()

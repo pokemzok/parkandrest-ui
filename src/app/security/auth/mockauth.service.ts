@@ -1,17 +1,18 @@
 import {Auth} from './auth.interface';
-import {LoginRequest} from '../authentication/login/login.request';
-import {Optional} from '../common/optional/optional';
+import {LoginRequest} from '../../authentication/login/login.request';
+import {Optional} from '../../common/optional/optional';
 import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';
-import {AuthCookiesService} from './cookies/authcookies.service';
+import {AuthCookiesService} from '../cookies/authcookies.service';
 import {Injectable} from '@angular/core';
-import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
+import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 import {Router} from '@angular/router';
 import {AuthorityToComponentMapping} from './authority-component.mapping';
-import {RoutesDefinitionsCollection} from '../routes-definitions.collection';
+import {RoutesDefinitionsCollection} from '../routing/routes-definitions.collection';
 import {Store} from '@ngrx/store';
-import {Authenticate} from './store/actions/authenticate';
-import {Deauthenticate} from './store/actions/deauthenticate';
+import {Authenticate} from '../store/actions/authenticate';
+import {Deauthenticate} from '../store/actions/deauthenticate';
+import {LoginComponent} from '../../authentication/login/login.component';
 
 @Injectable()
 export class MockAuthService implements Auth {
@@ -70,7 +71,7 @@ export class MockAuthService implements Auth {
     this.authStore.dispatch(new Deauthenticate());
     const loginRoute = RoutesDefinitionsCollection
       .getInstance()
-      .getLoginRoute();
+      .getFirstRouteByComponent(LoginComponent);
     this.router.navigateByUrl(loginRoute.path);
   }
 

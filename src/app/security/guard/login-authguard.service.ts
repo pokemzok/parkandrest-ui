@@ -2,9 +2,9 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {Observable} from 'rxjs/index';
 import {Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {AuthorityToComponentMapping} from '../authority-component.mapping';
-import {RoutesDefinitionsCollection} from '../../routes-definitions.collection';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorityToComponentMapping} from '../auth/authority-component.mapping';
+import {RoutesDefinitionsCollection} from '../routing/routes-definitions.collection';
+import {AuthorizationModel} from '../auth/authorization.model';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs/internal/operators';
 

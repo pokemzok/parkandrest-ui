@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 import {SecureAuthGuard} from './secure-authguard.template';
 import {Store} from '@ngrx/store';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorizationModel} from '../auth/authorization.model';
 
 @Injectable()
 export class LogoutAuthGuard extends SecureAuthGuard {

@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {AuthorizationModel} from '../../authorization.model';
+import {AuthorizationModel} from '../../auth/authorization.model';
 
 
 export const AUTHENTICATE = 'authenticate';

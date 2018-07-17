@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Authenticate} from './actions/authenticate';
 import {AuthCookiesService} from '../cookies/authcookies.service';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorizationModel} from '../auth/authorization.model';
 import {Store} from '@ngrx/store';
 
 @Injectable()

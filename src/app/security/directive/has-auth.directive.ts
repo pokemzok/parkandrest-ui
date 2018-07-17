@@ -1,7 +1,7 @@
 import {Directive, ElementRef, Input, OnDestroy, OnInit} from '@angular/core';
-import {Authority} from '../authority';
+import {Authority} from '../auth/authority';
 import {Store} from '@ngrx/store';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorizationModel} from '../auth/authorization.model';
 import * as _ from 'underscore';
 import {Subscription} from 'rxjs/index';
 

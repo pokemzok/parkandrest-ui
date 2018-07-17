@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
-import {AuthorizationModel} from '../authorization.model';
+import {AuthorizationModel} from '../auth/authorization.model';
 import {isNullOrUndefined} from 'util';
-import {Authority} from '../authority';
+import {Authority} from '../auth/authority';
 import * as _ from 'underscore';
 
 // TODO: create a service which would monitor and destroys security Token when it times out

@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {LoginRequest} from './login.request';
-import {Auth} from '../../security/auth.interface';
-import {AuthorityComponent} from '../../security/authority.component';
+import {Auth} from '../../security/auth/auth.interface';
+import {AuthorityComponent} from '../../security/auth/authority.component';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
 
 @Component({

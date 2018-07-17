@@ -48,6 +48,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 4. angular migration from 5 to 6 destroyed test compatibility. Multiple solutions available here https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
 
 ##What is planned for the future:
+* Routes lazy loading
 * Real implementation of services which would use parkandrest application
 * Implement driver mock functionality (it requires connection to server)
 * Make tables paginable and sortable

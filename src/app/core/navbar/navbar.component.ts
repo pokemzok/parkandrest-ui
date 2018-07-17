@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Authority} from '../security/authority';
+import {Authority} from '../../security/authority';
 
 @Component({
   selector: 'app-navbar',

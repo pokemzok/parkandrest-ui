@@ -1,16 +1,12 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {NavbarComponent} from './navbar/navbar.component';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import {FooterComponent} from './footer/footer.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HeaderComponent} from './header/header.component';
-import {ModalModule} from 'ngx-modal';
 import {DateAdapter} from '@angular/material';
 import {Provider} from '@angular/core/src/di/provider';
 import {MockAuthService} from './security/mockauth.service';
@@ -34,6 +30,7 @@ import {AccountMonitoringModule} from './accountmonitoring/accountmonitoring.mod
 import {UsersModule} from './users/users.module';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {SecurityModule} from './security/security.module';
+import {CoreModule} from './core/core.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -62,10 +59,7 @@ function provideBackendServices(): Provider[] {
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    AppComponent,
-    FooterComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -80,10 +74,10 @@ function provideBackendServices(): Provider[] {
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES_DEFINITIONS),
-    ModalModule,
     StoreModule.forRoot({authorization: authorityReducer}),
     SecurityModule,
     CommonsModule,
+    CoreModule,
     AccountMonitoringModule,
     DrivermockModule,
     ParkingMeterModule,

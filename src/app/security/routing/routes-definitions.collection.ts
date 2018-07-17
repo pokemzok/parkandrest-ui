@@ -32,7 +32,7 @@ export class RoutesDefinitionsCollection {
   }
 
   getLoginRoute(): Route {
-    return this.getFirstRouteByComponent(LoginComponent);
+    return this.getFirstRouteByComponent(LoginComponent); // FIXME, ten modul nie powinien o tym wiedziec, a jesli powinien, to musi byc spiety razem z authentication a tego bysmy nie chcieli
   }
 
 // TODO: Testme

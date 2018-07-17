@@ -1,9 +1,9 @@
 import {Component} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {ActivatedRoute, Event, NavigationEnd, NavigationStart, Router} from '@angular/router';
-import {LoginComponent} from './login/login.component';
+import {LoginComponent} from './authentication/login/login.component';
 import * as _ from 'underscore';
-import {LogoutComponent} from './logout/logout.component';
+import {LogoutComponent} from './authentication/logout/logout.component';
 
 @Component({
   selector: 'app-root',

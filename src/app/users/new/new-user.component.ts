@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {LabelPosition} from '../../form/LabelPosition';
+import {LabelPosition} from '../../form/label-position';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
 import {SelectOption} from '../../form/select/options/select-option';
 import {NewUserRequest} from './new-user.request';

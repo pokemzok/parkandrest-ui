@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ControlContainer, FormGroup} from '@angular/forms';
-import {LabelPosition} from '../LabelPosition';
+import {LabelPosition} from '../label-position';
 import {UUID} from 'angular2-uuid';
 import {AbstractControl} from '@angular/forms/src/model';
 import {isNullOrUndefined} from 'util';

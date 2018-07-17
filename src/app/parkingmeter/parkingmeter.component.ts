@@ -1,13 +1,13 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {LabelPosition} from '../form/LabelPosition';
+import {LabelPosition} from '../form/label-position';
 import {ParkingSpaceProvider} from './parkingspace.provider.interface';
 import {ParkingSpaceFilter} from './parkingspace.filter';
 import {ParkingSpaceResponse} from './parkingspace.response';
 import {SelectOption} from '../form/select/options/select-option';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
 import {ParkingSpaceStatus} from './parkingspace.status';
-import {AuthorityComponent} from '../auth/authority.component';
+import {AuthorityComponent} from '../security/auth/authority.component';
 import {VALIDATIONS_CONFIG} from '../../environments/environment';
 
 @Component({

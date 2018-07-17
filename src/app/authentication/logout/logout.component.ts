@@ -1,13 +1,13 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Auth} from '../../security/auth/auth.interface';
-import {AuthorityComponent} from '../../security/auth/authority.component';
+import {AuthorityComponentInterface} from '../../security/auth/authority-component.interface';
 
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
   styleUrls: ['./logout.component.css']
 })
-export class LogoutComponent implements OnInit, AuthorityComponent {
+export class LogoutComponent implements OnInit, AuthorityComponentInterface {
 
   constructor(@Inject('AuthService')private authService: Auth) { }
 

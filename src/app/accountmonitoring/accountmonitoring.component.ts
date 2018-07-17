@@ -6,14 +6,14 @@ import {FinancialReportResponse} from './report/financialreport.response';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
 import {FinancialReport} from './report/financialreport.interface';
-import {AuthorityComponent} from '../security/auth/authority.component';
+import {AuthorityComponentInterface} from '../security/auth/authority-component.interface';
 
 @Component({
   selector: 'app-accountmonitor',
   templateUrl: './accountmonitoring.component.html',
   styleUrls: ['./accountmonitoring.component.css']
 })
-export class AccountMonitoringComponent implements OnInit, AuthorityComponent {
+export class AccountMonitoringComponent implements OnInit, AuthorityComponentInterface {
 
   reportForm: FormGroup;
   financialReport: FinancialReportResponse = null;

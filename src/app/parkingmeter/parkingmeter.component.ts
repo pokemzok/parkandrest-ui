@@ -7,7 +7,7 @@ import {ParkingSpaceResponse} from './parkingspace.response';
 import {SelectOption} from '../form/select/options/select-option';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
 import {ParkingSpaceStatus} from './parkingspace.status';
-import {AuthorityComponent} from '../security/auth/authority.component';
+import {AuthorityComponentInterface} from '../security/auth/authority-component.interface';
 import {VALIDATIONS_CONFIG} from '../../environments/environment';
 
 @Component({
@@ -15,7 +15,7 @@ import {VALIDATIONS_CONFIG} from '../../environments/environment';
   templateUrl: './parkingmeter.component.html',
   styleUrls: ['./parkingmeter.component.css']
 })
-export class ParkingMeterComponent implements OnInit, AuthorityComponent {
+export class ParkingMeterComponent implements OnInit, AuthorityComponentInterface {
 
   parkingMeterForm: FormGroup;
   labelPosition = LabelPosition.NONE;

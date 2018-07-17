@@ -31,6 +31,7 @@ import {UsersModule} from './users/users.module';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {SecurityModule} from './security/security.module';
 import {CoreModule} from './core/core.module';
+import {RoutesDefinitionsCollection} from './routes-definitions.collection';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -75,7 +76,7 @@ function provideBackendServices(): Provider[] {
     ToastrModule.forRoot(),
     RouterModule.forRoot(ROUTES_DEFINITIONS),
     StoreModule.forRoot({authorization: authorityReducer}),
-    SecurityModule,
+    SecurityModule.forRoot(new RoutesDefinitionsCollection()),
     CommonsModule,
     CoreModule,
     AccountMonitoringModule,

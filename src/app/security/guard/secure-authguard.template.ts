@@ -1,6 +1,6 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {RoutesDefinitionsCollection} from '../routing/routes-definitions.collection';
+import {RoutesDefinitionsCollection} from '../../routes-definitions.collection';
 import {AuthorityToComponentMapping} from '../auth/authority-component.mapping';
 import {AuthorizationModel} from '../auth/authorization.model';
 import {Store} from '@ngrx/store';

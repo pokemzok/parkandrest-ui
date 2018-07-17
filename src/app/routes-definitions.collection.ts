@@ -11,7 +11,6 @@ import {RoutesWithComponentCollection} from './security/routing/routes-with-comp
 /**
  * Singleton class for making operation on routes definitions array
  */
-@Injectable()
 export class RoutesDefinitionsCollection implements RoutesWithComponentCollection {
 
   private static readonly instance: RoutesDefinitionsCollection;

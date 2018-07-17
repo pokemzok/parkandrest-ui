@@ -4,7 +4,7 @@ import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.se
 import {SecureAuthGuard} from './secure-authguard.template';
 import {Store} from '@ngrx/store';
 import {AuthorizationModel} from '../auth/authorization.model';
-import {RoutesWithComponentCollection} from '../routing/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
 
 @Injectable()
 export class LogoutAuthGuard extends SecureAuthGuard {

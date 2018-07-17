@@ -2,11 +2,10 @@ import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '
 import {Observable} from 'rxjs/index';
 import {Inject, Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {AuthorityToComponentMapping} from '../auth/authority-component.mapping';
 import {AuthorizationModel} from '../auth/authorization.model';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs/internal/operators';
-import {RoutesWithComponentCollection} from '../routing/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
 
 @Injectable()
 export class LoginAuthGuard implements CanActivate {
@@ -23,9 +22,7 @@ export class LoginAuthGuard implements CanActivate {
       authModel => {
         if (authModel.containsSecurityToken()) {
           this.toaster.warning('notifications.loginForbidden');
-          const selectedRoute = this.routesCollection.getFirstRouteByComponent(
-            AuthorityToComponentMapping.getFirstForAuthorities(authModel.authorities)
-          );
+          const selectedRoute = this.routesCollection.getFirstRouteByAuthorities(authModel.authorities);
           this.router.navigateByUrl(selectedRoute.path);
           return false;
         }

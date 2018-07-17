@@ -7,11 +7,10 @@ import {AuthCookiesService} from '../cookies/authcookies.service';
 import {Inject, Injectable} from '@angular/core';
 import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
 import {Router} from '@angular/router';
-import {AuthorityToComponentMapping} from './authority-component.mapping';
 import {Store} from '@ngrx/store';
 import {Authenticate} from '../store/actions/authenticate';
 import {Deauthenticate} from '../store/actions/deauthenticate';
-import {RoutesWithComponentCollection} from '../routing/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
 
 @Injectable()
 export class MockAuthService implements Auth {
@@ -55,9 +54,7 @@ export class MockAuthService implements Auth {
       this.toasterService.success('notifications.authenticated');
       this.authCookiesService.setAuthCookies(credential.authorization);
       this.authStore.dispatch(new Authenticate(credential.authorization));
-      const selectedRoute = this.routesCollection.getFirstRouteByComponent(
-          AuthorityToComponentMapping.getFirstForAuthorities(credential.authorization.authorities)
-        );
+      const selectedRoute = this.routesCollection.getFirstRouteByAuthorities(credential.authorization.authorities);
       this.router.navigateByUrl(selectedRoute.path);
     }).orElse(() => {
       this.toasterService.error('notifications.authfailure');

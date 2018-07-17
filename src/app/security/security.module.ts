@@ -8,7 +8,7 @@ import {Provider} from '@angular/core/src/di/provider';
 import {AuthenticationService} from './auth/authentication.service';
 import {MockAuthService} from './auth/mockauth.service';
 import {ENVIRONMENT} from '../../environments/environment';
-import {RoutesWithComponentCollection} from './routing/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from './routes/routes-with-component.collection.interface';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {

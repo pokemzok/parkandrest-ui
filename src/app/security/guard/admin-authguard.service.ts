@@ -5,7 +5,7 @@ import {Authority} from '../auth/authority';
 import {SecureAuthGuard} from './secure-authguard.template';
 import {AuthorizationModel} from '../auth/authorization.model';
 import {Store} from '@ngrx/store';
-import {RoutesWithComponentCollection} from '../routing/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
 
 @Injectable()
 export class AdminAuthGuard extends SecureAuthGuard {

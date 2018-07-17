@@ -8,11 +8,7 @@ import {RouterModule} from '@angular/router';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DateAdapter} from '@angular/material';
-import {Provider} from '@angular/core/src/di/provider';
-import {MockAuthService} from './security/auth/mockauth.service';
-import {ENVIRONMENT} from '../environments/environment';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
-import {AuthenticationService} from './security/auth/authentication.service';
 import {LoginAuthGuard} from './security/guard/login-authguard.service';
 import {ROUTES_DEFINITIONS} from './routes-definitions';
 import {OwnerAuthGuard} from './security/guard/owner-authguard.service';
@@ -35,27 +31,6 @@ import {RoutesDefinitionsCollection} from './routes-definitions.collection';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-}
-
-// TODO: remove when extract security as another module
-function provideServices(): any[] {
-  if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
-    return provideMockServices();
-  } else {
-    return provideBackendServices()
-  }
-}
-
-function provideMockServices(): Provider[] {
-  return [
-    {provide: 'AuthService', useClass: MockAuthService},
-  ]
-}
-
-function provideBackendServices(): Provider[] {
-  return [
-    {provide: 'AuthService', useClass: AuthenticationService},
-  ]
 }
 
 @NgModule({
@@ -94,7 +69,7 @@ function provideBackendServices(): Provider[] {
     DriverAuthGuard,
     StoreInitializer,
     {provide: DateAdapter, useClass: MomentDateAdapter}
-  ].concat(provideServices()),
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

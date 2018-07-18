@@ -2,7 +2,7 @@
 
 Frontend application made in angular 6 for educational purposes. Current version is fully client-side (mocked services). 
 
-##Key features:
+## Key features:
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.
 3. Guarded routing which discovers home route based on authority. 
@@ -32,6 +32,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 ## Loggin in
 1. Current version has hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)
 2. You can login using provided credentials (fulladmin would allow access to all application features):
+
 
 | username		  | password       |authorities  				  |
 |: ------------- :|:--------------:|:----------------------------:|

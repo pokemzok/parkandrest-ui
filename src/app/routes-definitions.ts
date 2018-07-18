@@ -20,4 +20,5 @@ export const ROUTES_DEFINITIONS: Routes = [
   {path: 'users', canActivate: [AdminAuthGuard], component: UsersComponent},
   {path: 'drivermock', canActivate: [DriverAuthGuard], component: DrivermockComponent},
   {path: 'logout', canActivate: [LogoutAuthGuard], component: LogoutComponent},
+  {path: '**' , canActivate: [LogoutAuthGuard], component: LogoutComponent}
 ];

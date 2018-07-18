@@ -10,6 +10,6 @@ export class StoreInitializer {
   constructor(private authStore: Store<AuthorizationModel>, private cookies: AuthCookiesService) {}
 
   initialize() {
-    this.authStore.dispatch(new Authenticate(new AuthorizationModel(this.cookies.authorities, this.cookies.authToken)));
+    this.authStore.dispatch(new Authenticate(new AuthorizationModel(this.cookies.authorities(), this.cookies.authToken())));
   }
 }

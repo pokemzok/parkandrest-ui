@@ -15,7 +15,7 @@ import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
 export const ROUTES_DEFINITIONS: Routes = [
   {path: '', canActivate: [LoginAuthGuard], component: LoginComponent},
   {path: 'login', canActivate: [LoginAuthGuard], component: LoginComponent},
-  {path: 'account/monitoring', canActivate: [OwnerAuthGuard], component: AccountMonitoringComponent},
+  {path: 'accountmonitoring', canActivate: [OwnerAuthGuard], component: AccountMonitoringComponent},
   {path: 'parkingmeter', canActivate: [OperatorAuthGuard], component: ParkingMeterComponent},
   {path: 'users', canActivate: [AdminAuthGuard], component: UsersComponent},
   {path: 'drivermock', canActivate: [DriverAuthGuard], component: DrivermockComponent},

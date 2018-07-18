@@ -1,11 +1,11 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs/index';
 import {Inject, Injectable} from '@angular/core';
-import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {AuthorizationModel} from '../auth/authorization.model';
+import {TranslatedToastrFacade} from '../../../common/toaster/translated-toaster.service';
+import {AuthorizationModel} from '../../auth/authorization.model';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs/internal/operators';
-import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes-with-component.collection.interface';
 
 @Injectable()
 export class LoginAuthGuard implements CanActivate {

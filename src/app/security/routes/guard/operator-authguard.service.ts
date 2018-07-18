@@ -1,11 +1,11 @@
 import {Router} from '@angular/router';
 import {Inject, Injectable} from '@angular/core';
-import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {Authority} from '../auth/authority';
+import {TranslatedToastrFacade} from '../../../common/toaster/translated-toaster.service';
+import {Authority} from '../../auth/authority';
 import {SecureAuthGuard} from './secure-authguard.template';
-import {AuthorizationModel} from '../auth/authorization.model';
+import {AuthorizationModel} from '../../auth/authorization.model';
 import {Store} from '@ngrx/store';
-import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes-with-component.collection.interface';
 
 @Injectable()
 export class OperatorAuthGuard extends SecureAuthGuard {

@@ -1,10 +1,10 @@
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
-import {TranslatedToastrFacade} from '../../common/toaster/translated-toaster.service';
-import {AuthorizationModel} from '../auth/authorization.model';
+import {TranslatedToastrFacade} from '../../../common/toaster/translated-toaster.service';
+import {AuthorizationModel} from '../../auth/authorization.model';
 import {Store} from '@ngrx/store';
 import {map, take} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs/index';
-import {RoutesWithComponentCollection} from '../routes/routes-with-component.collection.interface';
+import {RoutesWithComponentCollection} from '../routes-with-component.collection.interface';
 
 export abstract class SecureAuthGuard implements CanActivate {
 

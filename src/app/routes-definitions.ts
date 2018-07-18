@@ -3,13 +3,13 @@ import {LogoutComponent} from './authentication/logout/logout.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {AccountMonitoringComponent} from './accountmonitoring/accountmonitoring.component';
 import {DrivermockComponent} from './drivermock/drivermock.component';
-import {LoginAuthGuard} from './security/guard/login-authguard.service';
+import {LoginAuthGuard} from './security/routes/guard/login-authguard.service';
 import {Routes} from '@angular/router';
-import {OwnerAuthGuard} from './security/guard/owner-authguard.service';
-import {LogoutAuthGuard} from './security/guard/logout-authguard.service';
-import {AdminAuthGuard} from './security/guard/admin-authguard.service';
-import {DriverAuthGuard} from './security/guard/driver-authguard.service';
-import {OperatorAuthGuard} from './security/guard/operator-authguard.service';
+import {OwnerAuthGuard} from './security/routes/guard/owner-authguard.service';
+import {LogoutAuthGuard} from './security/routes/guard/logout-authguard.service';
+import {AdminAuthGuard} from './security/routes/guard/admin-authguard.service';
+import {DriverAuthGuard} from './security/routes/guard/driver-authguard.service';
+import {OperatorAuthGuard} from './security/routes/guard/operator-authguard.service';
 import {ParkingMeterComponent} from './parkingmeter/parkingmeter.component';
 
 export const ROUTES_DEFINITIONS: Routes = [

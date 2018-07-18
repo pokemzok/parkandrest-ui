@@ -8,7 +8,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 3. Guarded routing which discovers home route based on authority. 
 4. Modularization 
 
-##Technological stack
+## Technological stack
 1. Angular 6.0
 2. Angular material
 2. Bootstrap 3.3
@@ -21,11 +21,11 @@ Frontend application made in angular 6 for educational purposes. Current version
 8. @ngx-translate
 9. @ngrx/store
 
-##Project installation steps
+## Project installation steps
 1. Install nodejs (version 8.5.0 or higher) and npm (version 5.3.0 or higher)
 2. Type npm install in "parkandrest-ui" catalogue
 
-##How to run?
+## How to run?
 1. To run application type 'ng serve' in *parkandrest-ui* main catalogue
 2. To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
@@ -35,7 +35,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 
 
 | username		  | password       |authorities  				  |
-|: ------------- :|:--------------:|:----------------------------:|
+| ------------- |--------------|----------------------------|
 | fulladmin		  | password 	   |ADMIN, OPERATOR, OWNER, DRIVER|
 | admin		  	  | password 	   |ADMIN						  |
 | operator		  | password 	   |OPERATOR					  | 
@@ -43,12 +43,12 @@ Frontend application made in angular 6 for educational purposes. Current version
 | owner		  	  | password 	   |OWNER					  	  | 
 
 
-##Known problems:
+## Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection
 2. Extracting routes from app-module is problematic. You can't store as a static param in class, you have to export the const to make it work (compilator limitarion)
 3. angular migration from 5 to 6 destroyed test compatibility. Multiple solutions available here https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
 
-##What is planned for the future:
+## What is planned for the future:
 * Routes lazy loading
 * Custom fallback route - currently we always fallback to LogoutComponent
 * Real implementation of services which would use parkandrest application

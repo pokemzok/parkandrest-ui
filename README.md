@@ -55,3 +55,4 @@ Frontend application made in angular 6 for educational purposes. Current version
 * Implement driver mock functionality (it requires connection to server)
 * Make tables paginable and sortable
 * More tests
+* RoutesDefinitionsCollection improvement (Implement AuthorityComponent type check)

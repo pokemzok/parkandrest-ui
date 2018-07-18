@@ -6,6 +6,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.
 3. Guarded routing which discovers home route based on authority. 
+4. Modularization 
 
 ##Technological stack
 1. Angular 6.0
@@ -44,12 +45,15 @@ Frontend application made in angular 6 for educational purposes. Current version
 ##Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection
 2. Extracting routes from app-module is problematic. You can't store as a static param in class, you have to export the const to make it work (compilator limitarion)
-3. ngx-cookie-service - sometimes will not delete a cookie, workaround is to provide an optional param (path) to method
-4. angular migration from 5 to 6 destroyed test compatibility. Multiple solutions available here https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
+3. angular migration from 5 to 6 destroyed test compatibility. Multiple solutions available here https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
 
 ##What is planned for the future:
 * Routes lazy loading
+* Custom fallback route - currently we always fallback to LogoutComponent
 * Real implementation of services which would use parkandrest application
+* Cookies expiration time
+* Change or update of ngx-cookie-service because of nasty side effects (example here  https://github.com/7leads/ngx-cookie-service/issues/5) 
 * Implement driver mock functionality (it requires connection to server)
 * Make tables paginable and sortable
 * More tests
+* RoutesDefinitionsCollection improvement (Implement AuthorityComponent type check)

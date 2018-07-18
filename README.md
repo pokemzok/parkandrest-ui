@@ -45,7 +45,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 
 ## Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection
-2. Extracting routes from app-module is problematic. You can't store as a static param in class, you have to export the const to make it work (compilator limitarion)
+2. Extracting routes from app-module is problematic. You can't store routes as a static param in class, you have to export the const to make it work (compilator limitarion)
 3. angular migration from 5 to 6 destroyed test compatibility. Multiple solutions available here https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
 
 ## What is planned for the future:

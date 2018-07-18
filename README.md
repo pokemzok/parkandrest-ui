@@ -6,6 +6,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.
 3. Guarded routing which discovers home route based on authority. 
+4. Modularization 
 
 ##Technological stack
 1. Angular 6.0

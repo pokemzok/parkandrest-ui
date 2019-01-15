@@ -56,7 +56,7 @@ You can login using provided credentials (fulladmin would allow access to all ap
 </p>
 2. Generate daily financial reports.  
 <p align="center">
-    <img alt="accounting-monitor" src=https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/account-monitor.gif" />
+    <img alt="accounting-monitor" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/account-monitor.gif" />
 </p>
 3. Monitor parking spaces. Get and information about parking space state and what vehicle is currently parked.  
 <p align="center">

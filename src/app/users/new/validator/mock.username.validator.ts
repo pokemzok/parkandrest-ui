@@ -15,7 +15,7 @@ export class MockUsernameValidator implements UsernameValidator {
       setTimeout(() => {
         const userInstance = MockedUsersCollection.getByUsername(control.value);
         if ( ! isNullOrUndefined(userInstance) ) {
-            resolve({'usernameAlreadyTaken': true}); // FIXME
+            resolve({'usernameAlreadyTaken': true}); // FIXME use ERROR_CODE
         } else {
           resolve(null);
         }

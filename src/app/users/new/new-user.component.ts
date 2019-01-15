@@ -12,6 +12,7 @@ import {PasswordsValidator} from './validator/passwords.validator';
 import {UsernameValidator} from './validator/username.validator.interface';
 import {FormErrorPair} from '../../form/input/form-error.pair';
 import {TranslateService} from '@ngx-translate/core';
+import {NewUserForm} from './new-user.form';
 
 @Component({
   selector: 'app-new-user',
@@ -23,6 +24,7 @@ export class NewUserComponent implements OnInit {
   registerForm: FormGroup;
   labelPosition = LabelPosition.LEFT;
   statusesOptions: SelectOption[];
+  authoritiesForm = new FormControl([], [Validators.required]);
 
   constructor(private translatedOptionFactory: TranslatedOptionFactory,
               private formBuilder: FormBuilder,
@@ -41,7 +43,7 @@ export class NewUserComponent implements OnInit {
         Validators.required,
         Validators.minLength(VALIDATIONS_CONFIG.MIN_USERNAME_LENGTH),
         Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)],
-        this.asyncUsernameValidator.check.bind(this)
+        this.isUsernameAlreadyTaken.bind(this)
       ],
       passwords: new FormGroup({
         password: new FormControl(null, [
@@ -56,8 +58,12 @@ export class NewUserComponent implements OnInit {
         ])
       }, {validators: PasswordsValidator.validate.bind(this)}),
       isActive: [false, [Validators.required]],
-      authorities: [null, Validators.required] // TODO: multiselect
+      authorities: this.authoritiesForm
     });
+  }
+
+  isUsernameAlreadyTaken(control: FormControl) { // direct service bind does not work
+    return this.asyncUsernameValidator.check(control);
   }
 
   isPasswordsFormInvalid(): boolean {
@@ -66,11 +72,13 @@ export class NewUserComponent implements OnInit {
   }
 
   onSubmit() {
-    const request = <NewUserRequest>this.registerForm.getRawValue();
-    const response = this.userManagementService.add(request);
-    if (!isNullOrUndefined(response)) {
-      this.registerForm.reset({isActive: false});
-    }
+    const form = <NewUserForm>this.registerForm.getRawValue();
+    this.userManagementService.add(NewUserRequest.of(form)).subscribe( response => {
+      if (!isNullOrUndefined(response)) {
+        this.registerForm.reset({isActive: false});
+      }
+    });
+
   }
 
   getUsernameErrorPairs(): FormErrorPair[] {

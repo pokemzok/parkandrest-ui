@@ -1,0 +1,16 @@
+<div class="text-center" *ngIf="paginationModel?.hasPages()">
+  <ul class="pagination pagination-lg">
+    <li>
+      <a href="#"  (click)="onPrevPagination()">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li *ngFor='let page of paginationModel?.totalPages | loopIterator'>
+      <a href="#" (click)="onSelectPaginationNr(page)">{{page+1}}</a></li>
+    <li>
+      <a href="#"  (click)="onNextPagination()">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</div>

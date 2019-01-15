@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ParkingMeterComponent} from './parkingmeter.component';
 import {FormModule} from '../form/form.module';
@@ -11,6 +10,8 @@ import {ENVIRONMENT} from '../../environments/environment';
 import {Provider} from '@angular/core/src/di/provider';
 import {MockParkingSpaceService} from './mock.parkingspace.service';
 import {ParkingSpaceService} from './parkingspace.service';
+import {CommonsModule} from '../common/commons.module';
+import {PaginationModule} from '../pagination/pagination.module';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -37,11 +38,12 @@ function provideBackendServices(): Provider[] {
     ParkingMeterComponent
   ],
   imports: [
-    CommonModule,
+    CommonsModule,
     ReactiveFormsModule,
     ToastrModule,
     TranslateModule.forChild(),
     FormModule,
+    PaginationModule
   ],
   providers: [
     TranslatedToastrFacade,

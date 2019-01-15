@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthorityComponent} from '../security/auth/authority.component';
+import {ENVIRONMENT} from '../../environments/environment';
 
 @Component({
   selector: 'app-drivermock',
@@ -8,7 +9,10 @@ import {AuthorityComponent} from '../security/auth/authority.component';
 })
 export class DrivermockComponent implements OnInit, AuthorityComponent {
 
-  constructor() { }
+  isAvailable = !ENVIRONMENT.PRODUCTION && !ENVIRONMENT.SERVER_OFFLINE;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

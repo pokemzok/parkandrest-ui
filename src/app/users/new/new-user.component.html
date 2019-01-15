@@ -53,12 +53,12 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <app-form-select
+      <app-form-multiselect
         [labelPosition]="labelPosition"
-        formCtrlName="authorities"
+        [formCtrl]="authoritiesForm"
         [options]="statusesOptions"
         label="{{'forms.authorities' | translate}}">
-      </app-form-select>
+      </app-form-multiselect>
     </div>
   </div>
   <div class="row">

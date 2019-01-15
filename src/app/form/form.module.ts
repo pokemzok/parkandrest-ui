@@ -9,6 +9,7 @@ import {FormInputComponent} from './input/form-input.component';
 import {FormReadonlyComponent} from './readonly/form-readonly.component';
 import {FormSelectComponent} from './select/select/form-select.component';
 import {FormSubmitComponent} from './submit/form-submit.component';
+import {FormMultiselectComponent} from './select/multi/form-multiselect.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FormSubmitComponent} from './submit/form-submit.component';
     FormInputComponent,
     FormReadonlyComponent,
     FormSelectComponent,
-    FormSubmitComponent
+    FormSubmitComponent,
+    FormMultiselectComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import {FormSubmitComponent} from './submit/form-submit.component';
     FormInputComponent,
     FormReadonlyComponent,
     FormSelectComponent,
-    FormSubmitComponent
+    FormSubmitComponent,
+    FormMultiselectComponent
   ]
 })
 export class FormModule {

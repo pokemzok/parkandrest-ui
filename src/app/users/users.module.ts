@@ -18,6 +18,7 @@ import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.servi
 import {ToastrModule} from 'ngx-toastr';
 import {MatTabsModule} from '@angular/material';
 import {TranslatedOptionFactory} from '../form/select/options/translated-option.factory';
+import {PaginationModule} from '../pagination/pagination.module';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -57,6 +58,7 @@ function provideBackendServices(): Provider[] {
       TranslateModule.forChild(),
       ToastrModule,
       FormModule,
+      PaginationModule
     ],
     providers: [
       TranslatedToastrFacade,

@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {UsersProviderInterface} from './users.provider.interface';
+import {UsersProvider} from './usersProvider';
 import {UserResponse} from '../user.response';
-import {UsersFilter} from './users.filter';
+import {UsersFilterRequest} from './users.filter-request';
 import {UserManagement} from '../user-management.interface';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {TranslatedOptionFactory} from '../../form/select/options/translated-option.factory';
@@ -9,6 +9,10 @@ import {SelectOption} from '../../form/select/options/select-option';
 import {LabelPosition} from '../../form/label-position';
 import {UserAuthorities} from '../users.authorities';
 import {VALIDATIONS_CONFIG} from '../../../environments/environment';
+import {SearchUsersForm} from './search-users.form';
+import {PaginationModel} from '../../pagination/pagination.model';
+import {UsersPaginationActionStrategy} from './users.pagination.action.strategy';
+
 
 @Component({
   selector: 'app-users-management',
@@ -19,18 +23,19 @@ export class UsersManagementComponent implements OnInit {
 
   usersForm: FormGroup;
   users: UserResponse[];
-  filter = UsersFilter.empty();
   authoritiesOptions: SelectOption[];
   booleanOptions: SelectOption[];
   labelPosition = LabelPosition.NONE;
+  paginationModel: PaginationModel;
+  paginationActionStrategy: UsersPaginationActionStrategy;
 
-  constructor(@Inject('UsersService') private usersService: UsersProviderInterface,
-              @Inject('UserManagementService')  private userManagementService: UserManagement,
+  constructor(@Inject('UsersService') private usersService: UsersProvider,
+              @Inject('UserManagementService') private userManagementService: UserManagement,
               private optionsFactory: TranslatedOptionFactory
   ) {
-    this.users = usersService.get(this.filter);
     this.authoritiesOptions = optionsFactory.optionsOf('options.authorities.', Object.keys(UserAuthorities));
     this.booleanOptions = optionsFactory.optionsOfBoolean('options.boolean.true', 'options.boolean.false');
+    this.filterUsers(UsersFilterRequest.empty());
   }
 
   ngOnInit() {
@@ -38,20 +43,50 @@ export class UsersManagementComponent implements OnInit {
       'username': new FormControl(null, [Validators.maxLength(VALIDATIONS_CONFIG.MAX_TEXT_INPUT_LENGTH)]),
       'authority': new FormControl(null),
       'isActive': new FormControl(null)
-    })
-  }
-
-  onSearch() {
-    this.filter = this.usersForm.getRawValue();
-    this.users = this.usersService.get(this.filter);
+    });
+    this.paginationActionStrategy = new UsersPaginationActionStrategy(
+      this.usersService,
+      this.usersForm,
+      (response) => this.users = response.content
+    );
   }
 
   deactivate(user: UserResponse) {
-    this.userManagementService.deactivate(user.username);
+    this.userManagementService.deactivate(user.username).subscribe(
+      response => {
+        this.onSuccessResponse(response, () => {
+          user.active = false;
+        });
+      }
+    );
   }
 
   activate(user: UserResponse) {
-    this.userManagementService.activate(user.username);
+    this.userManagementService.activate(user.username).subscribe(
+      response => {
+        this.onSuccessResponse(response, () => {
+          user.active = true;
+        });
+      }
+    );
   }
 
+  onSearch() {
+    this.filterUsers(UsersFilterRequest.ofForm(<SearchUsersForm>this.usersForm.getRawValue()));
+  }
+
+  private onSuccessResponse(response, successAction: () => void) {
+    if (response.status.toString().match('2[0-9][0-9]')) {
+      successAction();
+    }
+  }
+
+  private filterUsers(filter: UsersFilterRequest) {
+    this.usersService.get(filter).subscribe(
+      response => {
+        this.users = response.content;
+        this.paginationModel = PaginationModel.of(response);
+      }
+    );
+  }
 }

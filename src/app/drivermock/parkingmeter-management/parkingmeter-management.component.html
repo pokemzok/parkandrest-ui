@@ -1,0 +1,209 @@
+<div class="panel panel-primary">
+
+  <div class="panel-heading">{{'header.parkingmeterManagement' | translate}}</div>
+
+  <div class="panel-body">
+
+    <div class="panel panel-success">
+      <div class="panel-body">
+        <div class="row">
+          <form (ngSubmit)="onAvailabilityCheck(checkModal)" [formGroup]="parkingSpaceAvailabilityForm">
+            <div class="col-md-6">
+              <app-form-input
+                [labelPosition]="labelPosition"
+                label="{{'forms.availParkingSpace' | translate}}"
+                type="number"
+                formCtrlName="parkingSpaceId"
+                inputPlaceholder="{{'forms.pholder.parkingSpaceId' | translate}}"
+                [genericErrorMsg]="'forms.validation.idQuantity' | translate"
+                [errorMsgCols]="12"
+                [inputCols]="6">
+              </app-form-input>
+            </div>
+            <div class="col-md-6">
+              <app-form-submit [description]="'forms.check' | translate"
+                               [buttonCols]="12">
+              </app-form-submit>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-success">
+      <div class="panel-body">
+        <form (ngSubmit)="onStart(startModal)" [formGroup]="parkingmeterStartForm">
+          <div class="row">
+            <div class="col-md-6">
+              <app-form-input
+                [labelPosition]="labelPosition"
+                label="{{'forms.parkingmeterStart' | translate}}"
+                type="number"
+                formCtrlName="parkingSpaceId"
+                inputPlaceholder="{{'forms.pholder.parkingSpaceId' | translate}}"
+                [genericErrorMsg]="'forms.validation.idQuantity' | translate"
+                [errorMsgCols]="12"
+                [inputCols]="6">
+              </app-form-input>
+            </div>
+            <div class="col-md-6">
+              <app-form-submit [description]="'forms.start' | translate"
+                               [buttonCols]="12">
+              </app-form-submit>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-form-input
+                [labelPosition]="labelPosition"
+                formCtrlName="registration"
+                inputPlaceholder="{{'forms.pholder.registrationNumber' | translate}}"
+                [genericErrorMsg]="'forms.validation.registrationNumberLength' | translate"
+                [errorMsgCols]="12"
+                [inputCols]="6">
+              </app-form-input>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <app-form-input
+                [labelPosition]="labelPosition"
+                formCtrlName="tariffType"
+                inputPlaceholder="{{'forms.pholder.tariffType' | translate}}"
+                [genericErrorMsg]="'forms.validation.tariffType' | translate"
+                [errorMsgCols]="12"
+                [inputCols]="6">
+              </app-form-input>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="panel panel-success">
+      <div class="panel-body">
+        <div class="row">
+          <form (ngSubmit)="onStop(stopModal)" [formGroup]="parkingmeterStopForm">
+            <div class="col-md-6">
+              <app-form-input
+                [labelPosition]="labelPosition"
+                label="{{'forms.parkingmeterStop' | translate}}"
+                type="number"
+                formCtrlName="parkingSpaceId"
+                inputPlaceholder="{{'forms.pholder.parkingSpaceId' | translate}}"
+                [genericErrorMsg]="'forms.validation.idQuantity' | translate"
+                [errorMsgCols]="12"
+                [inputCols]="6">
+              </app-form-input>
+            </div>
+            <div class="col-md-6">
+              <app-form-submit [description]="'forms.stop' | translate"
+                               [buttonCols]="12">
+              </app-form-submit>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<modal #checkModal>
+  <modal-header>
+    <h3 class="text-center">{{'driverMock.header.availabilityCheck' | translate}}</h3>
+  </modal-header>
+  <modal-content>
+    <app-form-readonly [inputCols]="4"
+                       [value]="checkParkingMeterModalContent?.parkingSpaceStatus"
+                       label="{{'driverMock.labels.parkingSpaceStatus' | translate}}">
+    </app-form-readonly>
+
+    <hr>
+
+    <app-form-readonly [inputCols]="4"
+                       [value]="checkParkingMeterModalContent?.registration"
+                       label="{{'driverMock.labels.registration' | translate}}">
+    </app-form-readonly>
+
+    <hr>
+
+    <app-form-readonly [inputCols]="4"
+                       [value]="checkParkingMeterModalContent?.occupationStartDateTime"
+                       label="{{'driverMock.labels.occupationStartDateTime' | translate}}">
+    </app-form-readonly>
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="checkModal.close()">{{'actions.close' | translate}}</button>
+  </modal-footer>
+</modal>
+
+<modal #startModal>
+  <modal-header>
+    <h3 class="text-center">{{'driverMock.header.startParkingmeter' | translate}}</h3>
+  </modal-header>
+  <modal-content>
+    <app-form-readonly [inputCols]="5"
+                       [value]="startParkingMeterModalContent?.startDateTime"
+                       label="{{'driverMock.labels.startDateTime' | translate}}">
+    </app-form-readonly>
+
+    <div *ngFor="let calculation of startParkingMeterModalContent?.precalculations">
+      <hr>
+
+      <h4 class="text-center">{{'driverMock.header.estimation' | translate: '{period:'+calculation.periodsQuantity+'}'}}</h4>
+
+      <app-form-readonly [inputCols]="5"
+                         [value]="calculation.registration"
+                         label="{{'driverMock.labels.registration' | translate}}">
+      </app-form-readonly>
+      <app-form-readonly [inputCols]="5"
+                         [value]="calculation.period"
+                         label="{{'driverMock.labels.period' | translate}}">
+      </app-form-readonly>
+      <app-form-readonly [inputCols]="5"
+                         value="{{calculation.charge + ' ' + calculation.currency}}"
+                         label="{{'driverMock.labels.charge' | translate}}">
+      </app-form-readonly>
+      <app-form-readonly [inputCols]="5"
+                         [value]="calculation.calculationDateTime"
+                         label="{{'driverMock.labels.calculationDateTime' | translate}}">
+      </app-form-readonly>
+    </div>
+
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="startModal.close()">{{'actions.close' | translate}}</button>
+  </modal-footer>
+</modal>
+
+<modal #stopModal>
+  <modal-header>
+    <h3 class="text-center">{{'driverMock.header.stopParkingmeter' | translate}}</h3>
+  </modal-header>
+  <modal-content>
+    <app-form-readonly [inputCols]="4"
+                       [value]="stopParkingMeterModalContent?.startDateTime"
+                       label="{{'driverMock.labels.startDateTime' | translate}}">
+    </app-form-readonly>
+
+    <hr>
+
+    <app-form-readonly [inputCols]="4"
+                       [value]="stopParkingMeterModalContent?.endDateTime"
+                       label="{{'driverMock.labels.endDateTime' | translate}}">
+    </app-form-readonly>
+
+    <hr>
+
+    <app-form-readonly [inputCols]="4"
+                       value="{{stopParkingMeterModalContent?.amountToPay + ' ' + stopParkingMeterModalContent?.currency }}"
+                       label="{{'driverMock.labels.amountToPay' | translate}}">
+    </app-form-readonly>
+
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="stopModal.close()">{{'actions.close' | translate}}</button>
+  </modal-footer>
+</modal>

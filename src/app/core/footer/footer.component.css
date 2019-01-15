@@ -1,12 +1,9 @@
-.fixed-footer{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
+.flex-footer{
   background-color: #5e5e5e;
   border-color: black;
   color: black;
   text-align: center;
-  padding: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
   border-top:  2px black solid;
-  z-index:1;
 }

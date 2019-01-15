@@ -39,7 +39,6 @@
   </div>
 
   <hr class="separator">
-  <!--TODO: sort after successful connection to server</h2> -->
   <div>
     <table class="table  table-striped table-hover">
       <thead>
@@ -54,21 +53,22 @@
       <tbody>
       <tr *ngFor="let row of users">
         <td> {{row.username}}</td>
-        <td>{{row.registrationDate}}</td>
-        <td>{{row.isActive}}</td>
+        <td>{{row.registrationDateTime}}</td>
+        <td>{{row.active}}</td>
         <td>{{row.authorities}}</td>
 
-        <td *ngIf="row.isActive === 'true'">
+        <td *ngIf="row.active">
           <button class="btn btn-secondary" (click)="deactivate(row)">{{'actions.deactivate' | translate}}</button>
         </td>
-        <td *ngIf="row.isActive === 'false'">
+        <td *ngIf="!row.active">
           <button class="btn btn-secondary" (click)="activate(row)">{{'actions.activate' | translate}}</button>
         </td>
       </tr>
       </tbody>
     </table>
   </div>
-  <!--<div>
-    <h2>TODO: pagination after successful connection to server</h2>
-  </div>-->
+  <app-pagination
+    [paginationActionStrategy]="paginationActionStrategy"
+    [paginationModel]="paginationModel"
+  ></app-pagination>
 </div>

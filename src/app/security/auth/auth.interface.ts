@@ -1,4 +1,4 @@
-import {LoginRequest} from '../../authentication/login/login.request';
+import {LoginRequest} from './login.request';
 
 
 export interface Auth {

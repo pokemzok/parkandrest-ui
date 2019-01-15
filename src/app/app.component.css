@@ -3,15 +3,25 @@
 }
 
 .main {
-  margin-left: 200px; /* Same as the width of the sidenav */
-  margin-bottom: 100px; /* to leave place for footer, otherwise content hides under */
+  display: flex;
+  min-height: 100vh;
 }
 
 .blurred {
-  -webkit-filter: blur(5px) grayscale(90%);
+  filter: blur(5px) grayscale(90%);
 }
 
 .router-outlet {
   padding-top: 100px;
   padding-left: 20px;
+}
+
+.flex-content {
+  flex: 1;
+}
+
+.flex-nav{
+  /* 12em is the width of the columns */
+  flex: 0 0 15em;
+  order: -1;
 }

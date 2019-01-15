@@ -5,12 +5,12 @@ import {isNullOrUndefined} from 'util';
 import {Authority} from '../auth/authority';
 import * as _ from 'underscore';
 
-// TODO: cookie expiration date after server implementation
 @Injectable()
 export class AuthCookiesService {
 
   private static readonly AUTH_TOKEN_NAME = 'authToken';
   private static readonly AUTHORITIES_NAME = 'authorities';
+  private static readonly USERNAME = 'username';
 
   constructor(private cookieService: CookieService) {
   }
@@ -19,11 +19,13 @@ export class AuthCookiesService {
     this.clearAuthCookies();
     this.cookieService.set(AuthCookiesService.AUTH_TOKEN_NAME, authModel.authenticationHeader);
     this.cookieService.set(AuthCookiesService.AUTHORITIES_NAME, JSON.stringify(authModel.authorities));
+    this.cookieService.set(AuthCookiesService.USERNAME, authModel.username);
   }
 
   clearAuthCookies() {
     this.cookieService.delete(AuthCookiesService.AUTH_TOKEN_NAME);
     this.cookieService.delete(AuthCookiesService.AUTHORITIES_NAME);
+    this.cookieService.delete(AuthCookiesService.USERNAME);
   }
 
   authToken(): string {
@@ -38,5 +40,7 @@ export class AuthCookiesService {
     return [];
   }
 
-
+  username(): string {
+    return this.cookieService.get(AuthCookiesService.USERNAME);
+  }
 }

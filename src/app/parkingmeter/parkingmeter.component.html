@@ -4,7 +4,7 @@
       <app-form-input
         [labelPosition]="labelPosition"
         type="number"
-        formCtrlName="parkingSpaceId"
+        formCtrlName="id"
         inputPlaceholder="{{'forms.parkingSpaceId' | translate}}"
         [genericErrorMsg]="'forms.validation.maxChars' | translate"
         [errorMsgCols]="12"
@@ -54,7 +54,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let row of parkingSpaceRecords">
-      <td> {{row.parkingSpaceId}}</td>
+      <td> {{row.id}}</td>
       <td>{{'options.parkingSpace.'+row.parkingSpaceStatus | translate}}</td>
       <td>{{row.registration}}</td>
       <td>{{row.occupationStartDate}}</td>
@@ -62,4 +62,8 @@
     </tbody>
   </table>
 </div>
+<app-pagination
+  [paginationActionStrategy]="paginationActionStrategy"
+  [paginationModel]="paginationModel"
+></app-pagination>
 

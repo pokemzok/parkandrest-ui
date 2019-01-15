@@ -1,5 +1,5 @@
 import {Auth} from './auth.interface';
-import {LoginRequest} from '../../authentication/login/login.request';
+import {LoginRequest} from './login.request';
 import {Optional} from '../../common/optional/optional';
 import {Authority} from './authority';
 import {AuthorizationModel} from './authorization.model';
@@ -22,21 +22,26 @@ export class MockAuthService implements Auth {
   private static readonly validCredentials = [
     {
       request: new LoginRequest('admin', 'password'),
-      authorization: new AuthorizationModel([Authority.ADMIN], MockAuthService.authorityHeader)
+      authorization: new AuthorizationModel([Authority.ADMIN], MockAuthService.authorityHeader, 'admin')
     },
     {
       request: new LoginRequest('fulladmin', 'password'),
-      authorization: new AuthorizationModel([Authority.ADMIN, Authority.OPERATOR, Authority.OWNER, Authority.DRIVER], MockAuthService.authorityHeader)
+      authorization: new AuthorizationModel(
+        [Authority.ADMIN, Authority.OPERATOR, Authority.OWNER, Authority.DRIVER],
+        MockAuthService.authorityHeader,
+        'fulladmin'
+      )
     },
     {
       request: new LoginRequest('operator', 'password'),
-      authorization: new AuthorizationModel([Authority.OPERATOR], MockAuthService.authorityHeader)
+      authorization: new AuthorizationModel([Authority.OPERATOR], MockAuthService.authorityHeader, 'operator')
     },
     {
       request: new LoginRequest('driver', 'password'),
-      authorization: new AuthorizationModel([Authority.DRIVER], MockAuthService.authorityHeader)
+      authorization: new AuthorizationModel([Authority.DRIVER], MockAuthService.authorityHeader, 'driver')
     },
-    {request: new LoginRequest('owner', 'password'), authorization: new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader)}
+    {request: new LoginRequest('owner', 'password'),
+      authorization: new AuthorizationModel([Authority.OWNER], MockAuthService.authorityHeader, 'owner')}
   ];
 
   constructor(

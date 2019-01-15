@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">{{'header.timeManagement' |  translate}}</div>
+  <div class="panel-body">
+    <div class="row">
+      <form (ngSubmit)="onIncrementHours(systimeModal)" [formGroup]="timeIncrementationForm">
+        <div class="col-md-6">
+          <app-form-input
+            [labelPosition]="labelPosition"
+            label="{{'forms.hours' | translate}}"
+            type="number"
+            formCtrlName="hours"
+            inputPlaceholder="{{'forms.pholder.hours' | translate}}"
+            [genericErrorMsg]="'forms.validation.hoursQuantity' | translate"
+            [errorMsgCols]="12"
+            [inputCols]="6">
+          </app-form-input>
+        </div>
+        <div class="col-md-6">
+          <app-form-submit [description]="'forms.increment' | translate"
+                           [buttonCols]="12">
+          </app-form-submit>
+        </div>
+      </form>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <button class="btn btn-large btn-block btn-primary" (click)="resetTime(systimeModal)">{{'forms.resetTime' | translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<modal #systimeModal>
+  <modal-header>
+    <h3 class="text-center">{{'driverMock.header.systime' | translate}}</h3>
+  </modal-header>
+  <modal-content>
+    <app-form-readonly [inputCols]="5"
+                       [value]="systime"
+                       [label]="'driverMock.labels.systime' | translate">
+    </app-form-readonly>
+
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="systimeModal.close()">{{'actions.close' | translate}}</button>
+  </modal-footer>
+</modal>

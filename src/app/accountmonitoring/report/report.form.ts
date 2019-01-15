@@ -1,6 +1,6 @@
 import {Moment} from 'moment';
 
-export class ReportformModel {
+export class ReportForm {
 
   reportDate: Moment;
 

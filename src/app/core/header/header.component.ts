@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {AuthorizationModel} from '../../security/auth/authorization.model';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+
+  constructor(private authStore: Store<AuthorizationModel>) {
+    this.authStore.select('authorization').subscribe(
+      authModel => this.username = authModel.username
+    );
+  }
 
   ngOnInit() {
+
   }
 
 }

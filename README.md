@@ -1,7 +1,14 @@
 # parkandrest-ui
 
-Frontend application made in angular 6 for educational purposes. Current version is fully client-side (mocked services). 
 
+Frontend application made in angular 7 for educational purposes. You can use it fully client side, or with server available [here](https://github.com/pokemzok/parkandrest-kotlin). 
+To use application in server mode go to environment.ts and set your SERVER_OFFLINE parameter like this:
+```
+ SERVER_OFFLINE: false
+```
+<p align="center">
+    <img alt="start" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/start.gif" />
+</p>
 ## Key features:
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.
@@ -9,7 +16,7 @@ Frontend application made in angular 6 for educational purposes. Current version
 4. Modularization 
 
 ## Technological stack
-1. Angular 6.0
+1. Angular 7.0
 2. Angular material
 2. Bootstrap 3.3
 3. Jasmine/Karma
@@ -29,13 +36,12 @@ Frontend application made in angular 6 for educational purposes. Current version
 1. To run application type 'ng serve' in *parkandrest-ui* main catalogue
 2. To run application test type 'ng test' in *parkandrest-ui* main catalogue
 
-## Loggin in
-1. Current version has hardcoded users inside of mockauth.service.ts (WARNING! Adding new user does not mean you could login using it's credentials, because mocks does not share user collections)
-2. You can login using provided credentials (fulladmin would allow access to all application features):
+## Login
+You can login using provided credentials (fulladmin would allow access to all application features):
 
 
 | username		  | password       |authorities  				  |
-| ------------- |--------------|----------------------------|
+|-------------|--------------|----------------------------|
 | fulladmin		  | password 	   |ADMIN, OPERATOR, OWNER, DRIVER|
 | admin		  	  | password 	   |ADMIN						  |
 | operator		  | password 	   |OPERATOR					  | 
@@ -43,18 +49,53 @@ Frontend application made in angular 6 for educational purposes. Current version
 | owner		  	  | password 	   |OWNER					  	  | 
 
 
+## Application features
+1. Manage application users. You can add new one and disable (or enable) existing one.  
+<p align="center">
+    <img alt="users" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/users.gif" />
+</p>
+2. Generate daily financial reports.  
+<p align="center">
+    <img alt="accounting-monitor" src=https://bitbucket.org/parkandrest-ui/raw/6d4a653c44fbced00291c05435b2649c12091ea6/readme-img/account-monitor.gif" />
+</p>
+3. Monitor parking spaces. Get and information about parking space state and what vehicle is currently parked.  
+<p align="center">
+    <img alt="parking-meter" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/parking-meter.gif" />
+</p>
+4. Access parking meter functionality. You can manually start and stop parking meter in order to mock external parking system which is not a part of this project.  
+<p align="center">
+    <img alt="driver-mock" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/driver-mock.gif" />
+</p>
+5. Get control over your server application time manager.   
+<p align="center">
+    <img alt="time-manager" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/time-manager.gif" />
+</p>  
+You can increment time by hours in order to test different time based scenarios. Warning! This feature is not available in client side mode nor should not be used on the production. 
+In order to make it work check the environment.ts file. Your ENVIRONMENT property should be set like this:
+
+```
+export const ENVIRONMENT = {
+  PRODUCTION: false,
+  SERVER_OFFLINE: false
+}
+```
+
+## Feature by authorities table
+
+| feature group  | required authority	
+|----------------|--------------|
+| Account monitor| OWNER	      |	  
+| Parking meter  | OPERATOR		  |
+| Users 	       | ADMIN		    |
+| Driver Mock  	 | DRIVER		    |
+
+
 ## Known problems:
 1. npm config set registry http://registry.npmjs.org/ - https keeps reseting network connection
-2. Extracting routes from app-module is problematic. You can't store routes as a static param in class, you have to export the const to make it work (compilator limitarion)
-3. angular migration from 5 to 6 destroyed test compatibility. Multiple solutions available here https://stackoverflow.com/questions/49831485/angular-6-and-karma-can-not-load-angular-devkit-build-angular-it-is-not-reg
 
 ## What is planned for the future:
 * Routes lazy loading
 * Custom fallback route - currently we always fallback to LogoutComponent
-* Real implementation of services which would use parkandrest application
-* Cookies expiration time
 * Change or update of ngx-cookie-service because of nasty side effects (example here  https://github.com/7leads/ngx-cookie-service/issues/5) 
-* Implement driver mock functionality (it requires connection to server)
-* Make tables paginable and sortable
-* More tests
-* RoutesDefinitionsCollection improvement (Implement AuthorityComponent type check)
+* Tests
+* Prolonging session by using refresh token (currently in server mode, after token expiration you will be always logout )

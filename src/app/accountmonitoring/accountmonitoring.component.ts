@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {FinancialReportRequest} from './report/financialreport.request';
-import {ReportformModel} from './report/reportform.model';
+import {ReportForm} from './report/report.form';
 import {FinancialReportResponse} from './report/financialreport.response';
 import {isNullOrUndefined} from 'util';
 import * as _ from 'underscore';
@@ -18,7 +18,8 @@ export class AccountMonitoringComponent implements OnInit, AuthorityComponent {
   reportForm: FormGroup;
   financialReport: FinancialReportResponse = null;
 
-  constructor(@Inject('FinancialReportService') private financialReportService: FinancialReport) { }
+  constructor(@Inject('FinancialReportService') private financialReportService: FinancialReport) {
+  }
 
   ngOnInit() {
     this.reportForm = new FormGroup({
@@ -27,8 +28,13 @@ export class AccountMonitoringComponent implements OnInit, AuthorityComponent {
   }
 
   onSubmit() {
-    const request = new FinancialReportRequest(<ReportformModel>this.reportForm.getRawValue());
-    this.financialReport = this.financialReportService.get(request);
+    const request = new FinancialReportRequest(<ReportForm>this.reportForm.getRawValue());
+    this.financialReportService.get(request)
+      .subscribe(
+        res => {
+          this.financialReport = res;
+        }
+      );
   }
 
   isFinancialReportAvailable(): boolean {

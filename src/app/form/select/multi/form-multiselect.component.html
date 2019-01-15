@@ -1,0 +1,13 @@
+<div class="form-group has-success" [formGroup]="inputFormGroup">
+  <label for={{id}} *ngIf="labelTopPosition()">{{label}}</label>
+  <div class="row">
+    <div class="col-md-{{inputCols}}" *ngIf="labelLeftPosition()">
+      <label for={{id}} class="leftLabel">{{label}}</label>
+    </div>
+    <div class="col-md-{{inputCols}}">
+      <select multiple class="form-control" id={{id}} [formControl]="formCtrl" >
+        <option *ngFor="let option of options" value="{{option.value}}">{{option.desc}}</option>
+      </select>
+    </div>
+  </div>
+</div>

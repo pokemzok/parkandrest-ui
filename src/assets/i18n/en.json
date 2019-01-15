@@ -1,12 +1,12 @@
 {
-  "actions":{
+  "actions": {
     "deactivate": "Deactivate",
     "activate": "Activate",
     "close": "Close"
   },
   "footer": {
-    "adminContact": "Our team email adress is parkandrest@test.com",
-    "disclamer": "@ 2018 Available under Apache licence"
+    "adminContact": "You can find server app for this client application on my github page (parkandrest-kotlin)",
+    "disclamer": "@ 2019 Available under Apache licence"
   },
   "forms": {
     "login": "Login",
@@ -20,21 +20,39 @@
     "reportDate": "Show financial report for the date",
     "submit": "Submit",
     "search": "Search",
+    "increment": "Increment",
+    "check": "Check",
+    "start": "Start",
+    "stop": "Stop",
+    "resetTime": "Reset time to current value",
     "chargedMoney": "Total charged amount:",
     "paidMoney": "Total paid amount:",
     "parkingSpaceId": "parking space id",
-    "parkingSpaceStatus": " parking space status",
+    "availParkingSpace": "Check for parking space availability",
+    "parkingmeterStart": "Start parking meter",
+    "parkingmeterStop": "Stop parking meter",
+    "parkingSpaceStatus": "parking space status",
     "registration": " registration",
-    "pholder":{
+    "hours": "Increment time by hours",
+    "stopParkingmeter": "Stop parking meter",
+    "pholder": {
       "password": "Enter your password",
       "passwordRegister": "Password",
-      "reportDate":"DD/MM/YYYY",
-      "username":"Username",
-      "usernameRegister":"only letters and numbers"
+      "reportDate": "DD/MM/YYYY",
+      "username": "Username",
+      "usernameRegister": "only letters and numbers",
+      "hours": "hours quantity",
+      "parkingSpaceId": "parking space id",
+      "registrationNumber": "registration number",
+      "tariffType": "tariff type (REGULAR or VIP) "
     },
-    "validation":{
+    "validation": {
       "usernameCharsQuantity": "Username has illegal characters quantity",
       "passwordCharsQuantity": "Password has illegal characters quantity",
+      "hoursQuantity": "Illegal hours quantity",
+      "idQuantity": "Illegal id length",
+      "tariffType": "Illegal tariff type, expected value is REGULAR or VIP",
+      "registrationNumberLength": "Illegal registration number length",
       "passwordMismatch": "Passwords does not match",
       "maxChars": "Too many characters",
       "usernameAlreadyTaken": "Username already taken",
@@ -42,15 +60,17 @@
     }
   },
   "header": {
-    "welcome": "You are logged in, ",
+    "welcome": "You are logged in as {{username}}, ",
     "logout": "Log Out",
     "register": "Register new user",
     "goodbye": "Have a nice day! Signing Out..",
-    "info": "About Parkandrest"
+    "info": "About Parkandrest",
+    "timeManagement": "Time management",
+    "parkingmeterManagement": "Parking meter management"
   },
   "info": {
     "accountMonitor": "Your result will appear here, after submitting the date",
-    "about": "Parkandrest is angular 6 based demo application made for educational purposes. Current version is fully client side and does not have drivermock functionality. You can find more about the project on it's README page: https://github.com/pokemzok/parkandrest-ui"
+    "about": "Parkandrest is angular 7 based demo application made for educational purposes. Current version could be used with server application (https://github.com/pokemzok/parkandrest-kotlin) or fully client-side. You can find more about the project on it's README page: https://github.com/pokemzok/parkandrest-ui"
   },
   "navbar": {
     "appname": "Parkandrest",
@@ -60,19 +80,19 @@
     "mock": "Driver Mock",
     "logout": "Log out"
   },
-  "options":{
-    "parkingSpace":{
+  "options": {
+    "parkingSpace": {
       "FREE": "Free",
       "OCCUPIED": "Occupied",
       "MAINTENANCE": "Maintenance"
     },
     "authorities": {
-      "DRIVER" : "Driver",
+      "DRIVER": "Driver",
       "OPERATOR": "Operator",
       "OWNER": "Owner",
       "ADMIN": "Admin"
     },
-    "boolean":{
+    "boolean": {
       "true": "true",
       "false": "false"
     }
@@ -82,29 +102,75 @@
     "loginForbidden": "You are already logged in",
     "SERVER_OFFLINE": "Server is Offline Choosing Mock Authentication Service",
     "authenticated": "Successfully Authenticated!",
-    "authfailure": "Authentication Failed! Provided credentials are incorrect",
+    "authfailure": "Authentication Failed with status {{status}}!",
     "userCreationSuccess": "Successfully created a new user",
     "userActivationSuccess": "Successfully activated user",
     "userDeactivationSuccess": "Successfully deactivated user",
     "unauthorized": "User does not have required authority to view this page. Routing back to main page.",
-    "authStoreFailure" : "There was a problem with credentials. Please contact your administrator."
+    "authStoreFailure": "There was a problem with credentials. Please contact your administrator.",
+    "serverStatuses": {
+      "0": "Server is not responding. Please contact your administrator.",
+      "404": "Server is not responding for your request. Please contact your administrator. Status 404.",
+      "401": "Unauthorized request. Make sure you have required authorization.",
+      "400": "Bad request. Please contact your administrator. Status 400.",
+      "403": "Permission denied. Contact your administrator in order to get necessary permissions.",
+      "500": "Internal server error occurred. Please contact your administrator. Status 500."
+    },
+    "serverCodes": {
+      "NO_TARIFF_PRESENT": "Parking does not have a tariff. Calculations cancelled.",
+      "PARKING_NOT_EXISTS": "Parking does not exist",
+      "PARKING_SPACE_UNAVAILABLE": "Parking space is unavailable",
+      "PARKING_SPACE_NOT_EXISTS": "Parking space not exists",
+      "NO_SUCH_VEHICLE_PARKED": "No such vehicle parked",
+      "NO_SUCH_TARIFF": "No such tariff. Select different one.",
+      "NO_SUCH_ORDER": "No such order.",
+      "TARIFFICATION_RULE_IS_MISSING": "Tariffication rule is missing",
+      "CURRENCY_MISMATCH": "Currencies does not match",
+      "DIFFERENT_PARKING_ON_TARIFFS": "Tariff cannot be update. There is a different parking id.",
+      "DIFFERENT_TARIFFS_TYPES": "Tariff cannot be update, tariff type is different from previous ",
+      "INVALID_FORMULA": "Tariff formula is invalid.",
+      "USER_ALREADY_EXISTS": "User already exist",
+      "NO_USER_FOUND": "No user found",
+      "UNEXPECTED_EXCEPTION": "Unexpected exception occurred. Please contact your administrator for details."
+    }
   },
-  "table" : {
+  "table": {
     "parkingSpaceId": "Parking space id",
     "parkingSpaceStatus": "Parking space status",
     "registrationNr": "Parked vehicle registration nr",
-    "occupiedFrom" : "Occupied from",
+    "occupiedFrom": "Occupied from",
     "username": "Username",
     "registrationDate": "Registration Date",
     "isActive": "Is active",
     "authorities": "Authorities",
     "actions": "Action"
   },
-  "tabs" : {
-    "users" : {
-      "management" : "Users management",
-      "new" : "Add new user"
+  "tabs": {
+    "users": {
+      "management": "Users management",
+      "new": "Add new user"
     }
   },
-  "welcomeMessage": "Welcome to the 'Park And Rest' application"
+  "welcomeMessage": "Welcome to the 'Park And Rest' application",
+  "driverMock": {
+    "header": {
+      "estimation": "Estimated charge for periods of quantity {{period}}",
+      "startParkingmeter": "You have started the parking meter",
+      "stopParkingmeter": "You have stopped the parking meter",
+      "availabilityCheck": "Check results",
+      "systime": "You successfully changed system time"
+    },
+    "labels": {
+      "systime": "System date time",
+      "parkingSpaceStatus": "Parking space status",
+      "registration": "Registration number",
+      "occupationStartDateTime": "Occupation started on",
+      "startDateTime": "Start date time",
+      "endDateTime": "End date time",
+      "amountToPay": "Amount to pay",
+      "period": "Minimal charging period",
+      "charge": "Estimated charge",
+      "calculationDateTime": "Calculation took place on"
+    }
+  }
 }

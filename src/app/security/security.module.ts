@@ -9,6 +9,10 @@ import {AuthenticationService} from './auth/authentication.service';
 import {MockAuthService} from './auth/mockauth.service';
 import {ENVIRONMENT} from '../../environments/environment';
 import {RoutesWithComponentCollection} from './routes/routes-with-component.collection.interface';
+import {SecureHttpService} from './http/secure-http.service';
+import {DefaultErrorHandler} from '../common/http/default-error.handler';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {UnauthrorizedInterceptor} from './auth/unauthrorized.interceptor';
 
 function provideServices(): any[] {
   if (!(ENVIRONMENT.PRODUCTION) && ENVIRONMENT.SERVER_OFFLINE) {
@@ -40,7 +44,14 @@ function provideBackendServices(): Provider[] {
   providers: [
     CookieService,
     AuthCookiesService,
-    TranslatedToastrFacade
+    TranslatedToastrFacade,
+    SecureHttpService,
+    {provide: 'ErrorHandler', useClass: DefaultErrorHandler},
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthrorizedInterceptor,
+      multi: true
+    }
   ].concat(provideServices()),
   exports: [
     HasAuthDirective

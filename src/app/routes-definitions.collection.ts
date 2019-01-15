@@ -35,7 +35,6 @@ class AuthComponentTypePair {
 /**
  * Would behave correctly only for component driven routes where every component is of AuthorityComponent type
  */
-// TODO: Testme
 export class RoutesDefinitionsCollection implements RoutesWithComponentCollection {
 
   private readonly authComponentMapping = [

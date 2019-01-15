@@ -1,10 +1,11 @@
 import {NewUserRequest} from './new/new-user.request';
 import {NewUserResponse} from './new/new-user.response';
+import {Observable} from 'rxjs';
 
 export interface UserManagement {
-  add(request: NewUserRequest): NewUserResponse;
+  add(request: NewUserRequest): Observable<NewUserResponse>;
 
-  activate(username: string);
+  activate(username: string): Observable<any>;
 
-  deactivate(username: string);
+  deactivate(username: string): Observable<any>;
 }

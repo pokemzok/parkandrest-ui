@@ -8,30 +8,36 @@ import {MockedUsersCollection} from './mocked-users.collection';
 import {NewUserResponse} from './new/new-user.response';
 import {Optional} from '../common/optional/optional';
 import {TranslatedToastrFacade} from '../common/toaster/translated-toaster.service';
+import {Observable, of} from 'rxjs';
 
 @Injectable()
 export class MockUserManagementService implements UserManagement {
 
-  constructor(private toastr: TranslatedToastrFacade) {}
-
-  add(request: NewUserRequest): NewUserResponse {
-    MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive.toString(), request.authorities));
-    this.toastr.success('notifications.userCreationSuccess');
-    return new NewUserResponse(request.username, true, moment().format(DATETIME_FORMAT));
+  constructor(private toastr: TranslatedToastrFacade) {
   }
 
-  activate(username: string) {
+  add(request: NewUserRequest): Observable<NewUserResponse> {
+    MockedUsersCollection.add(new UserResponse(request.username, moment().format(DATE_FORMAT), request.isActive, request.authorities));
+    this.toastr.success('notifications.userCreationSuccess');
+    return of(
+      new NewUserResponse(request.username, true, moment().format(DATETIME_FORMAT))
+    );
+  }
+
+  activate(username: string): Observable<any> {
     Optional.of(MockedUsersCollection.getByUsername(username)).ifPresent(
-      user => user.isActive = true.toString()
+      user => user.active = true
     );
     this.toastr.success('notifications.userActivationSuccess');
+    return of({status: 200});
   }
 
-  deactivate(username: string) {
+  deactivate(username: string): Observable<any> {
     Optional.of(MockedUsersCollection.getByUsername(username)).ifPresent(
-      user => user.isActive = false.toString()
+      user => user.active = false
     );
     this.toastr.success('notifications.userDeactivationSuccess');
+    return of({status: 200});
   }
 
 }

@@ -28,6 +28,7 @@ import {AuthenticationModule} from './authentication/authentication.module';
 import {SecurityModule} from './security/security.module';
 import {CoreModule} from './core/core.module';
 import {RoutesDefinitionsCollection} from './routes-definitions.collection';
+import {PaginationModule} from './pagination/pagination.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -58,7 +59,8 @@ export function createTranslateLoader(http: HttpClient) {
     DrivermockModule,
     ParkingMeterModule,
     UsersModule,
-    AuthenticationModule
+    AuthenticationModule,
+    PaginationModule
   ],
   providers: [
     OwnerAuthGuard,

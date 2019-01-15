@@ -4,6 +4,8 @@ import {ParkingSpaceFilter} from './parkingspace.filter';
 import {Injectable} from '@angular/core';
 import * as _ from 'underscore';
 import {List} from 'underscore';
+import {Observable, of} from 'rxjs';
+import {SpringPagedResponse} from '../common/spring/spring-paged.response';
 import {FilterPredicate} from '../common/filter/filter.predicate';
 
 @Injectable()
@@ -37,28 +39,43 @@ export class MockParkingSpaceService implements ParkingSpaceProvider {
     new ParkingSpaceResponse('25', 'OCCUPIED', 'RWL01D714', '2018-06-18 18:09'),
   ];
 
-  get(filter: ParkingSpaceFilter): ParkingSpaceResponse[] {
-    return _.filter(<List<ParkingSpaceResponse>>this.parkingSpaces, value => {
-      return new ParkingspaceRequestResponsePredicate(filter, value).predicate()
-    });
+  get(filter: ParkingSpaceFilter): Observable<SpringPagedResponse<ParkingSpaceResponse[]>> {
+
+    return of(
+      <SpringPagedResponse<ParkingSpaceResponse[]>>{
+        first: null,
+        last: null,
+        number: null,
+        numberOfElements: null,
+        size: null,
+        totalElement: null,
+        totalPages: 1,
+        pageable: null,
+        sort: null,
+        content:
+          _.filter(<List<ParkingSpaceResponse>>this.parkingSpaces, value => {
+            return new ParkingSpaceRequestResponsePredicate(filter, value).predicate()
+          })
+      }
+    );
   }
 
 }
 
-export class ParkingspaceRequestResponsePredicate  extends FilterPredicate {
+export class ParkingSpaceRequestResponsePredicate extends FilterPredicate {
 
-  constructor (private filter: ParkingSpaceFilter, private response: ParkingSpaceResponse) {
-    super();
-  }
-
-  predicate(): boolean {
-    if (!_.isEqual(this.filter, ParkingSpaceFilter.empty())) {
-      return this.equalPredicate(this.filter.parkingSpaceId, this.response.parkingSpaceId)
-      && this.equalPredicate(this.filter.parkingSpaceStatus, this.response.parkingSpaceStatus)
-      &&  this.equalPredicate(this.filter.registration, this.response.registration)
-    } else {
-      return true;
+    constructor(private filter: ParkingSpaceFilter, private response: ParkingSpaceResponse) {
+      super();
     }
-  }
+
+    predicate(): boolean {
+      if (!_.isEqual(this.filter, ParkingSpaceFilter.empty())) {
+        return this.equalPredicate(this.filter.id, this.response.id)
+          && this.equalPredicate(this.filter.parkingSpaceStatus, this.response.parkingSpaceStatus)
+          && this.equalPredicate(this.filter.registration, this.response.registration)
+      } else {
+        return true;
+      }
+    }
 
 }

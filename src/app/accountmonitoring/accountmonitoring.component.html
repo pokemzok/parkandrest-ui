@@ -1,17 +1,17 @@
-<div class="row">
+<div class="row no-right-margin">
   <form (ngSubmit)="onSubmit()" [formGroup]="reportForm">
 
     <div class="col-md-6">
       <app-datepicker formCtrlName="reportDate"
                       [label]="'forms.reportDate' | translate"
                       [datepickerPholder]="'forms.pholder.reportDate' | translate"
-                      [datepickerCols]="5">
+                      [datepickerCols]="6">
       </app-datepicker>
 
     </div>
     <div class="col-md-6">
       <app-form-submit [description]="'forms.submit' | translate"
-                       [buttonCols]="2">
+                       [buttonCols]="4">
       </app-form-submit>
     </div>
   </form>

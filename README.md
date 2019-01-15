@@ -8,7 +8,8 @@ To use application in server mode go to environment.ts and set your SERVER_OFFLI
 ```
 <p align="center">
     <img alt="start" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/start.gif" />
-</p>
+</p>  
+
 ## Key features:
 1. Authentication based on cookies and redux like store. 
 2. Reactive forms with custom validation.

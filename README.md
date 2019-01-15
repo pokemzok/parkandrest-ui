@@ -7,7 +7,7 @@ To use application in server mode go to environment.ts and set your SERVER_OFFLI
  SERVER_OFFLINE: false
 ```
 <p align="center">
-    <img alt="start" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/start.gif" />
+    <img alt="start" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/start.gif" />
 </p>
 ## Key features:
 1. Authentication based on cookies and redux like store. 
@@ -52,23 +52,23 @@ You can login using provided credentials (fulladmin would allow access to all ap
 ## Application features
 1. Manage application users. You can add new one and disable (or enable) existing one.  
 <p align="center">
-    <img alt="users" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/users.gif" />
+    <img alt="users" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/users.gif" />
 </p>
 2. Generate daily financial reports.  
 <p align="center">
-    <img alt="accounting-monitor" src=https://bitbucket.org/parkandrest-ui/raw/6d4a653c44fbced00291c05435b2649c12091ea6/readme-img/account-monitor.gif" />
+    <img alt="accounting-monitor" src=https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/account-monitor.gif" />
 </p>
 3. Monitor parking spaces. Get and information about parking space state and what vehicle is currently parked.  
 <p align="center">
-    <img alt="parking-meter" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/parking-meter.gif" />
+    <img alt="parking-meter" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/parking-meter.gif" />
 </p>
 4. Access parking meter functionality. You can manually start and stop parking meter in order to mock external parking system which is not a part of this project.  
 <p align="center">
-    <img alt="driver-mock" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/driver-mock.gif" />
+    <img alt="driver-mock" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/driver-mock.gif" />
 </p>
 5. Get control over your server application time manager.   
 <p align="center">
-    <img alt="time-manager" src="https://bitbucket.org/parkandrest-ui/src/master/readme-img/time-manager.gif" />
+    <img alt="time-manager" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/time-manager.gif" />
 </p>  
 You can increment time by hours in order to test different time based scenarios. Warning! This feature is not available in client side mode nor should not be used on the production. 
 In order to make it work check the environment.ts file. Your ENVIRONMENT property should be set like this:

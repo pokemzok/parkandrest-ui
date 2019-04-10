@@ -71,7 +71,7 @@ You can login using provided credentials (fulladmin would allow access to all ap
 <p align="center">
     <img alt="time-manager" src="https://raw.githubusercontent.com/pokemzok/parkandrest-ui/master/readme-img/time-manager.gif" />
 </p>  
-You can increment time by hours in order to test different time based scenarios. Warning! This feature is not available in client side mode nor should not be used on the production. 
+You can increment time by hours in order to test different time based scenarios. Warning! This feature is not available in client side mode and should not be used on the production. 
 In order to make it work check the environment.ts file. Your ENVIRONMENT property should be set like this:
 
 ```

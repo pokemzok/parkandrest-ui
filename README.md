@@ -1,4 +1,4 @@
-# parkandrest-ui
+# parkandrest-ui  [![Build Status](https://dev.azure.com/pokemzok/pokemzok/_apis/build/status/pokemzok.parkandrest-ui?branchName=master)](https://dev.azure.com/pokemzok/pokemzok/_build/latest?definitionId=9&branchName=master)
 
 
 Frontend application made in angular 7 for educational purposes. You can use it fully client side, or with server available [here](https://github.com/pokemzok/parkandrest-kotlin). 
